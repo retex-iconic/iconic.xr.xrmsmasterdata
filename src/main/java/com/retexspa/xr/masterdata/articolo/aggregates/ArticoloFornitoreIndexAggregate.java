@@ -1,57 +1,53 @@
 package com.retexspa.xr.masterdata.articolo.aggregates;
 
+import com.retexspa.xr.masterdata.articolo.commands.ArticoloFornitoreIndexCommand;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloFornitoreIndexEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
-import com.retexspa.xr.masterdata.articolo.commands.ArticoloFornitoreIndexCommand;
-import com.retexspa.xr.masterdata.articolo.events.ArticoloFornitoreIndexEvent;
 
 @Aggregate
 public class ArticoloFornitoreIndexAggregate {
-    
-    @AggregateIdentifier
-    private String id;
 
-    //TODO come capisco se un fornitore è principale?
-    private String fornitorePrincipaleId;
+  @AggregateIdentifier private String id;
 
-    public ArticoloFornitoreIndexAggregate() {
-    }
+  // TODO come capisco se un fornitore è principale?
+  private String fornitorePrincipaleId;
 
-    @CommandHandler
-    protected void ArticoloAggregate(ArticoloFornitoreIndexCommand articoloFornitoreIndexCommand) {
-        AggregateLifecycle.apply(new ArticoloFornitoreIndexEvent(
-            articoloFornitoreIndexCommand.id, 
-            articoloFornitoreIndexCommand.fornitoreId
-        ));
-    }
+  public ArticoloFornitoreIndexAggregate() {}
 
-    @EventSourcingHandler
-    protected void on(ArticoloFornitoreIndexEvent articoloFornitoreIndexEvent) {
-        this.id = articoloFornitoreIndexEvent.id;
-        this.fornitorePrincipaleId = articoloFornitoreIndexEvent.fornitoreId;
+  @CommandHandler
+  protected void ArticoloAggregate(ArticoloFornitoreIndexCommand articoloFornitoreIndexCommand) {
+    AggregateLifecycle.apply(
+        new ArticoloFornitoreIndexEvent(
+            articoloFornitoreIndexCommand.id, articoloFornitoreIndexCommand.fornitoreId));
+  }
 
-        AggregateLifecycle.apply(new ArticoloFornitoreIndexEvent(
-            articoloFornitoreIndexEvent.id,
-            articoloFornitoreIndexEvent.fornitoreId
-        ));
-    }
+  @EventSourcingHandler
+  protected void on(ArticoloFornitoreIndexEvent articoloFornitoreIndexEvent) {
+    this.id = articoloFornitoreIndexEvent.id;
+    this.fornitorePrincipaleId = articoloFornitoreIndexEvent.fornitoreId;
 
-    public String getId() {
-        return id;
-    }
+    AggregateLifecycle.apply(
+        new ArticoloFornitoreIndexEvent(
+            articoloFornitoreIndexEvent.id, articoloFornitoreIndexEvent.fornitoreId));
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public String getFornitorePrincipaleId() {
-        return fornitorePrincipaleId;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public void setFornitorePrincipaleId(String fornitorePrincipaleId) {
-        this.fornitorePrincipaleId = fornitorePrincipaleId;
-    }
+  public String getFornitorePrincipaleId() {
+    return fornitorePrincipaleId;
+  }
+
+  public void setFornitorePrincipaleId(String fornitorePrincipaleId) {
+    this.fornitorePrincipaleId = fornitorePrincipaleId;
+  }
 }

@@ -3,11 +3,11 @@ package com.retexspa.xr.masterdata.articolo.events;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.shared.BaseEvent;
 
-public class ArticoloCreatedEvent extends BaseEvent<String> {
+public class ArticoloUpdatedEvent extends BaseEvent<String> {
 
   public final ArticoloDTO data;
 
-  public ArticoloCreatedEvent(String id, ArticoloDTO data) {
+  public ArticoloUpdatedEvent(String id, ArticoloDTO data) {
     super(id);
     this.data = data;
 

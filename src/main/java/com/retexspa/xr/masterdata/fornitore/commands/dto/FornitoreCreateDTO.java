@@ -1,14 +1,14 @@
 package com.retexspa.xr.masterdata.fornitore.commands.dto;
 
 public class FornitoreCreateDTO {
-    
-    private String name;
 
-    public String getName() {
-        return this.name;
-    }
+  private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return this.name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 }

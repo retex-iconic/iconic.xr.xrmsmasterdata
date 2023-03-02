@@ -1,86 +1,78 @@
 package com.retexspa.xr.masterdata.fornitore.aggregates;
 
+import com.retexspa.xr.masterdata.fornitore.commands.FornitoreAddArticoloCommand;
+import com.retexspa.xr.masterdata.fornitore.commands.FornitoreCreateCommand;
+import com.retexspa.xr.masterdata.fornitore.events.FornitoreAddedArticoloEvent;
+import com.retexspa.xr.masterdata.fornitore.events.FornitoreCreatedEvent;
+import java.util.List;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import com.retexspa.xr.masterdata.fornitore.commands.FornitoreAddArticoloCommand;
-import com.retexspa.xr.masterdata.fornitore.commands.FornitoreCreateCommand;
-import com.retexspa.xr.masterdata.fornitore.events.FornitoreAddedArticoloEvent;
-import com.retexspa.xr.masterdata.fornitore.events.FornitoreCreatedEvent;
-
-import java.util.List;
-
 @Aggregate
 public class FornitoreAggregate {
-    
-    @AggregateIdentifier
-    private String id;
 
-    private String name;
+  @AggregateIdentifier private String id;
 
-    // ho bisogno della lista degli articoli?
-    private List<String> articoloIds;
+  private String name;
 
-    public FornitoreAggregate() {
-    }
+  // ho bisogno della lista degli articoli?
+  private List<String> articoloIds;
 
-    @CommandHandler
-    public FornitoreAggregate(FornitoreCreateCommand fornitoreCreateCommand) {
-        AggregateLifecycle.apply(new FornitoreCreatedEvent(  
-            fornitoreCreateCommand.id,
-            fornitoreCreateCommand.name
-        ));
-    }
+  public FornitoreAggregate() {}
 
-    @EventSourcingHandler
-    public void on(FornitoreCreatedEvent fornitoreCreatedEvent) {
-        this.id = fornitoreCreatedEvent.id;
-        this.name = fornitoreCreatedEvent.name;
-    }
+  @CommandHandler
+  public FornitoreAggregate(FornitoreCreateCommand fornitoreCreateCommand) {
+    AggregateLifecycle.apply(
+        new FornitoreCreatedEvent(fornitoreCreateCommand.id, fornitoreCreateCommand.name));
+  }
 
-    @CommandHandler
-    protected void on(FornitoreAddArticoloCommand fornitoreAddArticoloCommand) {
-        AggregateLifecycle.apply(new FornitoreAddedArticoloEvent(
-            fornitoreAddArticoloCommand.id,  
-            fornitoreAddArticoloCommand.articoloId
-        ));
-    }
+  @EventSourcingHandler
+  public void on(FornitoreCreatedEvent fornitoreCreatedEvent) {
+    this.id = fornitoreCreatedEvent.id;
+    this.name = fornitoreCreatedEvent.name;
+  }
 
-    @EventSourcingHandler
-    protected void on(FornitoreAddedArticoloEvent fornitoreAddArticoloEvent) {
-        if (!(this.articoloIds.contains(fornitoreAddArticoloEvent.articoloId))) 
-            this.articoloIds.add(fornitoreAddArticoloEvent.articoloId);
+  @CommandHandler
+  protected void on(FornitoreAddArticoloCommand fornitoreAddArticoloCommand) {
+    AggregateLifecycle.apply(
+        new FornitoreAddedArticoloEvent(
+            fornitoreAddArticoloCommand.id, fornitoreAddArticoloCommand.articoloId));
+  }
 
-        AggregateLifecycle.apply(new FornitoreAddedArticoloEvent(
-            fornitoreAddArticoloEvent.id, 
-            fornitoreAddArticoloEvent.articoloId
-        ));
-    }
+  @EventSourcingHandler
+  protected void on(FornitoreAddedArticoloEvent fornitoreAddArticoloEvent) {
+    if (!(this.articoloIds.contains(fornitoreAddArticoloEvent.articoloId)))
+      this.articoloIds.add(fornitoreAddArticoloEvent.articoloId);
 
-    public String getId() {
-        return this.id;
-    }
+    AggregateLifecycle.apply(
+        new FornitoreAddedArticoloEvent(
+            fornitoreAddArticoloEvent.id, fornitoreAddArticoloEvent.articoloId));
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public String getId() {
+    return this.id;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    public List<String> getArticoloIds() {
-        return this.articoloIds;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setArticoloIds(List<String> articoloIds) {
-        this.articoloIds = articoloIds;
-    }   
+  public List<String> getArticoloIds() {
+    return this.articoloIds;
+  }
+
+  public void setArticoloIds(List<String> articoloIds) {
+    this.articoloIds = articoloIds;
+  }
 }
