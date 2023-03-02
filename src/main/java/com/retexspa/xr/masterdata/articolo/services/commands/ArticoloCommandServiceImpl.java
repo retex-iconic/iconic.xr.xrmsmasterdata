@@ -9,9 +9,11 @@ import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloFornitoreIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloStoreIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloCreateDTO;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloFornitoreIndexDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloStoreIndexDTO;
+import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
+
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
@@ -26,6 +28,7 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
     private final CommandGateway commandGateway;
     private final EventStore eventStore;
     private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
+    private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
     private UnitOfWork<?> unitOfWork;
 
     public ArticoloCommandServiceImpl(CommandGateway commandGateway, EventStore eventStore, EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository) {
@@ -46,11 +49,10 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
     }    
 
     @Override
-    public CompletableFuture<Object> createArticolo(ArticoloCreateDTO articoliCreateDTO) {
+    public CompletableFuture<Object> createArticolo(ArticoloDTO articoloDTO) {
         CompletableFuture<Object> result = commandGateway.send(new ArticoloCreateCommand(
             UUID.randomUUID().toString(), 
-            articoliCreateDTO.getCode(),
-            articoliCreateDTO.getDescription()
+            articoloDTO
         ));
         return result;
     }
@@ -61,8 +63,9 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
     }
 
     @Override
-    public CompletableFuture<String> storeIndex(String articoloId, ArticoloStoreIndexDTO articoloStoreIndexDTO) {
-        return commandGateway.send(new ArticoloStoreIndexCommand(articoloId+" --> ", articoloStoreIndexDTO.getStoreId()));
+    public NegozioAggregate storeIndex(String articoloId) {
+        unitOfWork = DefaultUnitOfWork.startAndGet(null);
+        return negozioAggregateEventSourcingRepository.load(articoloId).getWrappedAggregate().getAggregateRoot();
     }
     
     @Override

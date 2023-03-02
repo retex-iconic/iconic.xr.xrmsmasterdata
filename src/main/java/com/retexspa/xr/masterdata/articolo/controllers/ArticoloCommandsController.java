@@ -1,23 +1,18 @@
 package com.retexspa.xr.masterdata.articolo.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloCreateDTO;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloFornitoreIndexDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloStoreIndexDTO;
 import com.retexspa.xr.masterdata.articolo.services.commands.ArticoloCommandService;
-
+import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import javax.websocket.server.PathParam;
-
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -39,40 +34,39 @@ public class ArticoloCommandsController {
     // The method calls the method createArticoli in the service class ArticoloCommandService.
 
     @PostMapping
-    public CompletableFuture<Object> createArticoli(@RequestBody ArticoloCreateDTO articoliCreateDTO) {
-        CompletableFuture<Object> res = articoloCommandService.createArticolo(articoliCreateDTO);
+    public CompletableFuture<Object> createArticoli(@RequestBody ArticoloDTO articoliDTO) {
+        CompletableFuture<Object> res = articoloCommandService.createArticolo(articoliDTO);
         return res;
     }
 
     @GetMapping("/{articoloId}/events")
-    public List<Object> getArticoloEvents(@PathParam(value = "articoloId") String articoloId) {
+    public List<Object> getArticoloEvents(@PathVariable(value = "articoloId") String articoloId) {
         List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);
         return res;
     }
 
     @GetMapping("/{articoloId}")
-    public ArticoloAggregate getArticoloAggregate(@PathParam(value = "articoloId") String articoloId) {
+    public ArticoloAggregate getArticoloAggregate(@PathVariable(value = "articoloId") String articoloId) {
         ArticoloAggregate res = articoloCommandService.getArticoloAggregate(articoloId);
         return res;
     }
 
     // endpoint di index e di adding devono essere get??
     @PutMapping("/fornitorePrincipale/{articoloId}")
-    public CompletableFuture<String> addedFornitore(@PathParam(value = "articoloId") String articoloId,
+    public CompletableFuture<String> addedFornitore(@PathVariable(value = "articoloId") String articoloId,
                                                     @RequestBody ArticoloAddFornitoreDTO articoloAddFornitoreDTO) {
         CompletableFuture<String> res = articoloCommandService.addedFornitore(articoloId, articoloAddFornitoreDTO);
         return res;
     }
 
-    @PutMapping("/negozioIndex/{articoloId}")
-    public CompletableFuture<String> storeIndex(@PathParam(value = "articoloId") String articoloId,
-                                                    @RequestBody ArticoloStoreIndexDTO articoloStoreIndexDTO) {
-        CompletableFuture<String> res = articoloCommandService.storeIndex(articoloId, articoloStoreIndexDTO);
+    @GetMapping("/negozioIndex/{articoloId}")
+    public NegozioAggregate storeIndex(@PathVariable(value = "articoloId") String articoloId) {
+        NegozioAggregate res = articoloCommandService.storeIndex(articoloId);
         return res;
     }
 
     @PutMapping("/fornitorePrincipaleIndex/{articoloId}")
-    public CompletableFuture<String> fornitoreIndex(@PathParam(value = "articoloId") String articoloId,
+    public CompletableFuture<String> fornitoreIndex(@PathVariable(value = "articoloId") String articoloId,
                                                     @RequestBody ArticoloFornitoreIndexDTO articoloFornitoreIndexDTO) {
         CompletableFuture<String> res = articoloCommandService.fornitoreIndex(articoloId, articoloFornitoreIndexDTO);
         return res;

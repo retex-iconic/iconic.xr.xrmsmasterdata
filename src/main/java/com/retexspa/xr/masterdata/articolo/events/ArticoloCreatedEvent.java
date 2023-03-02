@@ -1,17 +1,15 @@
 package com.retexspa.xr.masterdata.articolo.events;
 
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.shared.BaseEvent;
 
 public class ArticoloCreatedEvent extends BaseEvent<String>{
 
-    public final String code;
+    public final ArticoloDTO data;
 
-    public final String description;
-
-    public ArticoloCreatedEvent(String id, String code, String description) {
+    public ArticoloCreatedEvent(String id, ArticoloDTO data ) {
         super(id);
-        this.code = code;
-        this.description = description;
+        this.data = data;
         
         //TODO Auto-generated constructor stub
     }

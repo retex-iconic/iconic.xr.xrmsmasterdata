@@ -8,6 +8,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloAddedFornitoreEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
 import java.util.List;
@@ -18,11 +19,10 @@ public class ArticoloAggregate {
     @AggregateIdentifier
     private String id;
 
-    private String code;
+    private ArticoloDTO data;
 
-    private String description;
-    
-    private List<String> fornitoreIds;
+
+
 
     public ArticoloAggregate() {
     }
@@ -31,16 +31,14 @@ public class ArticoloAggregate {
     public ArticoloAggregate(ArticoloCreateCommand articoloCreateCommand) {
         AggregateLifecycle.apply(new ArticoloCreatedEvent(
             articoloCreateCommand.id, 
-            articoloCreateCommand.code,
-            articoloCreateCommand.description
+            articoloCreateCommand.data
         ));
     }
 
     @EventSourcingHandler
     protected void on(ArticoloCreatedEvent articoloCreatedEvent) {
         this.id = articoloCreatedEvent.id;
-        this.code = articoloCreatedEvent.code;
-        this.description = articoloCreatedEvent.description;
+        this.data = articoloCreatedEvent.data;
     }
 
     @CommandHandler
@@ -51,16 +49,16 @@ public class ArticoloAggregate {
         ));
     }
 
-    @EventSourcingHandler
-    protected void on(ArticoloAddedFornitoreEvent articoloAddFornitoreEvent) {
-        if (!(this.fornitoreIds.contains(articoloAddFornitoreEvent.fornitoreId))) 
-            this.fornitoreIds.add(articoloAddFornitoreEvent.fornitoreId);
+    // @EventSourcingHandler
+    // protected void on(ArticoloAddedFornitoreEvent articoloAddFornitoreEvent) {
+    //     if (!(this.fornitoreIds.contains(articoloAddFornitoreEvent.fornitoreId))) 
+    //         this.fornitoreIds.add(articoloAddFornitoreEvent.fornitoreId);
 
-        AggregateLifecycle.apply(new ArticoloAddedFornitoreEvent(
-            articoloAddFornitoreEvent.id, 
-            articoloAddFornitoreEvent.fornitoreId
-        ));
-    }
+    //     AggregateLifecycle.apply(new ArticoloAddedFornitoreEvent(
+    //         articoloAddFornitoreEvent.id, 
+    //         articoloAddFornitoreEvent.fornitoreId
+    //     ));
+    // }
 
     public String getId() {
         return id;
@@ -70,27 +68,36 @@ public class ArticoloAggregate {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
-    }
+    public ArticoloDTO getData() {
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+        return data;
+    }   
 
-    public List<String> getFornitoreIds() {
-        return fornitoreIds;
-    }
+    public void setData(ArticoloDTO data) {
+        this.data = data;
+    }   
 
-    public void setFornitoreIds(List<String> fornitoreIds) {
-        this.fornitoreIds = fornitoreIds;
-    }
+    // public String getCode() {
+    //     return code;
+    // }
 
-    public String getDescription() {
-        return description;
-    }
+    // public void setCode(String code) {
+    //     this.code = code;
+    // }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    // public List<String> getFornitoreIds() {
+    //     return fornitoreIds;
+    // }
+
+    // public void setFornitoreIds(List<String> fornitoreIds) {
+    //     this.fornitoreIds = fornitoreIds;
+    // }
+
+    // public String getDescription() {
+    //     return description;
+    // }
+
+    // public void setDescription(String description) {
+    //     this.description = description;
+    // }
 }
