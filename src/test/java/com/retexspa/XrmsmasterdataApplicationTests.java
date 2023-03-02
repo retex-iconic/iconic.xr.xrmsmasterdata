@@ -1,0 +1,13 @@
+package com.retexspa;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class XrmsmasterdataApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
