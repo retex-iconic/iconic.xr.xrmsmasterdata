@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping(value = "/articolo")
@@ -48,7 +48,6 @@ public class ArticoloCommandsController {
     public List<Object> getArticoloEvents(@PathParam(value = "articoloId") String articoloId) {
         List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);
         return res;
-
     }
 
     @GetMapping("/{articoloId}")
