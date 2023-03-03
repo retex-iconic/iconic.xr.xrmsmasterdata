@@ -35,16 +35,14 @@ public class ArticoloAggregate {
   }
 
   @CommandHandler
-  public ArticoloAggregate(ArticoloUpdateCommand articoloUpdateCommand ) {
+  protected void on(ArticoloUpdateCommand articoloUpdateCommand ) {
     AggregateLifecycle.apply(
-        new ArticoloUpdatedEvent(articoloUpdateCommand.id, articoloUpdateCommand.data));
+        new ArticoloUpdatedEvent(articoloUpdateCommand.getId(), articoloUpdateCommand.getData()));
   }
 
   @EventSourcingHandler
   protected void on(ArticoloUpdatedEvent articoloUpdatedEvent) {
-    if (this.id != articoloUpdatedEvent.id)
-      throw new IllegalArgumentException("Id mismatch");
-    
+
 
     if (this.id == null){
       this.id = articoloUpdatedEvent.id;
@@ -56,7 +54,7 @@ public class ArticoloAggregate {
   }
 
   @CommandHandler
-  protected void on(ArticoloAddFornitoreCommand articoloAddFornitoreCommand) {
+  protected void handle(ArticoloAddFornitoreCommand articoloAddFornitoreCommand) {
     AggregateLifecycle.apply(
         new ArticoloAddedFornitoreEvent(
             articoloAddFornitoreCommand.id, articoloAddFornitoreCommand.fornitoreId));

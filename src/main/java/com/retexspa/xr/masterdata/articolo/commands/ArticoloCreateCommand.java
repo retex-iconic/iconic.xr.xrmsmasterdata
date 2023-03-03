@@ -10,5 +10,15 @@ public class ArticoloCreateCommand extends BaseCommand<String> {
   public ArticoloCreateCommand(String id, ArticoloDTO data) {
     super(id);
     this.data = data;
+
   }
+
+  public ArticoloDTO getData() {
+    return data;
+  }
+
+  public String getId() {
+    return id;
+  }
+  
 }

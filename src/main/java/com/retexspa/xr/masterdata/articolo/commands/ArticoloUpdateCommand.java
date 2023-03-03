@@ -11,4 +11,13 @@ public class ArticoloUpdateCommand extends BaseCommand<String> {
     super(id);
     this.data = data;
   }
+
+  public ArticoloDTO getData() {
+    return data;
+  }
+
+  public String getId() {
+    return id;
+  }
+
 }
