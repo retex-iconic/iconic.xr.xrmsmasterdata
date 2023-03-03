@@ -44,6 +44,14 @@ public class ArticoloCommandsController {
     return res;
   }
 
+  @PutMapping("/{articoloId}")
+  public CompletableFuture<Object> updateArticoli(
+    @PathVariable(value = "articoloId") String articoloId,
+    @RequestBody ArticoloDTO articoliDTO) {
+    CompletableFuture<Object> res = articoloCommandService.updateArticolo(articoloId, articoliDTO);
+    return res;
+  }
+
   @GetMapping("/{articoloId}/events")
   public List<Object> getArticoloEvents(@PathVariable(value = "articoloId") String articoloId) {
     List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);

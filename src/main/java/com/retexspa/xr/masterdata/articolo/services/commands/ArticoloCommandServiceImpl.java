@@ -3,6 +3,7 @@ package com.retexspa.xr.masterdata.articolo.services.commands;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
+import com.retexspa.xr.masterdata.articolo.commands.ArticoloUpdateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloFornitoreIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
@@ -59,6 +60,13 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   }
 
   @Override
+  public CompletableFuture<Object> updateArticolo(String articoloId, ArticoloDTO articoloDTO) {
+    CompletableFuture<Object> result =
+        commandGateway.send(new ArticoloUpdateCommand(articoloId, articoloDTO));
+    return result;
+  }
+
+  @Override
   public CompletableFuture<String> addedFornitore(
       String articoloId, ArticoloAddFornitoreDTO articoloAddFornitoreDTO) {
     return commandGateway.send(
@@ -81,4 +89,6 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
         new ArticoloFornitoreIndexCommand(
             articoloId + " --> ", articoloFornitoreIndexDTO.getFornitoreId()));
   }
+
+
 }

@@ -2,9 +2,11 @@ package com.retexspa.xr.masterdata.articolo.aggregates;
 
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
+import com.retexspa.xr.masterdata.articolo.commands.ArticoloUpdateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloAddedFornitoreEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -30,6 +32,27 @@ public class ArticoloAggregate {
   protected void on(ArticoloCreatedEvent articoloCreatedEvent) {
     this.id = articoloCreatedEvent.id;
     this.data = articoloCreatedEvent.data;
+  }
+
+  @CommandHandler
+  public ArticoloAggregate(ArticoloUpdateCommand articoloUpdateCommand ) {
+    AggregateLifecycle.apply(
+        new ArticoloUpdatedEvent(articoloUpdateCommand.id, articoloUpdateCommand.data));
+  }
+
+  @EventSourcingHandler
+  protected void on(ArticoloUpdatedEvent articoloUpdatedEvent) {
+    if (this.id != articoloUpdatedEvent.id)
+      throw new IllegalArgumentException("Id mismatch");
+    
+
+    if (this.id == null){
+      this.id = articoloUpdatedEvent.id;
+    }
+
+
+      //this.id = articoloUpdatedEvent.id;
+    this.data = articoloUpdatedEvent.data;
   }
 
   @CommandHandler

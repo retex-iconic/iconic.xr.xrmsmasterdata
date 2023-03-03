@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 public interface ArticoloCommandService {
   public CompletableFuture<Object> createArticolo(ArticoloDTO articoloDTO);
 
-  public CompletableFuture<Object> updateArticolo(ArticoloDTO articoloDTO);
+  public CompletableFuture<Object> updateArticolo(String articoloId, ArticoloDTO articoloDTO);
   // TODO: Implentare paginazione del listing degli eventi
   public List<Object> listEventsForArticolo(String articoloId);
 
