@@ -44,14 +44,6 @@ public class ArticoloCommandsController {
     return res;
   }
 
-  @PutMapping("/{articoloId}")
-  public CompletableFuture<Object> updateArticoli(
-    @PathVariable(value = "articoloId") String articoloId,
-    @RequestBody ArticoloDTO articoliDTO) {
-    CompletableFuture<Object> res = articoloCommandService.updateArticolo(articoloId, articoliDTO);
-    return res;
-  }
-
   @GetMapping("/{articoloId}/events")
   public List<Object> getArticoloEvents(@PathVariable(value = "articoloId") String articoloId) {
     List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);
@@ -65,19 +57,26 @@ public class ArticoloCommandsController {
     return res;
   }
 
-  // endpoint di index e di adding devono essere get??
+  @GetMapping("/negozioIndex/{articoloId}")
+  public NegozioAggregate storeIndex(@PathVariable(value = "articoloId") String articoloId) {
+    NegozioAggregate res = articoloCommandService.storeIndex(articoloId);
+    return res;
+  }
+
+  @PutMapping("/{articoloId}")
+  public CompletableFuture<Object> updateArticoli(
+    @PathVariable(value = "articoloId") String articoloId,
+    @RequestBody ArticoloDTO articoliDTO) {
+    CompletableFuture<Object> res = articoloCommandService.updateArticolo(articoloId, articoliDTO);
+    return res;
+  }
+
   @PutMapping("/fornitorePrincipale/{articoloId}")
   public CompletableFuture<String> addedFornitore(
       @PathVariable(value = "articoloId") String articoloId,
       @RequestBody ArticoloAddFornitoreDTO articoloAddFornitoreDTO) {
     CompletableFuture<String> res =
         articoloCommandService.addedFornitore(articoloId, articoloAddFornitoreDTO);
-    return res;
-  }
-
-  @GetMapping("/negozioIndex/{articoloId}")
-  public NegozioAggregate storeIndex(@PathVariable(value = "articoloId") String articoloId) {
-    NegozioAggregate res = articoloCommandService.storeIndex(articoloId);
     return res;
   }
 

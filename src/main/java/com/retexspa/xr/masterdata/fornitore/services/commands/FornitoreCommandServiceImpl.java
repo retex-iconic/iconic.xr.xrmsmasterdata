@@ -16,15 +16,18 @@ import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FornitoreCommandServiceImpl implements FornitoreCommandService {
 
   private final CommandGateway commandGateway;
-  private final EventStore eventStore;
-  private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
   private UnitOfWork<?> unitOfWork;
+  private final EventStore eventStore;
+
+  @Autowired
+  private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
 
   public FornitoreCommandServiceImpl(
       CommandGateway commandGateway,
@@ -51,10 +54,13 @@ public class FornitoreCommandServiceImpl implements FornitoreCommandService {
   @Override
   public FornitoreAggregate getFornitoreAggregate(String fornitoreId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    return fornitoreAggregateEventSourcingRepository
+    FornitoreAggregate aggregate = fornitoreAggregateEventSourcingRepository
         .load(fornitoreId)
         .getWrappedAggregate()
         .getAggregateRoot();
+
+    unitOfWork.rollback();
+    return aggregate;
   }
 
   @Override

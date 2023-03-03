@@ -1,0 +1,6 @@
+package com.retexspa.xr.masterdata.fornitore.entities;
+
+//TODO this entity needs to be changed with the real one!
+public class FornitoreQueryEntity {
+    
+}

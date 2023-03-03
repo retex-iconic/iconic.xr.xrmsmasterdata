@@ -16,7 +16,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 @Aggregate
 public class ArticoloAggregate {
 
-  @AggregateIdentifier private String id;
+  @AggregateIdentifier 
+  private String id;
 
   private ArticoloDTO data;
 
@@ -35,23 +36,19 @@ public class ArticoloAggregate {
   }
 
   @CommandHandler
-  public ArticoloAggregate(ArticoloUpdateCommand articoloUpdateCommand ) {
+  protected void on(ArticoloUpdateCommand articoloUpdateCommand ) {
     AggregateLifecycle.apply(
         new ArticoloUpdatedEvent(articoloUpdateCommand.id, articoloUpdateCommand.data));
   }
 
   @EventSourcingHandler
   protected void on(ArticoloUpdatedEvent articoloUpdatedEvent) {
-    if (this.id != articoloUpdatedEvent.id)
-      throw new IllegalArgumentException("Id mismatch");
-    
 
-    if (this.id == null){
+    if (this.id == null) {
       this.id = articoloUpdatedEvent.id;
     }
 
-
-      //this.id = articoloUpdatedEvent.id;
+    //this.id = articoloUpdatedEvent.id;
     this.data = articoloUpdatedEvent.data;
   }
 
