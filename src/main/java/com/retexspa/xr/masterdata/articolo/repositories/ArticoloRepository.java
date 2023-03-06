@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 
-public interface ArticoloRepository extends JpaRepository<ArticoloQueryEntity, String> {
+public interface ArticoloRepository extends JpaRepository<ArticoloQueryEntity, Long> {
 }

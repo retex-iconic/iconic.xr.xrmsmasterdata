@@ -10,6 +10,16 @@ public class ArticoloDTO {
 
   private String description;
 
+  private String parent;
+
+  public String getParent() {
+    return parent;
+  }
+
+  public void setParent(String parent) {
+    this.parent = parent;
+  }
+
   public String getCode() {
     return code;
   }

@@ -10,4 +10,12 @@ public class ArticoloAddFornitoreCommand extends BaseCommand<String> {
     super(id);
     this.fornitoreId = fornitoreId;
   }
+
+  public String getId() {
+    return id;
+  }
+
+  public String getFornitoreId() {
+    return this.fornitoreId;
+  }
 }
