@@ -13,4 +13,12 @@ public class ArticoloUpdatedEvent extends BaseEvent<String> {
 
     // TODO Auto-generated constructor stub
   }
+
+  public ArticoloDTO getData() {
+    return data;
+  }
+
+  public String getId() {
+    return id;
+  }
 }
