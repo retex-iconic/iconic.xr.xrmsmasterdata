@@ -14,6 +14,7 @@ import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,8 +22,10 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
 
   private final CommandGateway commandGateway;
   private final EventStore eventStore;
-  private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
   private UnitOfWork<?> unitOfWork;
+
+  @Autowired
+  private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
 
   public NegozioCommandServiceImpl(
       CommandGateway commandGateway,
@@ -49,10 +52,14 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   @Override
   public NegozioAggregate getNegozioAggregate(String negozioId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    return negozioAggregateEventSourcingRepository
-        .load(negozioId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    NegozioAggregate aggregate =
+        negozioAggregateEventSourcingRepository
+            .load(negozioId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
+
+    unitOfWork.rollback();
+    return aggregate;
   }
 
   @Override

@@ -40,7 +40,7 @@ public class ArticoloAggregate {
   @CommandHandler
   protected void on(ArticoloUpdateCommand articoloUpdateCommand) {
     AggregateLifecycle.apply(
-        new ArticoloUpdatedEvent(articoloUpdateCommand.getId(), articoloUpdateCommand.getData()));
+        new ArticoloUpdatedEvent(articoloUpdateCommand.id, articoloUpdateCommand.data));
   }
 
   @EventSourcingHandler
@@ -57,7 +57,7 @@ public class ArticoloAggregate {
   }
 
   @CommandHandler
-  protected void handle(ArticoloAddFornitoreCommand articoloAddFornitoreCommand) {
+  protected void on(ArticoloAddFornitoreCommand articoloAddFornitoreCommand) {
     AggregateLifecycle.apply(
         new ArticoloAddedFornitoreEvent(
             articoloAddFornitoreCommand.id, articoloAddFornitoreCommand.fornitoreId));

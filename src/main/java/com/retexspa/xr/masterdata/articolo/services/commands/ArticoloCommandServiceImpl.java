@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
+import org.axonframework.messaging.unitofwork.CurrentUnitOfWork;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,9 +27,13 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
 
   private final CommandGateway commandGateway;
   private final EventStore eventStore;
+  UnitOfWork<?> unitOfWork;
+
+  @Autowired
   private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
+
+  @Autowired
   private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
-  private UnitOfWork<?> unitOfWork;
 
   public ArticoloCommandServiceImpl(
       CommandGateway commandGateway,
@@ -41,10 +47,14 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   @Override
   public ArticoloAggregate getArticoloAggregate(String articoloId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    return articoloAggregateEventSourcingRepository
-        .load(articoloId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    ArticoloAggregate aggregate =
+        articoloAggregateEventSourcingRepository
+            .load(articoloId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
+
+    unitOfWork.rollback();
+    return aggregate;
   }
 
   @Override
@@ -75,7 +85,7 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
 
   @Override
   public NegozioAggregate storeIndex(String articoloId) {
-    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    unitOfWork = CurrentUnitOfWork.get();
     return negozioAggregateEventSourcingRepository
         .load(articoloId)
         .getWrappedAggregate()
