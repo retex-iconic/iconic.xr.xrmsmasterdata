@@ -19,5 +19,4 @@ public class ArticoloUpdateCommand extends BaseCommand<String> {
   public String getId() {
     return id;
   }
-
 }

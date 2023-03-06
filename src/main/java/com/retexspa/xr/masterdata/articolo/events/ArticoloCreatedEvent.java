@@ -21,5 +21,4 @@ public class ArticoloCreatedEvent extends BaseEvent<String> {
   public String getId() {
     return id;
   }
-
 }

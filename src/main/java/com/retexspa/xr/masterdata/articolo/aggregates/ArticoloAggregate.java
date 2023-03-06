@@ -1,5 +1,7 @@
 package com.retexspa.xr.masterdata.articolo.aggregates;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloUpdateCommand;
@@ -7,6 +9,7 @@ import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloAddedFornitoreEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
+import java.io.IOException;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -35,22 +38,22 @@ public class ArticoloAggregate {
   }
 
   @CommandHandler
-  protected void on(ArticoloUpdateCommand articoloUpdateCommand ) {
+  protected void on(ArticoloUpdateCommand articoloUpdateCommand) {
     AggregateLifecycle.apply(
         new ArticoloUpdatedEvent(articoloUpdateCommand.getId(), articoloUpdateCommand.getData()));
   }
 
   @EventSourcingHandler
-  protected void on(ArticoloUpdatedEvent articoloUpdatedEvent) {
+  protected void on(ArticoloUpdatedEvent articoloUpdatedEvent) throws IOException {
 
-
-    if (this.id == null){
+    if (this.id == null) {
       this.id = articoloUpdatedEvent.id;
     }
-
-
-      //this.id = articoloUpdatedEvent.id;
-    this.data = articoloUpdatedEvent.data;
+    ObjectMapper objectMapper = new ObjectMapper();
+    ObjectReader objectReader = objectMapper.readerForUpdating(this.data);
+    String jsonInString = objectMapper.writeValueAsString(articoloUpdatedEvent.data);
+    this.data = objectReader.readValue(jsonInString, ArticoloDTO.class);
+    // BeanUtils.copyProperties(articoloUpdatedEvent.data, this.data);
   }
 
   @CommandHandler

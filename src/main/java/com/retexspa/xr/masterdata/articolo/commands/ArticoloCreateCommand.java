@@ -10,7 +10,6 @@ public class ArticoloCreateCommand extends BaseCommand<String> {
   public ArticoloCreateCommand(String id, ArticoloDTO data) {
     super(id);
     this.data = data;
-
   }
 
   public ArticoloDTO getData() {
@@ -20,5 +19,4 @@ public class ArticoloCreateCommand extends BaseCommand<String> {
   public String getId() {
     return id;
   }
-  
 }

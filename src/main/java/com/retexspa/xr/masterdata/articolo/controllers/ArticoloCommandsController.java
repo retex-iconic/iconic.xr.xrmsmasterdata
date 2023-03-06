@@ -46,8 +46,7 @@ public class ArticoloCommandsController {
 
   @PutMapping("/{articoloId}")
   public CompletableFuture<Object> updateArticoli(
-    @PathVariable(value = "articoloId") String articoloId,
-    @RequestBody ArticoloDTO articoliDTO) {
+      @PathVariable(value = "articoloId") String articoloId, @RequestBody ArticoloDTO articoliDTO) {
     CompletableFuture<Object> res = articoloCommandService.updateArticolo(articoloId, articoliDTO);
     return res;
   }
