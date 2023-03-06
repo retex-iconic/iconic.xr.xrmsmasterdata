@@ -44,7 +44,6 @@ public class ArticoloCommandsController {
     return res;
   }
 
-
   @GetMapping("/{articoloId}/events")
   public List<Object> getArticoloEvents(@PathVariable(value = "articoloId") String articoloId) {
     List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);

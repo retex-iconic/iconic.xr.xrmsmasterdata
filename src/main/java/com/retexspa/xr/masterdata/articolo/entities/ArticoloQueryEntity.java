@@ -1,1337 +1,1329 @@
 package com.retexspa.xr.masterdata.articolo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-// import com.fasterxml.jackson.core.JsonProcessingException;
-// import com.fasterxml.jackson.databind.ObjectMapper;
-// import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "articoli")
 public class ArticoloQueryEntity {
 
-    @Id
-    @Column(name = "id")    
-    private String id;
+  @Id
+  @Column(name = "id")
+  private String id;
 
-    @OneToMany(mappedBy = "id")
-    @Column(name = "parent")   
-    private String parent;
+  @OneToMany(mappedBy = "id")
+  @Column(name = "parent")
+  private String parent;
 
-    //@Size(max = 6)
-    @Column(name = "articolo", length = 6)
-    private String articolo;
+  // @Size(max = 6)
+  @Column(name = "articolo", length = 6)
+  private String articolo;
 
-    //@Size(max = 30)
-    @Column(name = "descriz", length = 30)
-    private String descriz;
+  // @Size(max = 30)
+  @Column(name = "descriz", length = 30)
+  private String descriz;
 
-    //@Size(max = 6)
-    @Column(name = "codicepri", length = 6)
-    private String codicepri;
+  // @Size(max = 6)
+  @Column(name = "codicepri", length = 6)
+  private String codicepri;
 
-    //@Size(max = 4)
-    @Column(name = "reparto", length = 4)
-    private String reparto;
+  // @Size(max = 4)
+  @Column(name = "reparto", length = 4)
+  private String reparto;
 
-    //@Size(max = 2)
-    @Column(name = "gruppo", length = 2)
-    private String gruppo;
+  // @Size(max = 2)
+  @Column(name = "gruppo", length = 2)
+  private String gruppo;
 
-    //@Size(max = 1)
-    @Column(name = "sospeso", length = 1)
-    private String sospeso;
+  // @Size(max = 1)
+  @Column(name = "sospeso", length = 1)
+  private String sospeso;
 
-    @Column(name = "datins")
-    private LocalDate datins;
+  @Column(name = "datins")
+  private LocalDate datins;
 
-    @Column(name = "iva")
-    private Integer iva;
+  @Column(name = "iva")
+  private Integer iva;
 
-    //@Size(max = 24)
-    @Column(name = "desbrev", length = 24)
-    private String desbrev;
+  // @Size(max = 24)
+  @Column(name = "desbrev", length = 24)
+  private String desbrev;
 
-    //@Size(max = 2)
-    @Column(name = "misura", length = 2)
-    private String misura;
+  // @Size(max = 2)
+  @Column(name = "misura", length = 2)
+  private String misura;
 
-    @Column(name = "quantita")
-    private Integer quantita;
+  @Column(name = "quantita")
+  private Integer quantita;
 
-    @Column(name = "scorta")
-    private Integer scorta;
+  @Column(name = "scorta")
+  private Integer scorta;
 
-    @Column(name = "giaciniz", precision = 9, scale = 2)
-    private BigDecimal giaciniz;
+  @Column(name = "giaciniz", precision = 9, scale = 2)
+  private BigDecimal giaciniz;
 
-    @Column(name = "valiniz", precision = 12, scale = 2)
-    private BigDecimal valiniz;
+  @Column(name = "valiniz", precision = 12, scale = 2)
+  private BigDecimal valiniz;
 
-    @Column(name = "ricarico", precision = 5, scale = 1)
-    private BigDecimal ricarico;
+  @Column(name = "ricarico", precision = 5, scale = 1)
+  private BigDecimal ricarico;
 
-    @Column(name = "ricaric2", precision = 5, scale = 1)
-    private BigDecimal ricaric2;
+  @Column(name = "ricaric2", precision = 5, scale = 1)
+  private BigDecimal ricaric2;
 
-    @Column(name = "deposito")
-    private Integer deposito;
+  @Column(name = "deposito")
+  private Integer deposito;
 
-    @Column(name = "scaffale", length = 4)
-    private String scaffale;
+  @Column(name = "scaffale", length = 4)
+  private String scaffale;
 
-    @Column(name = "supespo", precision = 7, scale = 4)
-    private BigDecimal supespo;
+  @Column(name = "supespo", precision = 7, scale = 4)
+  private BigDecimal supespo;
 
-    @Column(name = "offspec", length = 1)
-    private String offspec;
+  @Column(name = "offspec", length = 1)
+  private String offspec;
 
-    @Column(name = "datinof")
-    private LocalDate datinof;
+  @Column(name = "datinof")
+  private LocalDate datinof;
 
-    @Column(name = "datfiof")
-    private LocalDate datfiof;
+  @Column(name = "datfiof")
+  private LocalDate datfiof;
 
-    @Column(name = "proff", precision = 10, scale = 2)
-    private BigDecimal proff;
+  @Column(name = "proff", precision = 10, scale = 2)
+  private BigDecimal proff;
 
-    @Column(name = "primp", precision = 10, scale = 2)
-    private BigDecimal primp;
+  @Column(name = "primp", precision = 10, scale = 2)
+  private BigDecimal primp;
 
-    @Column(name = "mixmatch", length = 1)
-    private String mixmatch;
+  @Column(name = "mixmatch", length = 1)
+  private String mixmatch;
 
-    @Column(name = "xpery", length = 7)
-    private String xpery;
+  @Column(name = "xpery", length = 7)
+  private String xpery;
 
-    @Column(name = "datinmm")
-    private LocalDate datinmm;
+  @Column(name = "datinmm")
+  private LocalDate datinmm;
 
-    @Column(name = "datfimm")
-    private LocalDate datfimm;
+  @Column(name = "datfimm")
+  private LocalDate datfimm;
 
-    @Column(name = "prvend", precision = 10, scale = 2)
-    private BigDecimal prvend;
+  @Column(name = "prvend", precision = 10, scale = 2)
+  private BigDecimal prvend;
 
-    @Column(name = "prven2", precision = 10, scale = 2)
-    private BigDecimal prven2;
+  @Column(name = "prven2", precision = 10, scale = 2)
+  private BigDecimal prven2;
 
-    @Column(name = "giacenza", precision = 9, scale = 2)
-    private BigDecimal giacenza;
+  @Column(name = "giacenza", precision = 9, scale = 2)
+  private BigDecimal giacenza;
 
-    @Column(name = "ultforn", length = 4)
-    private String ultforn;
+  @Column(name = "ultforn", length = 4)
+  private String ultforn;
 
-    @Column(name = "quaacq", precision = 9, scale = 2)
-    private BigDecimal quaacq;
+  @Column(name = "quaacq", precision = 9, scale = 2)
+  private BigDecimal quaacq;
 
-    @Column(name = "valacq", precision = 12, scale = 2)
-    private BigDecimal valacq;
+  @Column(name = "valacq", precision = 12, scale = 2)
+  private BigDecimal valacq;
 
-    @Column(name = "quavend", precision = 9, scale = 2)
-    private BigDecimal quavend;
+  @Column(name = "quavend", precision = 9, scale = 2)
+  private BigDecimal quavend;
 
-    @Column(name = "valvend", precision = 12, scale = 2)
-    private BigDecimal valvend;
+  @Column(name = "valvend", precision = 12, scale = 2)
+  private BigDecimal valvend;
 
-    @Column(name = "datulve")
-    private LocalDate datulve;
+  @Column(name = "datulve")
+  private LocalDate datulve;
 
-    @Column(name = "quaoff", precision = 8, scale = 2)
-    private BigDecimal quaoff;
+  @Column(name = "quaoff", precision = 8, scale = 2)
+  private BigDecimal quaoff;
 
-    @Column(name = "valoff", precision = 12, scale = 2)
-    private BigDecimal valoff;
+  @Column(name = "valoff", precision = 12, scale = 2)
+  private BigDecimal valoff;
 
-    @Column(name = "giorsta")
-    private Integer giorsta;
+  @Column(name = "giorsta")
+  private Integer giorsta;
 
-    @Column(name = "gioroff")
-    private Integer gioroff;
+  @Column(name = "gioroff")
+  private Integer gioroff;
 
-    @Column(name = "quascart", precision = 9, scale = 2)
-    private BigDecimal quascart;
+  @Column(name = "quascart", precision = 9, scale = 2)
+  private BigDecimal quascart;
 
-    @Column(name = "valscart", precision = 12, scale = 2)
-    private BigDecimal valscart;
+  @Column(name = "valscart", precision = 12, scale = 2)
+  private BigDecimal valscart;
 
-    @Column(name = "quaimpeg")
-    private Integer quaimpeg;
+  @Column(name = "quaimpeg")
+  private Integer quaimpeg;
 
-    @Column(name = "giacmed")
-    private Integer giacmed;
+  @Column(name = "giacmed")
+  private Integer giacmed;
 
-    @Column(name = "varprv", length = 1)
-    private String varprv;
+  @Column(name = "varprv", length = 1)
+  private String varprv;
 
-    @Column(name = "quaulve", precision = 9, scale = 2)
-    private BigDecimal quaulve;
+  @Column(name = "quaulve", precision = 9, scale = 2)
+  private BigDecimal quaulve;
 
-    @Column(name = "bollini")
-    private Integer bollini;
+  @Column(name = "bollini")
+  private Integer bollini;
 
-    @Column(name = "pzoff")
-    private Integer pzoff;
+  @Column(name = "pzoff")
+  private Integer pzoff;
 
-    @Column(name = "tipooff")
-    private Integer tipooff;
+  @Column(name = "tipooff")
+  private Integer tipooff;
 
-    @Column(name = "datinv")
-    private LocalDate datinv;
+  @Column(name = "datinv")
+  private LocalDate datinv;
 
-    @Column(name = "datvar")
-    private LocalDate datvar;
+  @Column(name = "datvar")
+  private LocalDate datvar;
 
-    @Column(name = "datcons")
-    private LocalDate datcons;
+  @Column(name = "datcons")
+  private LocalDate datcons;
 
-    @Column(name = "scortamax")
-    private Integer scortamax;
+  @Column(name = "scortamax")
+  private Integer scortamax;
 
-    @Column(name = "etilay")
-    private Integer etilay;
+  @Column(name = "etilay")
+  private Integer etilay;
 
-    @Column(name = "dateti")
-    private LocalDate dateti;
+  @Column(name = "dateti")
+  private LocalDate dateti;
 
-    @Column(name = "prcons", precision = 10, scale = 2)
-    private BigDecimal prcons;
+  @Column(name = "prcons", precision = 10, scale = 2)
+  private BigDecimal prcons;
 
-    @Column(name = "diffinv", precision = 9, scale = 2)
-    private BigDecimal diffinv;
+  @Column(name = "diffinv", precision = 9, scale = 2)
+  private BigDecimal diffinv;
 
-    @Column(name = "produttore", length = 6)
-    private String produttore;
+  @Column(name = "produttore", length = 6)
+  private String produttore;
 
-    @Column(name = "ultprli", precision = 11, scale = 3)
-    private BigDecimal ultprli;
+  @Column(name = "ultprli", precision = 11, scale = 3)
+  private BigDecimal ultprli;
 
-    @Column(name = "ultprsc", precision = 10, scale = 2)
-    private BigDecimal ultprsc;
+  @Column(name = "ultprsc", precision = 10, scale = 2)
+  private BigDecimal ultprsc;
 
-    @Column(name = "ultprsi", precision = 10, scale = 2)
-    private BigDecimal ultprsi;
+  @Column(name = "ultprsi", precision = 10, scale = 2)
+  private BigDecimal ultprsi;
 
-    @Column(name = "datulacq")
-    private LocalDate datulacq;
+  @Column(name = "datulacq")
+  private LocalDate datulacq;
 
-    @Column(name = "quaulacq", precision = 9, scale = 2)
-    private BigDecimal quaulacq;
+  @Column(name = "quaulacq", precision = 9, scale = 2)
+  private BigDecimal quaulacq;
 
-    @Column(name = "prsosp", precision = 10, scale = 2)
-    private BigDecimal prsosp;
+  @Column(name = "prsosp", precision = 10, scale = 2)
+  private BigDecimal prsosp;
 
-    @Column(name = "prpers", precision = 10, scale = 2)
-    private BigDecimal prpers;
+  @Column(name = "prpers", precision = 10, scale = 2)
+  private BigDecimal prpers;
 
-    @Column(name = "prdel", precision = 10, scale = 2)
-    private BigDecimal prdel;
+  @Column(name = "prdel", precision = 10, scale = 2)
+  private BigDecimal prdel;
 
-    @Column(name = "descedi", length = 3)
-    private String descedi;
+  @Column(name = "descedi", length = 3)
+  private String descedi;
 
-    @Column(name = "tipoart", length = 1)
-    private String tipoart;
+  @Column(name = "tipoart", length = 1)
+  private String tipoart;
 
-    @Column(name = "fidpromo", length = 6)
-    private String fidpromo;
+  @Column(name = "fidpromo", length = 6)
+  private String fidpromo;
 
-    @Column(name = "numeti")
-    private Integer numeti;
+  @Column(name = "numeti")
+  private Integer numeti;
 
-    @Column(name = "apeso", length = 1)
-    private String apeso;
+  @Column(name = "apeso", length = 1)
+  private String apeso;
 
-    @Column(name = "tiposcar", length = 1)
-    private String tiposcar;
+  @Column(name = "tiposcar", length = 1)
+  private String tiposcar;
 
-    @Column(name = "preuro", precision = 7, scale = 2)
-    private BigDecimal preuro;
+  @Column(name = "preuro", precision = 7, scale = 2)
+  private BigDecimal preuro;
 
-    @Column(name = "datmod")
-    private LocalDate datmod;
+  @Column(name = "datmod")
+  private LocalDate datmod;
 
-    @Column(name = "datcas")
-    private LocalDate datcas;
+  @Column(name = "datcas")
+  private LocalDate datcas;
 
-    @Column(name = "datbil")
-    private LocalDate datbil;
+  @Column(name = "datbil")
+  private LocalDate datbil;
 
-    @Column(name = "datgiacin")
-    private LocalDate datgiacin;
+  @Column(name = "datgiacin")
+  private LocalDate datgiacin;
 
-    @Column(name = "qtainv", precision = 9, scale = 2)
-    private BigDecimal qtainv;
+  @Column(name = "qtainv", precision = 9, scale = 2)
+  private BigDecimal qtainv;
 
-    @Column(name = "scarto", precision = 5, scale = 2)
-    private BigDecimal scarto;
+  @Column(name = "scarto", precision = 5, scale = 2)
+  private BigDecimal scarto;
 
-    @Column(name = "tiposos", length = 1)
-    private String tiposos;
+  @Column(name = "tiposos", length = 1)
+  private String tiposos;
 
-    @Column(name = "tipopr", length = 2)
-    private String tipopr;
+  @Column(name = "tipopr", length = 2)
+  private String tipopr;
 
-    @Column(name = "tipopromo", length = 1)
-    private String tipopromo;
+  @Column(name = "tipopromo", length = 1)
+  private String tipopromo;
 
-    @Column(name = "tipocons", length = 2)
-    private String tipocons;
+  @Column(name = "tipocons", length = 2)
+  private String tipocons;
 
-    @Column(name = "datord")
-    private LocalDate datord;
+  @Column(name = "datord")
+  private LocalDate datord;
 
-    @Column(name = "qtaord", precision = 8, scale = 2)
-    private BigDecimal qtaord;
+  @Column(name = "qtaord", precision = 8, scale = 2)
+  private BigDecimal qtaord;
 
-    @Column(name = "prord", precision = 10, scale = 2)
-    private BigDecimal prord;
+  @Column(name = "prord", precision = 10, scale = 2)
+  private BigDecimal prord;
 
-    @Column(name = "medvendgg", precision = 9, scale = 4)
-    private BigDecimal medvendgg;
+  @Column(name = "medvendgg", precision = 9, scale = 4)
+  private BigDecimal medvendgg;
 
-    @Column(name = "fornpri", length = 4)
-    private String fornpri;
+  @Column(name = "fornpri", length = 4)
+  private String fornpri;
 
-    @Column(name = "forneti", length = 4)
-    private String forneti;
+  @Column(name = "forneti", length = 4)
+  private String forneti;
 
-    @Column(name = "flgecom", length = 1)
-    private String flgecom;
+  @Column(name = "flgecom", length = 1)
+  private String flgecom;
 
-    @Column(name = "giacwarn", precision = 9, scale = 2)
-    private BigDecimal giacwarn;
+  @Column(name = "giacwarn", precision = 9, scale = 2)
+  private BigDecimal giacwarn;
 
-    @Column(name = "giacelim", precision = 9, scale = 2)
-    private BigDecimal giacelim;
+  @Column(name = "giacelim", precision = 9, scale = 2)
+  private BigDecimal giacelim;
 
-    @Column(name = "codposiz")
-    private Integer codposiz;
+  @Column(name = "codposiz")
+  private Integer codposiz;
 
-    @Column(name = "codstag")
-    private Integer codstag;
+  @Column(name = "codstag")
+  private Integer codstag;
 
-    @Column(name = "codtipo2")
-    private Integer codtipo2;
+  @Column(name = "codtipo2")
+  private Integer codtipo2;
 
-    @Column(name = "subtotsc", length = 1)
-    private String subtotsc;
+  @Column(name = "subtotsc", length = 1)
+  private String subtotsc;
 
-    @Column(name = "subtotpt", length = 1)
-    private String subtotpt;
-    
-    @Column(name = "artcedi", length = 16)
-    private String artcedi;
-    
-    @Column(name = "artbo", length = 16)
-    private String artbo;
+  @Column(name = "subtotpt", length = 1)
+  private String subtotpt;
 
-    @Column(name = "datws")
-    private LocalDate datws;
+  @Column(name = "artcedi", length = 16)
+  private String artcedi;
 
-    @Column(name = "przblk", length = 1)
-    private String przblk;
+  @Column(name = "artbo", length = 16)
+  private String artbo;
 
-    @Column(name = "przimp", length = 1)
-    private String przimp;
+  @Column(name = "datws")
+  private LocalDate datws;
 
-    @Column(name = "codsva", length = 6)
-    private String codsva;
+  @Column(name = "przblk", length = 1)
+  private String przblk;
 
-    @Column(name = "cluster", length = 30)
-    private String cluster;
+  @Column(name = "przimp", length = 1)
+  private String przimp;
 
-    @Column(name = "asspv", length = 1)
-    private String asspv;
+  @Column(name = "codsva", length = 6)
+  private String codsva;
 
-    @Column(name = "idsendecr", length = 8)
-    private String idsendecr;
-    
-    @Column(name = "esllay", length = 30)
-    private String esllay;
-    
-    @Column(name = "esllpro", length = 30)
-    private String esllpro;
-    
-    @Column(name = "dataoraupd", length = 14)
-    private String dataoraupd;
+  @Column(name = "cluster", length = 30)
+  private String cluster;
 
-    @Column(name = "datim")
-    private LocalDate datim;
-    
-    @Column(name = "dtetiim", length = 20)
-    private String dtetiim;
+  @Column(name = "asspv", length = 1)
+  private String asspv;
 
-    @Column(name = "usetiim", length = 50)
-    private String usetiim;
+  @Column(name = "idsendecr", length = 8)
+  private String idsendecr;
 
-    @Column(name = "origineeti", length = 1)
-    private String origineeti;
+  @Column(name = "esllay", length = 30)
+  private String esllay;
 
-    // MVP: ARTICOLO, DESCRIZ, REPARTO, IVA, MISURA, QUANTITA
-    // public ArticoloQueryEntity(String articolo, String descriz, String reparto, Integer iva, String misura, Integer quantita) {
-    //     this.articolo = articolo;
-    //     this.descriz = descriz;
-    //     this.reparto = reparto;
-    //     this.iva = iva;
-    //     this.misura = misura;
-    //     this.quantita = quantita;
-    // }
+  @Column(name = "esllpro", length = 30)
+  private String esllpro;
 
-    public ArticoloQueryEntity() {
-    }
+  @Column(name = "dataoraupd", length = 14)
+  private String dataoraupd;
 
-    // for articolo repository:
-    public ArticoloQueryEntity(String articoloId, ArticoloDTO articoloDTO) throws IOException {
-        // ObjectMapper objectMapper = new ObjectMapper();
-        // ObjectReader objectReader = objectMapper.readerForUpdating(this);
-        // String jsonInString = objectMapper.writeValueAsString(articoloDTO);
-        // Object t = objectReader.readValue(jsonInString, ArticoloQueryEntity.class);  
-        // this.articolo = articolo;
-        // this.descriz = articoloDTO.getDescription();
-        this.id = articoloId;
-        this.descriz = articoloDTO.getDescription();
-        this.articolo = articoloDTO.getCode();
-        this.parent = articoloDTO.getParent();
-    }
-    
+  @Column(name = "datim")
+  private LocalDate datim;
 
-    public String getId() {
-        return this.id;
-    }
+  @Column(name = "dtetiim", length = 20)
+  private String dtetiim;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  @Column(name = "usetiim", length = 50)
+  private String usetiim;
 
-    public String getParent() {
-        return this.parent;
-    }
+  @Column(name = "origineeti", length = 1)
+  private String origineeti;
 
-    public void setParent(String parent) {
-        this.parent = parent;
-    }
+  // MVP: ARTICOLO, DESCRIZ, REPARTO, IVA, MISURA, QUANTITA
+  // public ArticoloQueryEntity(String articolo, String descriz, String reparto, Integer iva, String
+  // misura, Integer quantita) {
+  //     this.articolo = articolo;
+  //     this.descriz = descriz;
+  //     this.reparto = reparto;
+  //     this.iva = iva;
+  //     this.misura = misura;
+  //     this.quantita = quantita;
+  // }
 
-    public String getArticolo() {
-        return this.articolo;
-    }
+  public ArticoloQueryEntity() {}
 
-    public void setArticolo(String articolo) {
-        this.articolo = articolo;
-    }
+  // for articolo repository:
+  public ArticoloQueryEntity(String articoloId, ArticoloDTO articoloDTO) throws IOException {
+    // ObjectMapper objectMapper = new ObjectMapper();
+    // ObjectReader objectReader = objectMapper.readerForUpdating(this);
+    // String jsonInString = objectMapper.writeValueAsString(articoloDTO);
+    // Object t = objectReader.readValue(jsonInString, ArticoloQueryEntity.class);
+    // this.articolo = articolo;
+    // this.descriz = articoloDTO.getDescription();
+    this.id = articoloId;
+    this.descriz = articoloDTO.getDescription();
+    this.articolo = articoloDTO.getCode();
+    this.parent = articoloDTO.getParent();
+  }
 
-    public String getDescriz() {
-        return this.descriz;
-    }
+  public String getId() {
+    return this.id;
+  }
 
-    public void setDescriz(String descriz) {
-        this.descriz = descriz;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public String getCodicepri() {
-        return this.codicepri;
-    }
+  public String getParent() {
+    return this.parent;
+  }
 
-    public void setCodicepri(String codicepri) {
-        this.codicepri = codicepri;
-    }
+  public void setParent(String parent) {
+    this.parent = parent;
+  }
 
-    public String getReparto() {
-        return this.reparto;
-    }
+  public String getArticolo() {
+    return this.articolo;
+  }
 
-    public void setReparto(String reparto) {
-        this.reparto = reparto;
-    }
+  public void setArticolo(String articolo) {
+    this.articolo = articolo;
+  }
 
-    public String getGruppo() {
-        return this.gruppo;
-    }
+  public String getDescriz() {
+    return this.descriz;
+  }
 
-    public void setGruppo(String gruppo) {
-        this.gruppo = gruppo;
-    }
+  public void setDescriz(String descriz) {
+    this.descriz = descriz;
+  }
 
-    public String getSospeso() {
-        return this.sospeso;
-    }
+  public String getCodicepri() {
+    return this.codicepri;
+  }
 
-    public void setSospeso(String sospeso) {
-        this.sospeso = sospeso;
-    }
+  public void setCodicepri(String codicepri) {
+    this.codicepri = codicepri;
+  }
 
-    public LocalDate getDatins() {
-        return this.datins;
-    }
+  public String getReparto() {
+    return this.reparto;
+  }
 
-    public void setDatins(LocalDate datins) {
-        this.datins = datins;
-    }
+  public void setReparto(String reparto) {
+    this.reparto = reparto;
+  }
 
-    public Integer getIva() {
-        return this.iva;
-    }
+  public String getGruppo() {
+    return this.gruppo;
+  }
 
-    public void setIva(Integer iva) {
-        this.iva = iva;
-    }
+  public void setGruppo(String gruppo) {
+    this.gruppo = gruppo;
+  }
 
-    public String getDesbrev() {
-        return this.desbrev;
-    }
+  public String getSospeso() {
+    return this.sospeso;
+  }
 
-    public void setDesbrev(String desbrev) {
-        this.desbrev = desbrev;
-    }
+  public void setSospeso(String sospeso) {
+    this.sospeso = sospeso;
+  }
 
-    public String getMisura() {
-        return this.misura;
-    }
+  public LocalDate getDatins() {
+    return this.datins;
+  }
 
-    public void setMisura(String misura) {
-        this.misura = misura;
-    }
+  public void setDatins(LocalDate datins) {
+    this.datins = datins;
+  }
 
-    public Integer getQuantita() {
-        return this.quantita;
-    }
+  public Integer getIva() {
+    return this.iva;
+  }
 
-    public void setQuantita(Integer quantita) {
-        this.quantita = quantita;
-    }
+  public void setIva(Integer iva) {
+    this.iva = iva;
+  }
 
-    public Integer getScorta() {
-        return this.scorta;
-    }
+  public String getDesbrev() {
+    return this.desbrev;
+  }
 
-    public void setScorta(Integer scorta) {
-        this.scorta = scorta;
-    }
+  public void setDesbrev(String desbrev) {
+    this.desbrev = desbrev;
+  }
 
-    public BigDecimal getGiaciniz() {
-        return this.giaciniz;
-    }
+  public String getMisura() {
+    return this.misura;
+  }
 
-    public void setGiaciniz(BigDecimal giaciniz) {
-        this.giaciniz = giaciniz;
-    }
+  public void setMisura(String misura) {
+    this.misura = misura;
+  }
 
-    public BigDecimal getValiniz() {
-        return this.valiniz;
-    }
+  public Integer getQuantita() {
+    return this.quantita;
+  }
 
-    public void setValiniz(BigDecimal valiniz) {
-        this.valiniz = valiniz;
-    }
+  public void setQuantita(Integer quantita) {
+    this.quantita = quantita;
+  }
 
-    public BigDecimal getRicarico() {
-        return this.ricarico;
-    }
+  public Integer getScorta() {
+    return this.scorta;
+  }
 
-    public void setRicarico(BigDecimal ricarico) {
-        this.ricarico = ricarico;
-    }
+  public void setScorta(Integer scorta) {
+    this.scorta = scorta;
+  }
 
-    public BigDecimal getRicaric2() {
-        return this.ricaric2;
-    }
+  public BigDecimal getGiaciniz() {
+    return this.giaciniz;
+  }
 
-    public void setRicaric2(BigDecimal ricaric2) {
-        this.ricaric2 = ricaric2;
-    }
+  public void setGiaciniz(BigDecimal giaciniz) {
+    this.giaciniz = giaciniz;
+  }
 
-    public Integer getDeposito() {
-        return this.deposito;
-    }
+  public BigDecimal getValiniz() {
+    return this.valiniz;
+  }
 
-    public void setDeposito(Integer deposito) {
-        this.deposito = deposito;
-    }
+  public void setValiniz(BigDecimal valiniz) {
+    this.valiniz = valiniz;
+  }
 
-    public String getScaffale() {
-        return this.scaffale;
-    }
+  public BigDecimal getRicarico() {
+    return this.ricarico;
+  }
 
-    public void setScaffale(String scaffale) {
-        this.scaffale = scaffale;
-    }
+  public void setRicarico(BigDecimal ricarico) {
+    this.ricarico = ricarico;
+  }
 
-    public BigDecimal getSupespo() {
-        return this.supespo;
-    }
+  public BigDecimal getRicaric2() {
+    return this.ricaric2;
+  }
 
-    public void setSupespo(BigDecimal supespo) {
-        this.supespo = supespo;
-    }
+  public void setRicaric2(BigDecimal ricaric2) {
+    this.ricaric2 = ricaric2;
+  }
 
-    public String getOffspec() {
-        return this.offspec;
-    }
+  public Integer getDeposito() {
+    return this.deposito;
+  }
 
-    public void setOffspec(String offspec) {
-        this.offspec = offspec;
-    }
+  public void setDeposito(Integer deposito) {
+    this.deposito = deposito;
+  }
 
-    public LocalDate getDatinof() {
-        return this.datinof;
-    }
+  public String getScaffale() {
+    return this.scaffale;
+  }
 
-    public void setDatinof(LocalDate datinof) {
-        this.datinof = datinof;
-    }
+  public void setScaffale(String scaffale) {
+    this.scaffale = scaffale;
+  }
 
-    public LocalDate getDatfiof() {
-        return this.datfiof;
-    }
+  public BigDecimal getSupespo() {
+    return this.supespo;
+  }
 
-    public void setDatfiof(LocalDate datfiof) {
-        this.datfiof = datfiof;
-    }
+  public void setSupespo(BigDecimal supespo) {
+    this.supespo = supespo;
+  }
 
-    public BigDecimal getProff() {
-        return this.proff;
-    }
+  public String getOffspec() {
+    return this.offspec;
+  }
 
-    public void setProff(BigDecimal proff) {
-        this.proff = proff;
-    }
+  public void setOffspec(String offspec) {
+    this.offspec = offspec;
+  }
 
-    public BigDecimal getPrimp() {
-        return this.primp;
-    }
+  public LocalDate getDatinof() {
+    return this.datinof;
+  }
 
-    public void setPrimp(BigDecimal primp) {
-        this.primp = primp;
-    }
+  public void setDatinof(LocalDate datinof) {
+    this.datinof = datinof;
+  }
 
-    public String getMixmatch() {
-        return this.mixmatch;
-    }
+  public LocalDate getDatfiof() {
+    return this.datfiof;
+  }
 
-    public void setMixmatch(String mixmatch) {
-        this.mixmatch = mixmatch;
-    }
+  public void setDatfiof(LocalDate datfiof) {
+    this.datfiof = datfiof;
+  }
 
-    public String getXpery() {
-        return this.xpery;
-    }
+  public BigDecimal getProff() {
+    return this.proff;
+  }
 
-    public void setXpery(String xpery) {
-        this.xpery = xpery;
-    }
+  public void setProff(BigDecimal proff) {
+    this.proff = proff;
+  }
 
-    public LocalDate getDatinmm() {
-        return this.datinmm;
-    }
+  public BigDecimal getPrimp() {
+    return this.primp;
+  }
 
-    public void setDatinmm(LocalDate datinmm) {
-        this.datinmm = datinmm;
-    }
+  public void setPrimp(BigDecimal primp) {
+    this.primp = primp;
+  }
 
-    public LocalDate getDatfimm() {
-        return this.datfimm;
-    }
+  public String getMixmatch() {
+    return this.mixmatch;
+  }
 
-    public void setDatfimm(LocalDate datfimm) {
-        this.datfimm = datfimm;
-    }
+  public void setMixmatch(String mixmatch) {
+    this.mixmatch = mixmatch;
+  }
 
-    public BigDecimal getPrvend() {
-        return this.prvend;
-    }
+  public String getXpery() {
+    return this.xpery;
+  }
 
-    public void setPrvend(BigDecimal prvend) {
-        this.prvend = prvend;
-    }
+  public void setXpery(String xpery) {
+    this.xpery = xpery;
+  }
 
-    public BigDecimal getPrven2() {
-        return this.prven2;
-    }
+  public LocalDate getDatinmm() {
+    return this.datinmm;
+  }
 
-    public void setPrven2(BigDecimal prven2) {
-        this.prven2 = prven2;
-    }
+  public void setDatinmm(LocalDate datinmm) {
+    this.datinmm = datinmm;
+  }
 
-    public BigDecimal getGiacenza() {
-        return this.giacenza;
-    }
+  public LocalDate getDatfimm() {
+    return this.datfimm;
+  }
 
-    public void setGiacenza(BigDecimal giacenza) {
-        this.giacenza = giacenza;
-    }
+  public void setDatfimm(LocalDate datfimm) {
+    this.datfimm = datfimm;
+  }
 
-    public String getUltforn() {
-        return this.ultforn;
-    }
+  public BigDecimal getPrvend() {
+    return this.prvend;
+  }
 
-    public void setUltforn(String ultforn) {
-        this.ultforn = ultforn;
-    }
+  public void setPrvend(BigDecimal prvend) {
+    this.prvend = prvend;
+  }
 
-    public BigDecimal getQuaacq() {
-        return this.quaacq;
-    }
+  public BigDecimal getPrven2() {
+    return this.prven2;
+  }
 
-    public void setQuaacq(BigDecimal quaacq) {
-        this.quaacq = quaacq;
-    }
+  public void setPrven2(BigDecimal prven2) {
+    this.prven2 = prven2;
+  }
 
-    public BigDecimal getValacq() {
-        return this.valacq;
-    }
+  public BigDecimal getGiacenza() {
+    return this.giacenza;
+  }
 
-    public void setValacq(BigDecimal valacq) {
-        this.valacq = valacq;
-    }
+  public void setGiacenza(BigDecimal giacenza) {
+    this.giacenza = giacenza;
+  }
 
-    public BigDecimal getQuavend() {
-        return this.quavend;
-    }
+  public String getUltforn() {
+    return this.ultforn;
+  }
 
-    public void setQuavend(BigDecimal quavend) {
-        this.quavend = quavend;
-    }
+  public void setUltforn(String ultforn) {
+    this.ultforn = ultforn;
+  }
 
-    public BigDecimal getValvend() {
-        return this.valvend;
-    }
+  public BigDecimal getQuaacq() {
+    return this.quaacq;
+  }
 
-    public void setValvend(BigDecimal valvend) {
-        this.valvend = valvend;
-    }
+  public void setQuaacq(BigDecimal quaacq) {
+    this.quaacq = quaacq;
+  }
 
-    public LocalDate getDatulve() {
-        return this.datulve;
-    }
+  public BigDecimal getValacq() {
+    return this.valacq;
+  }
 
-    public void setDatulve(LocalDate datulve) {
-        this.datulve = datulve;
-    }
+  public void setValacq(BigDecimal valacq) {
+    this.valacq = valacq;
+  }
 
-    public BigDecimal getQuaoff() {
-        return this.quaoff;
-    }
+  public BigDecimal getQuavend() {
+    return this.quavend;
+  }
 
-    public void setQuaoff(BigDecimal quaoff) {
-        this.quaoff = quaoff;
-    }
+  public void setQuavend(BigDecimal quavend) {
+    this.quavend = quavend;
+  }
 
-    public BigDecimal getValoff() {
-        return this.valoff;
-    }
+  public BigDecimal getValvend() {
+    return this.valvend;
+  }
 
-    public void setValoff(BigDecimal valoff) {
-        this.valoff = valoff;
-    }
+  public void setValvend(BigDecimal valvend) {
+    this.valvend = valvend;
+  }
 
-    public Integer getGiorsta() {
-        return this.giorsta;
-    }
+  public LocalDate getDatulve() {
+    return this.datulve;
+  }
 
-    public void setGiorsta(Integer giorsta) {
-        this.giorsta = giorsta;
-    }
+  public void setDatulve(LocalDate datulve) {
+    this.datulve = datulve;
+  }
 
-    public Integer getGioroff() {
-        return this.gioroff;
-    }
+  public BigDecimal getQuaoff() {
+    return this.quaoff;
+  }
 
-    public void setGioroff(Integer gioroff) {
-        this.gioroff = gioroff;
-    }
+  public void setQuaoff(BigDecimal quaoff) {
+    this.quaoff = quaoff;
+  }
 
-    public BigDecimal getQuascart() {
-        return this.quascart;
-    }
+  public BigDecimal getValoff() {
+    return this.valoff;
+  }
 
-    public void setQuascart(BigDecimal quascart) {
-        this.quascart = quascart;
-    }
+  public void setValoff(BigDecimal valoff) {
+    this.valoff = valoff;
+  }
 
-    public BigDecimal getValscart() {
-        return this.valscart;
-    }
+  public Integer getGiorsta() {
+    return this.giorsta;
+  }
 
-    public void setValscart(BigDecimal valscart) {
-        this.valscart = valscart;
-    }
+  public void setGiorsta(Integer giorsta) {
+    this.giorsta = giorsta;
+  }
 
-    public Integer getQuaimpeg() {
-        return this.quaimpeg;
-    }
+  public Integer getGioroff() {
+    return this.gioroff;
+  }
 
-    public void setQuaimpeg(Integer quaimpeg) {
-        this.quaimpeg = quaimpeg;
-    }
+  public void setGioroff(Integer gioroff) {
+    this.gioroff = gioroff;
+  }
 
-    public Integer getGiacmed() {
-        return this.giacmed;
-    }
+  public BigDecimal getQuascart() {
+    return this.quascart;
+  }
 
-    public void setGiacmed(Integer giacmed) {
-        this.giacmed = giacmed;
-    }
+  public void setQuascart(BigDecimal quascart) {
+    this.quascart = quascart;
+  }
 
-    public String getVarprv() {
-        return this.varprv;
-    }
+  public BigDecimal getValscart() {
+    return this.valscart;
+  }
 
-    public void setVarprv(String varprv) {
-        this.varprv = varprv;
-    }
+  public void setValscart(BigDecimal valscart) {
+    this.valscart = valscart;
+  }
 
-    public BigDecimal getQuaulve() {
-        return this.quaulve;
-    }
+  public Integer getQuaimpeg() {
+    return this.quaimpeg;
+  }
 
-    public void setQuaulve(BigDecimal quaulve) {
-        this.quaulve = quaulve;
-    }
+  public void setQuaimpeg(Integer quaimpeg) {
+    this.quaimpeg = quaimpeg;
+  }
 
-    public Integer getBollini() {
-        return this.bollini;
-    }
+  public Integer getGiacmed() {
+    return this.giacmed;
+  }
 
-    public void setBollini(Integer bollini) {
-        this.bollini = bollini;
-    }
+  public void setGiacmed(Integer giacmed) {
+    this.giacmed = giacmed;
+  }
 
-    public Integer getPzoff() {
-        return this.pzoff;
-    }
+  public String getVarprv() {
+    return this.varprv;
+  }
 
-    public void setPzoff(Integer pzoff) {
-        this.pzoff = pzoff;
-    }
+  public void setVarprv(String varprv) {
+    this.varprv = varprv;
+  }
 
-    public Integer getTipooff() {
-        return this.tipooff;
-    }
+  public BigDecimal getQuaulve() {
+    return this.quaulve;
+  }
 
-    public void setTipooff(Integer tipooff) {
-        this.tipooff = tipooff;
-    }
+  public void setQuaulve(BigDecimal quaulve) {
+    this.quaulve = quaulve;
+  }
 
-    public LocalDate getDatinv() {
-        return this.datinv;
-    }
+  public Integer getBollini() {
+    return this.bollini;
+  }
 
-    public void setDatinv(LocalDate datinv) {
-        this.datinv = datinv;
-    }
+  public void setBollini(Integer bollini) {
+    this.bollini = bollini;
+  }
 
-    public LocalDate getDatvar() {
-        return this.datvar;
-    }
+  public Integer getPzoff() {
+    return this.pzoff;
+  }
 
-    public void setDatvar(LocalDate datvar) {
-        this.datvar = datvar;
-    }
+  public void setPzoff(Integer pzoff) {
+    this.pzoff = pzoff;
+  }
 
-    public LocalDate getDatcons() {
-        return this.datcons;
-    }
+  public Integer getTipooff() {
+    return this.tipooff;
+  }
 
-    public void setDatcons(LocalDate datcons) {
-        this.datcons = datcons;
-    }
+  public void setTipooff(Integer tipooff) {
+    this.tipooff = tipooff;
+  }
 
-    public Integer getScortamax() {
-        return this.scortamax;
-    }
+  public LocalDate getDatinv() {
+    return this.datinv;
+  }
 
-    public void setScortamax(Integer scortamax) {
-        this.scortamax = scortamax;
-    }
+  public void setDatinv(LocalDate datinv) {
+    this.datinv = datinv;
+  }
 
-    public Integer getEtilay() {
-        return this.etilay;
-    }
+  public LocalDate getDatvar() {
+    return this.datvar;
+  }
 
-    public void setEtilay(Integer etilay) {
-        this.etilay = etilay;
-    }
+  public void setDatvar(LocalDate datvar) {
+    this.datvar = datvar;
+  }
 
-    public LocalDate getDateti() {
-        return this.dateti;
-    }
+  public LocalDate getDatcons() {
+    return this.datcons;
+  }
 
-    public void setDateti(LocalDate dateti) {
-        this.dateti = dateti;
-    }
+  public void setDatcons(LocalDate datcons) {
+    this.datcons = datcons;
+  }
 
-    public BigDecimal getPrcons() {
-        return this.prcons;
-    }
+  public Integer getScortamax() {
+    return this.scortamax;
+  }
 
-    public void setPrcons(BigDecimal prcons) {
-        this.prcons = prcons;
-    }
+  public void setScortamax(Integer scortamax) {
+    this.scortamax = scortamax;
+  }
 
-    public BigDecimal getDiffinv() {
-        return this.diffinv;
-    }
+  public Integer getEtilay() {
+    return this.etilay;
+  }
 
-    public void setDiffinv(BigDecimal diffinv) {
-        this.diffinv = diffinv;
-    }
+  public void setEtilay(Integer etilay) {
+    this.etilay = etilay;
+  }
 
-    public String getProduttore() {
-        return this.produttore;
-    }
+  public LocalDate getDateti() {
+    return this.dateti;
+  }
 
-    public void setProduttore(String produttore) {
-        this.produttore = produttore;
-    }
+  public void setDateti(LocalDate dateti) {
+    this.dateti = dateti;
+  }
 
-    public BigDecimal getUltprli() {
-        return this.ultprli;
-    }
+  public BigDecimal getPrcons() {
+    return this.prcons;
+  }
 
-    public void setUltprli(BigDecimal ultprli) {
-        this.ultprli = ultprli;
-    }
+  public void setPrcons(BigDecimal prcons) {
+    this.prcons = prcons;
+  }
 
-    public BigDecimal getUltprsc() {
-        return this.ultprsc;
-    }
+  public BigDecimal getDiffinv() {
+    return this.diffinv;
+  }
 
-    public void setUltprsc(BigDecimal ultprsc) {
-        this.ultprsc = ultprsc;
-    }
+  public void setDiffinv(BigDecimal diffinv) {
+    this.diffinv = diffinv;
+  }
 
-    public BigDecimal getUltprsi() {
-        return this.ultprsi;
-    }
+  public String getProduttore() {
+    return this.produttore;
+  }
 
-    public void setUltprsi(BigDecimal ultprsi) {
-        this.ultprsi = ultprsi;
-    }
+  public void setProduttore(String produttore) {
+    this.produttore = produttore;
+  }
 
-    public LocalDate getDatulacq() {
-        return this.datulacq;
-    }
+  public BigDecimal getUltprli() {
+    return this.ultprli;
+  }
 
-    public void setDatulacq(LocalDate datulacq) {
-        this.datulacq = datulacq;
-    }
+  public void setUltprli(BigDecimal ultprli) {
+    this.ultprli = ultprli;
+  }
 
-    public BigDecimal getQuaulacq() {
-        return this.quaulacq;
-    }
+  public BigDecimal getUltprsc() {
+    return this.ultprsc;
+  }
 
-    public void setQuaulacq(BigDecimal quaulacq) {
-        this.quaulacq = quaulacq;
-    }
+  public void setUltprsc(BigDecimal ultprsc) {
+    this.ultprsc = ultprsc;
+  }
 
-    public BigDecimal getPrsosp() {
-        return this.prsosp;
-    }
+  public BigDecimal getUltprsi() {
+    return this.ultprsi;
+  }
 
-    public void setPrsosp(BigDecimal prsosp) {
-        this.prsosp = prsosp;
-    }
+  public void setUltprsi(BigDecimal ultprsi) {
+    this.ultprsi = ultprsi;
+  }
 
-    public BigDecimal getPrpers() {
-        return this.prpers;
-    }
+  public LocalDate getDatulacq() {
+    return this.datulacq;
+  }
 
-    public void setPrpers(BigDecimal prpers) {
-        this.prpers = prpers;
-    }
+  public void setDatulacq(LocalDate datulacq) {
+    this.datulacq = datulacq;
+  }
 
-    public BigDecimal getPrdel() {
-        return this.prdel;
-    }
+  public BigDecimal getQuaulacq() {
+    return this.quaulacq;
+  }
 
-    public void setPrdel(BigDecimal prdel) {
-        this.prdel = prdel;
-    }
+  public void setQuaulacq(BigDecimal quaulacq) {
+    this.quaulacq = quaulacq;
+  }
 
-    public String getDescedi() {
-        return this.descedi;
-    }
+  public BigDecimal getPrsosp() {
+    return this.prsosp;
+  }
 
-    public void setDescedi(String descedi) {
-        this.descedi = descedi;
-    }
+  public void setPrsosp(BigDecimal prsosp) {
+    this.prsosp = prsosp;
+  }
 
-    public String getTipoart() {
-        return this.tipoart;
-    }
+  public BigDecimal getPrpers() {
+    return this.prpers;
+  }
 
-    public void setTipoart(String tipoart) {
-        this.tipoart = tipoart;
-    }
+  public void setPrpers(BigDecimal prpers) {
+    this.prpers = prpers;
+  }
 
-    public String getFidpromo() {
-        return this.fidpromo;
-    }
+  public BigDecimal getPrdel() {
+    return this.prdel;
+  }
 
-    public void setFidpromo(String fidpromo) {
-        this.fidpromo = fidpromo;
-    }
+  public void setPrdel(BigDecimal prdel) {
+    this.prdel = prdel;
+  }
 
-    public Integer getNumeti() {
-        return this.numeti;
-    }
+  public String getDescedi() {
+    return this.descedi;
+  }
 
-    public void setNumeti(Integer numeti) {
-        this.numeti = numeti;
-    }
+  public void setDescedi(String descedi) {
+    this.descedi = descedi;
+  }
 
-    public String getApeso() {
-        return this.apeso;
-    }
+  public String getTipoart() {
+    return this.tipoart;
+  }
 
-    public void setApeso(String apeso) {
-        this.apeso = apeso;
-    }
+  public void setTipoart(String tipoart) {
+    this.tipoart = tipoart;
+  }
 
-    public String getTiposcar() {
-        return this.tiposcar;
-    }
+  public String getFidpromo() {
+    return this.fidpromo;
+  }
 
-    public void setTiposcar(String tiposcar) {
-        this.tiposcar = tiposcar;
-    }
+  public void setFidpromo(String fidpromo) {
+    this.fidpromo = fidpromo;
+  }
 
-    public BigDecimal getPreuro() {
-        return this.preuro;
-    }
+  public Integer getNumeti() {
+    return this.numeti;
+  }
 
-    public void setPreuro(BigDecimal preuro) {
-        this.preuro = preuro;
-    }
+  public void setNumeti(Integer numeti) {
+    this.numeti = numeti;
+  }
 
-    public LocalDate getDatmod() {
-        return this.datmod;
-    }
+  public String getApeso() {
+    return this.apeso;
+  }
 
-    public void setDatmod(LocalDate datmod) {
-        this.datmod = datmod;
-    }
+  public void setApeso(String apeso) {
+    this.apeso = apeso;
+  }
 
-    public LocalDate getDatcas() {
-        return this.datcas;
-    }
+  public String getTiposcar() {
+    return this.tiposcar;
+  }
 
-    public void setDatcas(LocalDate datcas) {
-        this.datcas = datcas;
-    }
+  public void setTiposcar(String tiposcar) {
+    this.tiposcar = tiposcar;
+  }
 
-    public LocalDate getDatbil() {
-        return this.datbil;
-    }
+  public BigDecimal getPreuro() {
+    return this.preuro;
+  }
 
-    public void setDatbil(LocalDate datbil) {
-        this.datbil = datbil;
-    }
+  public void setPreuro(BigDecimal preuro) {
+    this.preuro = preuro;
+  }
 
-    public LocalDate getDatgiacin() {
-        return this.datgiacin;
-    }
+  public LocalDate getDatmod() {
+    return this.datmod;
+  }
 
-    public void setDatgiacin(LocalDate datgiacin) {
-        this.datgiacin = datgiacin;
-    }
+  public void setDatmod(LocalDate datmod) {
+    this.datmod = datmod;
+  }
 
-    public BigDecimal getQtainv() {
-        return this.qtainv;
-    }
+  public LocalDate getDatcas() {
+    return this.datcas;
+  }
 
-    public void setQtainv(BigDecimal qtainv) {
-        this.qtainv = qtainv;
-    }
+  public void setDatcas(LocalDate datcas) {
+    this.datcas = datcas;
+  }
 
-    public BigDecimal getScarto() {
-        return this.scarto;
-    }
+  public LocalDate getDatbil() {
+    return this.datbil;
+  }
 
-    public void setScarto(BigDecimal scarto) {
-        this.scarto = scarto;
-    }
+  public void setDatbil(LocalDate datbil) {
+    this.datbil = datbil;
+  }
 
-    public String getTiposos() {
-        return this.tiposos;
-    }
+  public LocalDate getDatgiacin() {
+    return this.datgiacin;
+  }
 
-    public void setTiposos(String tiposos) {
-        this.tiposos = tiposos;
-    }
+  public void setDatgiacin(LocalDate datgiacin) {
+    this.datgiacin = datgiacin;
+  }
 
-    public String getTipopr() {
-        return this.tipopr;
-    }
+  public BigDecimal getQtainv() {
+    return this.qtainv;
+  }
 
-    public void setTipopr(String tipopr) {
-        this.tipopr = tipopr;
-    }
+  public void setQtainv(BigDecimal qtainv) {
+    this.qtainv = qtainv;
+  }
 
-    public String getTipopromo() {
-        return this.tipopromo;
-    }
+  public BigDecimal getScarto() {
+    return this.scarto;
+  }
 
-    public void setTipopromo(String tipopromo) {
-        this.tipopromo = tipopromo;
-    }
+  public void setScarto(BigDecimal scarto) {
+    this.scarto = scarto;
+  }
 
-    public String getTipocons() {
-        return this.tipocons;
-    }
+  public String getTiposos() {
+    return this.tiposos;
+  }
 
-    public void setTipocons(String tipocons) {
-        this.tipocons = tipocons;
-    }
+  public void setTiposos(String tiposos) {
+    this.tiposos = tiposos;
+  }
 
-    public LocalDate getDatord() {
-        return this.datord;
-    }
+  public String getTipopr() {
+    return this.tipopr;
+  }
 
-    public void setDatord(LocalDate datord) {
-        this.datord = datord;
-    }
+  public void setTipopr(String tipopr) {
+    this.tipopr = tipopr;
+  }
 
-    public BigDecimal getQtaord() {
-        return this.qtaord;
-    }
+  public String getTipopromo() {
+    return this.tipopromo;
+  }
 
-    public void setQtaord(BigDecimal qtaord) {
-        this.qtaord = qtaord;
-    }
+  public void setTipopromo(String tipopromo) {
+    this.tipopromo = tipopromo;
+  }
 
-    public BigDecimal getPrord() {
-        return this.prord;
-    }
+  public String getTipocons() {
+    return this.tipocons;
+  }
 
-    public void setPrord(BigDecimal prord) {
-        this.prord = prord;
-    }
+  public void setTipocons(String tipocons) {
+    this.tipocons = tipocons;
+  }
 
-    public BigDecimal getMedvendgg() {
-        return this.medvendgg;
-    }
+  public LocalDate getDatord() {
+    return this.datord;
+  }
 
-    public void setMedvendgg(BigDecimal medvendgg) {
-        this.medvendgg = medvendgg;
-    }
+  public void setDatord(LocalDate datord) {
+    this.datord = datord;
+  }
 
-    public String getFornpri() {
-        return this.fornpri;
-    }
+  public BigDecimal getQtaord() {
+    return this.qtaord;
+  }
 
-    public void setFornpri(String fornpri) {
-        this.fornpri = fornpri;
-    }
+  public void setQtaord(BigDecimal qtaord) {
+    this.qtaord = qtaord;
+  }
 
-    public String getForneti() {
-        return this.forneti;
-    }
+  public BigDecimal getPrord() {
+    return this.prord;
+  }
 
-    public void setForneti(String forneti) {
-        this.forneti = forneti;
-    }
+  public void setPrord(BigDecimal prord) {
+    this.prord = prord;
+  }
 
-    public String getFlgecom() {
-        return this.flgecom;
-    }
+  public BigDecimal getMedvendgg() {
+    return this.medvendgg;
+  }
 
-    public void setFlgecom(String flgecom) {
-        this.flgecom = flgecom;
-    }
+  public void setMedvendgg(BigDecimal medvendgg) {
+    this.medvendgg = medvendgg;
+  }
 
-    public BigDecimal getGiacwarn() {
-        return this.giacwarn;
-    }
+  public String getFornpri() {
+    return this.fornpri;
+  }
 
-    public void setGiacwarn(BigDecimal giacwarn) {
-        this.giacwarn = giacwarn;
-    }
+  public void setFornpri(String fornpri) {
+    this.fornpri = fornpri;
+  }
 
-    public BigDecimal getGiacelim() {
-        return this.giacelim;
-    }
+  public String getForneti() {
+    return this.forneti;
+  }
 
-    public void setGiacelim(BigDecimal giacelim) {
-        this.giacelim = giacelim;
-    }
+  public void setForneti(String forneti) {
+    this.forneti = forneti;
+  }
 
-    public Integer getCodposiz() {
-        return this.codposiz;
-    }
+  public String getFlgecom() {
+    return this.flgecom;
+  }
 
-    public void setCodposiz(Integer codposiz) {
-        this.codposiz = codposiz;
-    }
+  public void setFlgecom(String flgecom) {
+    this.flgecom = flgecom;
+  }
 
-    public Integer getCodstag() {
-        return this.codstag;
-    }
+  public BigDecimal getGiacwarn() {
+    return this.giacwarn;
+  }
 
-    public void setCodstag(Integer codstag) {
-        this.codstag = codstag;
-    }
+  public void setGiacwarn(BigDecimal giacwarn) {
+    this.giacwarn = giacwarn;
+  }
 
-    public Integer getCodtipo2() {
-        return this.codtipo2;
-    }
+  public BigDecimal getGiacelim() {
+    return this.giacelim;
+  }
 
-    public void setCodtipo2(Integer codtipo2) {
-        this.codtipo2 = codtipo2;
-    }
+  public void setGiacelim(BigDecimal giacelim) {
+    this.giacelim = giacelim;
+  }
 
-    public String getSubtotsc() {
-        return this.subtotsc;
-    }
+  public Integer getCodposiz() {
+    return this.codposiz;
+  }
 
-    public void setSubtotsc(String subtotsc) {
-        this.subtotsc = subtotsc;
-    }
+  public void setCodposiz(Integer codposiz) {
+    this.codposiz = codposiz;
+  }
 
-    public String getSubtotpt() {
-        return this.subtotpt;
-    }
+  public Integer getCodstag() {
+    return this.codstag;
+  }
 
-    public void setSubtotpt(String subtotpt) {
-        this.subtotpt = subtotpt;
-    }
+  public void setCodstag(Integer codstag) {
+    this.codstag = codstag;
+  }
 
-    public String getArtcedi() {
-        return this.artcedi;
-    }
+  public Integer getCodtipo2() {
+    return this.codtipo2;
+  }
 
-    public void setArtcedi(String artcedi) {
-        this.artcedi = artcedi;
-    }
+  public void setCodtipo2(Integer codtipo2) {
+    this.codtipo2 = codtipo2;
+  }
 
-    public String getArtbo() {
-        return this.artbo;
-    }
+  public String getSubtotsc() {
+    return this.subtotsc;
+  }
 
-    public void setArtbo(String artbo) {
-        this.artbo = artbo;
-    }
+  public void setSubtotsc(String subtotsc) {
+    this.subtotsc = subtotsc;
+  }
 
-    public LocalDate getDatws() {
-        return this.datws;
-    }
+  public String getSubtotpt() {
+    return this.subtotpt;
+  }
 
-    public void setDatws(LocalDate datws) {
-        this.datws = datws;
-    }
+  public void setSubtotpt(String subtotpt) {
+    this.subtotpt = subtotpt;
+  }
 
-    public String getPrzblk() {
-        return this.przblk;
-    }
+  public String getArtcedi() {
+    return this.artcedi;
+  }
 
-    public void setPrzblk(String przblk) {
-        this.przblk = przblk;
-    }
+  public void setArtcedi(String artcedi) {
+    this.artcedi = artcedi;
+  }
 
-    public String getPrzimp() {
-        return this.przimp;
-    }
+  public String getArtbo() {
+    return this.artbo;
+  }
 
-    public void setPrzimp(String przimp) {
-        this.przimp = przimp;
-    }
+  public void setArtbo(String artbo) {
+    this.artbo = artbo;
+  }
 
-    public String getCodsva() {
-        return this.codsva;
-    }
+  public LocalDate getDatws() {
+    return this.datws;
+  }
 
-    public void setCodsva(String codsva) {
-        this.codsva = codsva;
-    }
+  public void setDatws(LocalDate datws) {
+    this.datws = datws;
+  }
 
-    public String getCluster() {
-        return this.cluster;
-    }
+  public String getPrzblk() {
+    return this.przblk;
+  }
 
-    public void setCluster(String cluster) {
-        this.cluster = cluster;
-    }
+  public void setPrzblk(String przblk) {
+    this.przblk = przblk;
+  }
 
-    public String getAsspv() {
-        return this.asspv;
-    }
+  public String getPrzimp() {
+    return this.przimp;
+  }
 
-    public void setAsspv(String asspv) {
-        this.asspv = asspv;
-    }
+  public void setPrzimp(String przimp) {
+    this.przimp = przimp;
+  }
 
-    public String getIdsendecr() {
-        return this.idsendecr;
-    }
+  public String getCodsva() {
+    return this.codsva;
+  }
 
-    public void setIdsendecr(String idsendecr) {
-        this.idsendecr = idsendecr;
-    }
+  public void setCodsva(String codsva) {
+    this.codsva = codsva;
+  }
 
-    public String getEsllay() {
-        return this.esllay;
-    }
+  public String getCluster() {
+    return this.cluster;
+  }
 
-    public void setEsllay(String esllay) {
-        this.esllay = esllay;
-    }
+  public void setCluster(String cluster) {
+    this.cluster = cluster;
+  }
 
-    public String getEsllpro() {
-        return this.esllpro;
-    }
+  public String getAsspv() {
+    return this.asspv;
+  }
 
-    public void setEsllpro(String esllpro) {
-        this.esllpro = esllpro;
-    }
+  public void setAsspv(String asspv) {
+    this.asspv = asspv;
+  }
 
-    public String getDataoraupd() {
-        return this.dataoraupd;
-    }
+  public String getIdsendecr() {
+    return this.idsendecr;
+  }
 
-    public void setDataoraupd(String dataoraupd) {
-        this.dataoraupd = dataoraupd;
-    }
+  public void setIdsendecr(String idsendecr) {
+    this.idsendecr = idsendecr;
+  }
 
-    public LocalDate getDatim() {
-        return this.datim;
-    }
+  public String getEsllay() {
+    return this.esllay;
+  }
 
-    public void setDatim(LocalDate datim) {
-        this.datim = datim;
-    }
+  public void setEsllay(String esllay) {
+    this.esllay = esllay;
+  }
 
-    public String getDtetiim() {
-        return this.dtetiim;
-    }
+  public String getEsllpro() {
+    return this.esllpro;
+  }
 
-    public void setDtetiim(String dtetiim) {
-        this.dtetiim = dtetiim;
-    }
+  public void setEsllpro(String esllpro) {
+    this.esllpro = esllpro;
+  }
 
-    public String getUsetiim() {
-        return this.usetiim;
-    }
+  public String getDataoraupd() {
+    return this.dataoraupd;
+  }
 
-    public void setUsetiim(String usetiim) {
-        this.usetiim = usetiim;
-    }
+  public void setDataoraupd(String dataoraupd) {
+    this.dataoraupd = dataoraupd;
+  }
 
-    public String getOrigineeti() {
-        return this.origineeti;
-    }
+  public LocalDate getDatim() {
+    return this.datim;
+  }
 
-    public void setOrigineeti(String origineeti) {
-        this.origineeti = origineeti;
-    }
+  public void setDatim(LocalDate datim) {
+    this.datim = datim;
+  }
 
+  public String getDtetiim() {
+    return this.dtetiim;
+  }
+
+  public void setDtetiim(String dtetiim) {
+    this.dtetiim = dtetiim;
+  }
+
+  public String getUsetiim() {
+    return this.usetiim;
+  }
+
+  public void setUsetiim(String usetiim) {
+    this.usetiim = usetiim;
+  }
+
+  public String getOrigineeti() {
+    return this.origineeti;
+  }
+
+  public void setOrigineeti(String origineeti) {
+    this.origineeti = origineeti;
+  }
 }

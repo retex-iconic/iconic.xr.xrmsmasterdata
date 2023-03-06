@@ -19,8 +19,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 @Aggregate
 public class ArticoloAggregate {
 
-  @AggregateIdentifier 
-  private String id;
+  @AggregateIdentifier private String id;
 
   private ArticoloDTO data;
 

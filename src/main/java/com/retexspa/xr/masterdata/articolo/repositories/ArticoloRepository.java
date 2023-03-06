@@ -1,8 +1,6 @@
 package com.retexspa.xr.masterdata.articolo.repositories;
 
+import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
-
-public interface ArticoloRepository extends JpaRepository<ArticoloQueryEntity, Long> {
-}
+public interface ArticoloRepository extends JpaRepository<ArticoloQueryEntity, Long> {}
