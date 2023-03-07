@@ -9,7 +9,6 @@ import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreAddedArticoloEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreCreatedEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreUpdatedEvent;
-
 import java.io.IOException;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -20,8 +19,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 @Aggregate
 public class FornitoreAggregate {
 
-  @AggregateIdentifier 
-  private String id;
+  @AggregateIdentifier private String id;
 
   private FornitoreDTO data;
 

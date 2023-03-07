@@ -4,11 +4,8 @@ import com.retexspa.xr.masterdata.negozio.entities.NegozioQueryEntity;
 import com.retexspa.xr.masterdata.negozio.events.NegozioCreatedEvent;
 import com.retexspa.xr.masterdata.negozio.events.NegozioUpdatedEvent;
 import com.retexspa.xr.masterdata.negozio.repositories.NegozioRepository;
-
 import java.io.IOException;
-
 import javax.persistence.EntityManager;
-
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventhandling.ResetHandler;
@@ -19,11 +16,9 @@ import org.springframework.stereotype.Component;
 @ProcessingGroup("infoinst")
 public class NegozioProjection {
 
-  @Autowired 
-  private EntityManager entityManager;
+  @Autowired private EntityManager entityManager;
 
-  @Autowired 
-  private NegozioRepository negozioRepository;
+  @Autowired private NegozioRepository negozioRepository;
 
   public NegozioProjection(EntityManager entityManager, NegozioRepository negozioRepository) {
     this.entityManager = entityManager;

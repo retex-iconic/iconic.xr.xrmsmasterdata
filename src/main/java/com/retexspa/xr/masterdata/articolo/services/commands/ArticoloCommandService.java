@@ -12,7 +12,7 @@ public interface ArticoloCommandService {
   public CompletableFuture<Object> createArticolo(ArticoloDTO articoloDTO);
 
   public CompletableFuture<Object> updateArticolo(String articoloId, ArticoloDTO articoloDTO);
-  
+
   public List<Object> listEventsForArticolo(String articoloId);
 
   public ArticoloAggregate getArticoloAggregate(String articoloId);

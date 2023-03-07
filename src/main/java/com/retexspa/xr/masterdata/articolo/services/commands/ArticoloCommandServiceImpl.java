@@ -29,7 +29,7 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
 
   @Autowired
   private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
-  
+
   @Autowired
   private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
 
@@ -66,7 +66,7 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   @Override
   public CompletableFuture<Object> createArticolo(ArticoloDTO articoloDTO) {
     CompletableFuture<Object> result =
-    commandGateway.send(new ArticoloCreateCommand(UUID.randomUUID().toString(), articoloDTO));
+        commandGateway.send(new ArticoloCreateCommand(UUID.randomUUID().toString(), articoloDTO));
     return result;
   }
 
@@ -87,10 +87,11 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   @Override
   public NegozioAggregate storeIndex(String articoloId, String storeId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    NegozioAggregate result = negozioAggregateEventSourcingRepository
-        .load(storeId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    NegozioAggregate result =
+        negozioAggregateEventSourcingRepository
+            .load(storeId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
     unitOfWork.rollback();
     return result;
   }
@@ -98,10 +99,11 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   @Override
   public FornitoreAggregate fornitoreIndex(String articoloId, String fornitoreId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    FornitoreAggregate result = fornitoreAggregateEventSourcingRepository
-        .load(fornitoreId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    FornitoreAggregate result =
+        fornitoreAggregateEventSourcingRepository
+            .load(fornitoreId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
     unitOfWork.rollback();
     return result;
   }

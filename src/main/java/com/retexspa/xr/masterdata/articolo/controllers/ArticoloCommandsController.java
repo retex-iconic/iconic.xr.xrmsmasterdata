@@ -56,7 +56,7 @@ public class ArticoloCommandsController {
     ArticoloAggregate res = articoloCommandService.getArticoloAggregate(articoloId);
     return res;
   }
-  
+
   @PutMapping("/{articoloId}")
   public CompletableFuture<Object> updateArticoli(
       @PathVariable(value = "articoloId") String articoloId, @RequestBody ArticoloDTO articoliDTO) {

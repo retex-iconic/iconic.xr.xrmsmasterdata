@@ -13,7 +13,7 @@ public class NegozioDTO {
   public void setCode(String code) {
     this.code = code;
   }
-  
+
   public String getParent() {
     return this.parent;
   }
@@ -21,5 +21,4 @@ public class NegozioDTO {
   public void setParent(String parent) {
     this.parent = parent;
   }
-
 }

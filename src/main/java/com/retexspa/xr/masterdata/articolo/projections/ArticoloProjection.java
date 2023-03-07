@@ -17,14 +17,13 @@ import org.springframework.stereotype.Component;
 @ProcessingGroup("articoli")
 public class ArticoloProjection {
 
-  //@Autowired 
-  //private EntityManager entityManager;
+  // @Autowired
+  // private EntityManager entityManager;
 
-  @Autowired 
-  private ArticoloRepository articoloRepository;
+  @Autowired private ArticoloRepository articoloRepository;
 
   public ArticoloProjection(EntityManager entityManager, ArticoloRepository articoloRepository) {
-    //this.entityManager = entityManager;
+    // this.entityManager = entityManager;
     this.articoloRepository = articoloRepository;
   }
 
@@ -40,12 +39,12 @@ public class ArticoloProjection {
     // entity.setArticolo(event.getData().getCode());
     // entity.setParent(event.getData().getParent());
 
-    //articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getData()));
+    // articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getData()));
   }
 
   @EventHandler
   public void on(ArticoloAddFornitoreCommand event) {
-    //articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getFornitoreId()));
+    // articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getFornitoreId()));
   }
 
   @ResetHandler

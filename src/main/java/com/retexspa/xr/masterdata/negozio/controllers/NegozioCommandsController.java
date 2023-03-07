@@ -50,8 +50,11 @@ public class NegozioCommandsController {
   }
 
   @PutMapping("/{negozioId}")
-  public CompletableFuture<Object> updateNegozi(@PathVariable(value = "negozioId") String negozioId, @RequestBody NegozioDTO negozioCreateDTO) {
-    CompletableFuture<Object> res = negozioCommandService.updateNegozio(negozioId, negozioCreateDTO);
+  public CompletableFuture<Object> updateNegozi(
+      @PathVariable(value = "negozioId") String negozioId,
+      @RequestBody NegozioDTO negozioCreateDTO) {
+    CompletableFuture<Object> res =
+        negozioCommandService.updateNegozio(negozioId, negozioCreateDTO);
     return res;
   }
 

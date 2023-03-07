@@ -5,7 +5,6 @@ import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreAddArticoloDTO
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.services.commands.FornitoreCommandService;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
-
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
@@ -46,7 +45,7 @@ public class FornitoreCommandsController {
 
   @GetMapping("/{fornitoreId}")
   public FornitoreAggregate getFornitoreAggregate(
-    @PathVariable(value = "fornitoreId") String fornitoreId) {
+      @PathVariable(value = "fornitoreId") String fornitoreId) {
     FornitoreAggregate res = fornitoreCommandService.getFornitoreAggregate(fornitoreId);
     return res;
   }
@@ -78,8 +77,10 @@ public class FornitoreCommandsController {
 
   @PutMapping("/{fornitoreId}")
   public CompletableFuture<Object> updateFornitori(
-      @PathVariable(value = "fornitoreId") String fornitoreId, @RequestBody FornitoreDTO fornitoreDTO) {
-    CompletableFuture<Object> res = fornitoreCommandService.updateFornitore(fornitoreId, fornitoreDTO);
+      @PathVariable(value = "fornitoreId") String fornitoreId,
+      @RequestBody FornitoreDTO fornitoreDTO) {
+    CompletableFuture<Object> res =
+        fornitoreCommandService.updateFornitore(fornitoreId, fornitoreDTO);
     return res;
   }
 }

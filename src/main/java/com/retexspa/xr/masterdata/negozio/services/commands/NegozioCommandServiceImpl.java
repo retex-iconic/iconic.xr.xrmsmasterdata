@@ -30,10 +30,10 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
 
   @Autowired
   private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
-  
+
   @Autowired
   private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
-  
+
   public NegozioCommandServiceImpl(
       CommandGateway commandGateway,
       EventStore eventStore,
@@ -46,7 +46,7 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   @Override
   public CompletableFuture<Object> createNegozio(NegozioDTO negozioDTO) {
     CompletableFuture<Object> result =
-    commandGateway.send(new NegozioCreateCommand(UUID.randomUUID().toString(), negozioDTO));
+        commandGateway.send(new NegozioCreateCommand(UUID.randomUUID().toString(), negozioDTO));
     return result;
   }
 
@@ -78,10 +78,11 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   @Override
   public ArticoloAggregate articoloIndex(String storeId, String articoloId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    ArticoloAggregate id = articoloAggregateEventSourcingRepository
-        .load(articoloId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    ArticoloAggregate id =
+        articoloAggregateEventSourcingRepository
+            .load(articoloId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
     unitOfWork.rollback();
     return id;
   }
@@ -89,10 +90,11 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   @Override
   public FornitoreAggregate fornitoreIndex(String storeId, String fornitoreId) {
     unitOfWork = DefaultUnitOfWork.startAndGet(null);
-    FornitoreAggregate id = fornitoreAggregateEventSourcingRepository
-        .load(fornitoreId)
-        .getWrappedAggregate()
-        .getAggregateRoot();
+    FornitoreAggregate id =
+        fornitoreAggregateEventSourcingRepository
+            .load(fornitoreId)
+            .getWrappedAggregate()
+            .getAggregateRoot();
     unitOfWork.rollback();
     return id;
   }
