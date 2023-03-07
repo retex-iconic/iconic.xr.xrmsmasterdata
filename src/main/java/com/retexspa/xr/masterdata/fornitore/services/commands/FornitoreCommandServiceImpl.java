@@ -1,12 +1,14 @@
 package com.retexspa.xr.masterdata.fornitore.services.commands;
 
+import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreAddArticoloCommand;
-import com.retexspa.xr.masterdata.fornitore.commands.FornitoreArticoloIndexCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreCreateCommand;
+import com.retexspa.xr.masterdata.fornitore.commands.FornitoreUpdateCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreAddArticoloDTO;
-import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreArticoloIndexDTO;
-import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreCreateDTO;
+import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
+import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -23,11 +25,17 @@ import org.springframework.stereotype.Service;
 public class FornitoreCommandServiceImpl implements FornitoreCommandService {
 
   private final CommandGateway commandGateway;
-  private UnitOfWork<?> unitOfWork;
   private final EventStore eventStore;
+  private UnitOfWork<?> unitOfWork;
 
   @Autowired
+  private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
+  
+  @Autowired
   private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
+
+  @Autowired
+  private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
 
   public FornitoreCommandServiceImpl(
       CommandGateway commandGateway,
@@ -39,10 +47,18 @@ public class FornitoreCommandServiceImpl implements FornitoreCommandService {
   }
 
   @Override
-  public CompletableFuture<Object> createFornitore(FornitoreCreateDTO fornitoreCreateDTO) {
+  public CompletableFuture<Object> createFornitore(FornitoreDTO fornitoreDTO) {
     CompletableFuture<Object> result =
         commandGateway.send(
-            new FornitoreCreateCommand(UUID.randomUUID().toString(), fornitoreCreateDTO.getName()));
+            new FornitoreCreateCommand(UUID.randomUUID().toString(), fornitoreDTO));
+    return result;
+  }
+
+  @Override
+  public CompletableFuture<Object> updateFornitore(String fornitoreId, FornitoreDTO fornitoreDTO) {
+    CompletableFuture<Object> result =
+        commandGateway.send(
+            new FornitoreUpdateCommand(fornitoreId, fornitoreDTO));
     return result;
   }
 
@@ -66,15 +82,30 @@ public class FornitoreCommandServiceImpl implements FornitoreCommandService {
 
   @Override
   public CompletableFuture<String> addedArticolo(
-      String fornitoreId, FornitoreAddArticoloDTO fornitoreAddArticoloDTO) {
-    return commandGateway.send(
+    String fornitoreId, FornitoreAddArticoloDTO fornitoreAddArticoloDTO) {
+      return commandGateway.send(
         new FornitoreAddArticoloCommand(fornitoreId, fornitoreAddArticoloDTO.getArticoloId()));
   }
 
   @Override
-  public CompletableFuture<String> articoloIndex(
-      String fornitoreId, FornitoreArticoloIndexDTO fornitoreArticoloIndexDTO) {
-    return commandGateway.send(
-        new FornitoreArticoloIndexCommand(fornitoreId, fornitoreArticoloIndexDTO.getArticoloId()));
+  public ArticoloAggregate articoloIndex(String fornitoreId, String articoloId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    ArticoloAggregate result = articoloAggregateEventSourcingRepository
+        .load(articoloId)
+        .getWrappedAggregate()
+        .getAggregateRoot();
+    unitOfWork.rollback();
+    return result;
+  }
+
+  @Override
+  public NegozioAggregate storeIndex(String fornitoreId, String storeId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    NegozioAggregate result = negozioAggregateEventSourcingRepository
+        .load(storeId)
+        .getWrappedAggregate()
+        .getAggregateRoot();
+    unitOfWork.rollback();
+    return result;
   }
 }

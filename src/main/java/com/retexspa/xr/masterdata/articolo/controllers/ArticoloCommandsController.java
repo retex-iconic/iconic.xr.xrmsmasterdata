@@ -3,8 +3,8 @@ package com.retexspa.xr.masterdata.articolo.controllers;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloFornitoreIndexDTO;
 import com.retexspa.xr.masterdata.articolo.services.commands.ArticoloCommandService;
+import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import io.swagger.annotations.Api;
 import java.util.List;
@@ -56,13 +56,7 @@ public class ArticoloCommandsController {
     ArticoloAggregate res = articoloCommandService.getArticoloAggregate(articoloId);
     return res;
   }
-
-  @GetMapping("/negozioIndex/{articoloId}")
-  public NegozioAggregate storeIndex(@PathVariable(value = "articoloId") String articoloId) {
-    NegozioAggregate res = articoloCommandService.storeIndex(articoloId);
-    return res;
-  }
-
+  
   @PutMapping("/{articoloId}")
   public CompletableFuture<Object> updateArticoli(
       @PathVariable(value = "articoloId") String articoloId, @RequestBody ArticoloDTO articoliDTO) {
@@ -79,12 +73,19 @@ public class ArticoloCommandsController {
     return res;
   }
 
-  @PutMapping("/fornitorePrincipaleIndex/{articoloId}")
-  public CompletableFuture<String> fornitoreIndex(
+  @GetMapping("/negozioIndex-{articoloId}/{storeId}")
+  public NegozioAggregate storeIndex(
       @PathVariable(value = "articoloId") String articoloId,
-      @RequestBody ArticoloFornitoreIndexDTO articoloFornitoreIndexDTO) {
-    CompletableFuture<String> res =
-        articoloCommandService.fornitoreIndex(articoloId, articoloFornitoreIndexDTO);
+      @PathVariable(value = "storeId") String storeId) {
+    NegozioAggregate res = articoloCommandService.storeIndex(articoloId, storeId);
+    return res;
+  }
+
+  @GetMapping("/fornitoreIndex-{articoloId}/{fornitoreId}")
+  public FornitoreAggregate fornitoreIndex(
+      @PathVariable(value = "articoloId") String articoloId,
+      @PathVariable(value = "fornitoreId") String fornitoreId) {
+    FornitoreAggregate res = articoloCommandService.fornitoreIndex(articoloId, fornitoreId);
     return res;
   }
 }

@@ -1,10 +1,11 @@
 package com.retexspa.xr.masterdata.negozio.services.commands;
 
+import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
+import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
-import com.retexspa.xr.masterdata.negozio.commands.StoreArticoloIndexCommand;
-import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioCreateDTO;
-import com.retexspa.xr.masterdata.negozio.commands.dto.StoreArticoloIndexDTO;
+import com.retexspa.xr.masterdata.negozio.commands.NegozioUpdateCommand;
+import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -27,6 +28,12 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   @Autowired
   private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
 
+  @Autowired
+  private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
+  
+  @Autowired
+  private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
+  
   public NegozioCommandServiceImpl(
       CommandGateway commandGateway,
       EventStore eventStore,
@@ -37,10 +44,9 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   }
 
   @Override
-  public CompletableFuture<Object> createNegozio(NegozioCreateDTO negozioCreateDTO) {
+  public CompletableFuture<Object> createNegozio(NegozioDTO negozioDTO) {
     CompletableFuture<Object> result =
-        commandGateway.send(
-            new NegozioCreateCommand(UUID.randomUUID().toString(), negozioCreateDTO.getCode()));
+    commandGateway.send(new NegozioCreateCommand(UUID.randomUUID().toString(), negozioDTO));
     return result;
   }
 
@@ -63,9 +69,31 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
   }
 
   @Override
-  public CompletableFuture<String> articoloIndex(
-      String negozioId, StoreArticoloIndexDTO storeArticoloIndexDTO) {
-    return commandGateway.send(
-        new StoreArticoloIndexCommand(negozioId + " --> ", storeArticoloIndexDTO.getArticoloId()));
+  public CompletableFuture<Object> updateNegozio(String negozioId, NegozioDTO negozioDTO) {
+    CompletableFuture<Object> result =
+        commandGateway.send(new NegozioUpdateCommand(negozioId, negozioDTO));
+    return result;
+  }
+
+  @Override
+  public ArticoloAggregate articoloIndex(String storeId, String articoloId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    ArticoloAggregate id = articoloAggregateEventSourcingRepository
+        .load(articoloId)
+        .getWrappedAggregate()
+        .getAggregateRoot();
+    unitOfWork.rollback();
+    return id;
+  }
+
+  @Override
+  public FornitoreAggregate fornitoreIndex(String storeId, String fornitoreId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    FornitoreAggregate id = fornitoreAggregateEventSourcingRepository
+        .load(fornitoreId)
+        .getWrappedAggregate()
+        .getAggregateRoot();
+    unitOfWork.rollback();
+    return id;
   }
 }

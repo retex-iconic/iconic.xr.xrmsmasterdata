@@ -1,6 +1,0 @@
-package com.retexspa.xr.masterdata.negozio.entities;
-
-//TODO this entity needs to be changed with the real one!
-public class NegozioQueryEntity {
-    
-}

@@ -4,21 +4,33 @@ import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "articoli")
 public class ArticoloQueryEntity {
 
   @Id
-  @Column(name = "id")
+  // @ManyToOne
+  // @JoinColumn(name = "id", referencedColumnName = "parent")
+  @GeneratedValue(generator="system-uuid")
+  @GenericGenerator(name="system-uuid", strategy = "uuid")
   private String id;
 
-  @OneToMany(mappedBy = "id")
+  // @OneToMany(cascade = CascadeType.ALL)
+  // @JoinColumn(name = "parent")
   @Column(name = "parent")
   private String parent;
 

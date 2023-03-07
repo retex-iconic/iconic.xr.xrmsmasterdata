@@ -3,11 +3,10 @@ package com.retexspa.xr.masterdata.articolo.services.commands;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
-import com.retexspa.xr.masterdata.articolo.commands.ArticoloFornitoreIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloUpdateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloFornitoreIndexDTO;
+import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.axonframework.eventsourcing.eventstore.EventStore;
-import org.axonframework.messaging.unitofwork.CurrentUnitOfWork;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +29,9 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
 
   @Autowired
   private EventSourcingRepository<ArticoloAggregate> articoloAggregateEventSourcingRepository;
+  
+  @Autowired
+  private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
 
   @Autowired
   private EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository;
@@ -65,7 +66,7 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   @Override
   public CompletableFuture<Object> createArticolo(ArticoloDTO articoloDTO) {
     CompletableFuture<Object> result =
-        commandGateway.send(new ArticoloCreateCommand(UUID.randomUUID().toString(), articoloDTO));
+    commandGateway.send(new ArticoloCreateCommand(UUID.randomUUID().toString(), articoloDTO));
     return result;
   }
 
@@ -84,19 +85,24 @@ public class ArticoloCommandServiceImpl implements ArticoloCommandService {
   }
 
   @Override
-  public NegozioAggregate storeIndex(String articoloId) {
-    unitOfWork = CurrentUnitOfWork.get();
-    return negozioAggregateEventSourcingRepository
-        .load(articoloId)
+  public NegozioAggregate storeIndex(String articoloId, String storeId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    NegozioAggregate result = negozioAggregateEventSourcingRepository
+        .load(storeId)
         .getWrappedAggregate()
         .getAggregateRoot();
+    unitOfWork.rollback();
+    return result;
   }
 
   @Override
-  public CompletableFuture<String> fornitoreIndex(
-      String articoloId, ArticoloFornitoreIndexDTO articoloFornitoreIndexDTO) {
-    return commandGateway.send(
-        new ArticoloFornitoreIndexCommand(
-            articoloId + " --> ", articoloFornitoreIndexDTO.getFornitoreId()));
+  public FornitoreAggregate fornitoreIndex(String articoloId, String fornitoreId) {
+    unitOfWork = DefaultUnitOfWork.startAndGet(null);
+    FornitoreAggregate result = fornitoreAggregateEventSourcingRepository
+        .load(fornitoreId)
+        .getWrappedAggregate()
+        .getAggregateRoot();
+    unitOfWork.rollback();
+    return result;
   }
 }

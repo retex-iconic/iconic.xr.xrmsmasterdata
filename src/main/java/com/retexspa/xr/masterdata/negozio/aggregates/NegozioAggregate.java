@@ -1,6 +1,7 @@
 package com.retexspa.xr.masterdata.negozio.aggregates;
 
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
+import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.events.NegozioCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -13,20 +14,20 @@ public class NegozioAggregate {
 
   @AggregateIdentifier private String id;
 
-  private String code;
+  private NegozioDTO data;
 
   public NegozioAggregate() {}
 
   @CommandHandler
   public NegozioAggregate(NegozioCreateCommand negozioCreateCommand) {
     AggregateLifecycle.apply(
-        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.code));
+        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.data));
   }
 
   @EventSourcingHandler
   public void on(NegozioCreatedEvent negozioCreatedEvent) {
     this.id = negozioCreatedEvent.id;
-    this.code = negozioCreatedEvent.code;
+    this.data = negozioCreatedEvent.data;
   }
 
   public String getId() {
@@ -37,11 +38,11 @@ public class NegozioAggregate {
     this.id = id;
   }
 
-  public String getCode() {
-    return this.code;
+  public NegozioDTO getdata() {
+    return this.data;
   }
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setdata(NegozioDTO data) {
+    this.data = data;
   }
 }
