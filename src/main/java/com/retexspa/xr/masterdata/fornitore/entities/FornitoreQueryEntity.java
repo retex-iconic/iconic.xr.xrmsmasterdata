@@ -13,6 +13,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "fornit")
 public class FornitoreQueryEntity {
 
+  //TODO correct this to be equivalent to the FornitoreDTO class!
+
   @Id
   // @ManyToOne
   // @JoinColumn(name = "id", referencedColumnName = "parent")

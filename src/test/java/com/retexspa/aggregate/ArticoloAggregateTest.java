@@ -14,11 +14,11 @@ import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
 
 public class ArticoloAggregateTest {
-	private FixtureConfiguration fixture;
+	private FixtureConfiguration<?> fixture;
 
 	@BeforeEach
 	public void setUp() {
-		fixture = new AggregateTestFixture(ArticoloAggregate.class);
+		fixture = new AggregateTestFixture<ArticoloAggregate>(ArticoloAggregate.class);
 	}    
 
 	@Test

@@ -32,9 +32,9 @@ public class NegozioProjection {
 
   @EventHandler
   public void on(NegozioUpdatedEvent event) {
-    NegozioQueryEntity entity = entityManager.find(NegozioQueryEntity.class, event.getId());
-    entity.setIdcodice(event.getData().getCode());
-    entity.setParent(event.getData().getParent());
+    // NegozioQueryEntity entity = entityManager.find(NegozioQueryEntity.class, event.getId());
+    // entity.setIdcodice(event.getData().getCode());
+    // entity.setParent(event.getData().getParent());
   }
 
   @ResetHandler

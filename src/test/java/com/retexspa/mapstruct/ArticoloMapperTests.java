@@ -4,15 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.retexspa.LoadArticolo;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
-import com.retexspa.xr.masterdata.articolo.entities.ArticoloLegacy;
-import com.retexspa.xr.masterdata.articolo.entities.ArticoloMapper;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import org.junit.jupiter.api.Test;
 
 public class ArticoloMapperTests {

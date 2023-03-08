@@ -16,5 +16,6 @@ public interface ArticoloMapper {
   @Mapping(source = "idsendecr", target = "codice3")
   @Mapping(source = "produttore", target = "produttore")
   @Mapping(source = "reparto", target = "reparto")
+  
   ArticoloDTO legacyToDTO(ArticoloLegacy articoloLegacy);
 }

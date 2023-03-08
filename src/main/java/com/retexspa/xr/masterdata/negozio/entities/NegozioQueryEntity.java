@@ -14,6 +14,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "infoinst")
 public class NegozioQueryEntity {
 
+  //TODO correct this to be equivalent to the NegozioDTO class!
+
   @Id
   // @ManyToOne
   // @JoinColumn(name = "id", referencedColumnName = "parent")
@@ -195,7 +197,9 @@ public class NegozioQueryEntity {
 
   public NegozioQueryEntity(String negozioId, NegozioDTO negozioDTO) throws IOException {
     this.id = negozioId;
-    this.idcodice = negozioDTO.getCode();
+    this.ragsoc = negozioDTO.getRagioneSociale();
+    this.codfisc = negozioDTO.getCodiceFiscale();
+    this.regfisc = negozioDTO.getRegimeFiscale();
     this.parent = negozioDTO.getParent();
   }
 
