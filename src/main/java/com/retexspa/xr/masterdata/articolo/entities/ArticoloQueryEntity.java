@@ -18,23 +18,23 @@ public class ArticoloQueryEntity {
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
   private String id;
 
-  @Column(name = "descriz", length = 30)
-  private String descriz;
+  @Column(name = "descrizione")
+  private String descrizione;
 
-  @Column(name = "reparto", length = 4)
+  @Column(name = "reparto")
   private String reparto;
 
-  @Column(name = "produttore", length = 6)
+  @Column(name = "produttore")
   private String produttore;
 
-  @Column(name = "artcedi", length = 16)
-  private String artcedi;
+  @Column(name = "codice1")
+  private String codice1;
 
-  @Column(name = "artbo", length = 16)
-  private String artbo;
+  @Column(name = "codice2")
+  private String codice2;
 
-  @Column(name = "idsendecr", length = 8)
-  private String idsendecr;
+  @Column(name = "codice3")
+  private String codice3;
 
   // constructors
   public ArticoloQueryEntity() {}
@@ -45,12 +45,12 @@ public class ArticoloQueryEntity {
     // String jsonInString = objectMapper.writeValueAsString(articoloDTO);
     // Object t = objectReader.readValue(jsonInString, ArticoloQueryEntity.class);
     // this.articolo = articolo;
-    // this.descriz = articoloDTO.getDescription();
+    // this.descrizione = articoloDTO.getDescription();
     this.id = articoloId;
-    this.artbo = articoloDTO.getCodice();
-    this.descriz = articoloDTO.getDescrizione();
-    this.artcedi = articoloDTO.getCodice2();
-    this.idsendecr = articoloDTO.getCodice3();
+    this.codice1 = articoloDTO.getCodice();
+    this.descrizione = articoloDTO.getDescrizione();
+    this.codice2 = articoloDTO.getCodice2();
+    this.codice3 = articoloDTO.getCodice3();
     this.produttore = articoloDTO.getProduttore();
     this.reparto = articoloDTO.getReparto();
   }
@@ -65,11 +65,11 @@ public class ArticoloQueryEntity {
   }
 
   public String getDescriz() {
-    return this.descriz;
+    return this.descrizione;
   }
 
-  public void setDescriz(String descriz) {
-    this.descriz = descriz;
+  public void setDescriz(String descrizione) {
+    this.descrizione = descrizione;
   }
 
   public String getReparto() {
@@ -89,26 +89,26 @@ public class ArticoloQueryEntity {
   }
 
   public String getArtcedi() {
-    return this.artcedi;
+    return this.codice2;
   }
 
-  public void setArtcedi(String artcedi) {
-    this.artcedi = artcedi;
+  public void setArtcedi(String codice2) {
+    this.codice2 = codice2;
   }
 
   public String getArtbo() {
-    return this.artbo;
+    return this.codice1;
   }
 
-  public void setArtbo(String artbo) {
-    this.artbo = artbo;
+  public void setArtbo(String codice1) {
+    this.codice1 = codice1;
   }
 
   public String getIdsendecr() {
-    return this.idsendecr;
+    return this.codice3;
   }
 
-  public void setIdsendecr(String idsendecr) {
-    this.idsendecr = idsendecr;
+  public void setIdsendecr(String codice3) {
+    this.codice3 = codice3;
   }  
 }
