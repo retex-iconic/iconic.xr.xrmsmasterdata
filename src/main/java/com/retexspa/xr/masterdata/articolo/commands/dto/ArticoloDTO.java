@@ -62,8 +62,6 @@ public class ArticoloDTO {
     this.produttore = produttore;
   }
 
-  // implement getters and setters
-
   public String getCodice() {
     return codice;
   }

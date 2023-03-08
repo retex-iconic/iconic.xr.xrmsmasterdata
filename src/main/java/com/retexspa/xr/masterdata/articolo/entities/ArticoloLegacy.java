@@ -3,12 +3,9 @@ package com.retexspa.xr.masterdata.articolo.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "articoli")
+// Table --> (name = "articoli")
 public class ArticoloLegacy {
 
   @Id

@@ -36,6 +36,12 @@ public class ArticoloQueryEntity {
   @Column(name = "codice3")
   private String codice3;
 
+  @Column(name = "codice4")
+  private String codice4;
+
+  @Column(name = "master")
+  private String master;
+
   // constructors
   public ArticoloQueryEntity() {}
 
@@ -44,13 +50,14 @@ public class ArticoloQueryEntity {
     // ObjectReader objectReader = objectMapper.readerForUpdating(this);
     // String jsonInString = objectMapper.writeValueAsString(articoloDTO);
     // Object t = objectReader.readValue(jsonInString, ArticoloQueryEntity.class);
-    // this.articolo = articolo;
-    // this.descrizione = articoloDTO.getDescription();
+
     this.id = articoloId;
     this.codice1 = articoloDTO.getCodice();
     this.descrizione = articoloDTO.getDescrizione();
     this.codice2 = articoloDTO.getCodice2();
     this.codice3 = articoloDTO.getCodice3();
+    this.codice4 = articoloDTO.getCodice4();
+    this.master = articoloDTO.getMaster();
     this.produttore = articoloDTO.getProduttore();
     this.reparto = articoloDTO.getReparto();
   }
@@ -64,11 +71,11 @@ public class ArticoloQueryEntity {
     this.id = id;
   }
 
-  public String getDescriz() {
+  public String getDescrizione() {
     return this.descrizione;
   }
 
-  public void setDescriz(String descrizione) {
+  public void setDescrizione(String descrizione) {
     this.descrizione = descrizione;
   }
 
@@ -88,27 +95,44 @@ public class ArticoloQueryEntity {
     this.produttore = produttore;
   }
 
-  public String getArtcedi() {
-    return this.codice2;
-  }
-
-  public void setArtcedi(String codice2) {
-    this.codice2 = codice2;
-  }
-
-  public String getArtbo() {
+  public String getCodice1() {
     return this.codice1;
   }
 
-  public void setArtbo(String codice1) {
+  public void setCodice1(String codice1) {
     this.codice1 = codice1;
   }
 
-  public String getIdsendecr() {
+  public String getCodice2() {
+    return this.codice2;
+  }
+
+  public void setCodice2(String codice2) {
+    this.codice2 = codice2;
+  }
+
+  public String getCodice3() {
     return this.codice3;
   }
 
-  public void setIdsendecr(String codice3) {
+  public void setCodice3(String codice3) {
     this.codice3 = codice3;
-  }  
+  }
+
+  public String getCodice4() {
+    return this.codice4;
+  }
+
+  public void setCodice4(String codice4) {
+    this.codice4 = codice4;
+  }
+
+  public String getMaster() {
+    return this.master;
+  }
+
+  public void setMaster(String master) {
+    this.master = master;
+  }
+
 }
