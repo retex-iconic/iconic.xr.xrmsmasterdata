@@ -3,6 +3,7 @@ package com.retexspa.xr.masterdata.negozio.entities;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +13,7 @@ public class NegozioLegacy {
    @Column(name = "parent")
    private String parent;
 
+   @Id
    @Column(name = "magazzino", length = 2)
    private String magazzino;
 
