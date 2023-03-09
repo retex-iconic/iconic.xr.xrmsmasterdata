@@ -34,7 +34,7 @@ public class FornitoreProjection {
   public void on(FornitoreUpdatedEvent event) {
     FornitoreQueryEntity entity = entityManager.find(FornitoreQueryEntity.class, event.getId());
     entity.setFornom(event.getData().getName());
-    entity.setParent(event.getData().getParent());
+    entity.setMaster(event.getData().getMaster());
   }
 
   @EventHandler

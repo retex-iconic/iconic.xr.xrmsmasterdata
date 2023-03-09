@@ -17,13 +17,12 @@ import org.springframework.stereotype.Component;
 @ProcessingGroup("articoli")
 public class ArticoloProjection {
 
-  // @Autowired
-  // private EntityManager entityManager;
+  @Autowired private EntityManager entityManager;
 
   @Autowired private ArticoloRepository articoloRepository;
 
   public ArticoloProjection(EntityManager entityManager, ArticoloRepository articoloRepository) {
-    // this.entityManager = entityManager;
+    this.entityManager = entityManager;
     this.articoloRepository = articoloRepository;
   }
 
@@ -34,17 +33,20 @@ public class ArticoloProjection {
 
   @EventHandler
   public void on(ArticoloUpdatedEvent event) throws IOException {
-    // ArticoloQueryEntity entity = entityManager.find(ArticoloQueryEntity.class, event.getId());
-    // entity.setDescriz(event.getData().getDescription());
-    // entity.setArticolo(event.getData().getCode());
-    // entity.setParent(event.getData().getParent());
-
-    // articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getData()));
+    ArticoloQueryEntity entity = entityManager.find(ArticoloQueryEntity.class, event.getId());
+    entity.setCodice1(event.getData().getCodice());
+    entity.setCodice2(event.getData().getCodice2());
+    entity.setCodice3(event.getData().getCodice3());
+    entity.setCodice4(event.getData().getCodice4());
+    entity.setDescrizione(event.getData().getDescrizione());
+    entity.setMaster(event.getData().getMaster());
+    entity.setProduttore(event.getData().getProduttore());
+    entity.setReparto(event.getData().getReparto());
   }
 
   @EventHandler
   public void on(ArticoloAddFornitoreCommand event) {
-    // articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getFornitoreId()));
+    //articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getFornitoreId()));
   }
 
   @ResetHandler

@@ -20,6 +20,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 public class ArticoloAggregate {
 
   @AggregateIdentifier private String id;
+  
+  @AggregateIdentifier private String fornitoreId;
 
   private ArticoloDTO data;
 
@@ -63,16 +65,11 @@ public class ArticoloAggregate {
             articoloAddFornitoreCommand.id, articoloAddFornitoreCommand.fornitoreId));
   }
 
-  // @EventSourcingHandler
-  // protected void on(ArticoloAddedFornitoreEvent articoloAddFornitoreEvent) {
-  //     if (!(this.fornitoreIds.contains(articoloAddFornitoreEvent.fornitoreId)))
-  //         this.fornitoreIds.add(articoloAddFornitoreEvent.fornitoreId);
-
-  //     AggregateLifecycle.apply(new ArticoloAddedFornitoreEvent(
-  //         articoloAddFornitoreEvent.id,
-  //         articoloAddFornitoreEvent.fornitoreId
-  //     ));
-  // }
+  @EventSourcingHandler
+  protected void on(ArticoloAddedFornitoreEvent articoloAddedFornitoreEvent) {
+    this.id = articoloAddedFornitoreEvent.id;
+    this.fornitoreId = articoloAddedFornitoreEvent.fornitoreId;
+  }
 
   public String getId() {
     return id;
@@ -83,7 +80,6 @@ public class ArticoloAggregate {
   }
 
   public ArticoloDTO getData() {
-
     return data;
   }
 
@@ -91,27 +87,11 @@ public class ArticoloAggregate {
     this.data = data;
   }
 
-  // public String getCode() {
-  //     return code;
-  // }
+  public String getFornitoreId() {
+    return this.fornitoreId;
+  }
 
-  // public void setCode(String code) {
-  //     this.code = code;
-  // }
-
-  // public List<String> getFornitoreIds() {
-  //     return fornitoreIds;
-  // }
-
-  // public void setFornitoreIds(List<String> fornitoreIds) {
-  //     this.fornitoreIds = fornitoreIds;
-  // }
-
-  // public String getDescription() {
-  //     return description;
-  // }
-
-  // public void setDescription(String description) {
-  //     this.description = description;
-  // }
+  public void setFornitoreId(String fornitoreId) {
+    this.fornitoreId = fornitoreId;
+  }
 }

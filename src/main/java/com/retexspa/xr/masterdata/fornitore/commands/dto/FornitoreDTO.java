@@ -4,7 +4,7 @@ public class FornitoreDTO {
 
   private String name;
 
-  private String parent;
+  private String master;
 
   public String getName() {
     return this.name;
@@ -14,11 +14,11 @@ public class FornitoreDTO {
     this.name = name;
   }
 
-  public String getParent() {
-    return this.parent;
+  public String getMaster() {
+    return this.master;
   }
 
-  public void setParent(String parent) {
-    this.parent = parent;
+  public void setMaster(String master) {
+    this.master = master;
   }
 }

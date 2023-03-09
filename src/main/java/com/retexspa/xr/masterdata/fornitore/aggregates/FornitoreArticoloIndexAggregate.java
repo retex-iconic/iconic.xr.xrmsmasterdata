@@ -29,10 +29,6 @@ public class FornitoreArticoloIndexAggregate {
   protected void on(FornitoreArticoloIndexEvent FornitoreArticoloIndexEvent) {
     this.id = FornitoreArticoloIndexEvent.id;
     this.articoloId = FornitoreArticoloIndexEvent.articoloId;
-
-    AggregateLifecycle.apply(
-        new FornitoreArticoloIndexEvent(
-            FornitoreArticoloIndexEvent.id, FornitoreArticoloIndexEvent.articoloId));
   }
 
   public String getId() {

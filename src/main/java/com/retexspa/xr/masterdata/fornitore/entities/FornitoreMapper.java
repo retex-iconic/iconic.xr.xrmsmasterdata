@@ -11,8 +11,8 @@ public interface FornitoreMapper {
 
   FornitoreMapper MAPPER = Mappers.getMapper(FornitoreMapper.class);
 
+  //TODO define new parameters for Fornitore DTO
   @Mapping(target = "fornom", source = "name")
-  @Mapping(target = "parent", source = "parent")
 
   FornitoreDTO legacyToDTO(FornitoreLegacy legacy);
 }

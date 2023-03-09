@@ -8,7 +8,7 @@ public class NegozioDTO {
 
   private String regimeFiscale;
 
-  private String parent;
+  private String master;
 
   public String getRagioneSociale() {
     return this.ragioneSociale;
@@ -34,11 +34,11 @@ public class NegozioDTO {
     this.regimeFiscale = regimeFiscale;
   }
 
-  public String getParent() {
-    return this.parent;
+  public String getMaster() {
+    return this.master;
   }
 
-  public void setParent(String parent) {
-    this.parent = parent;
+  public void setMaster(String master) {
+    this.master = master;
   }
 }

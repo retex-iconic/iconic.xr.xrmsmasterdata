@@ -28,10 +28,6 @@ public class ArticoloStoreIndexAggregate {
   protected void on(ArticoloStoredIndexEvent articoloStoredIndexEvent) {
     this.id = articoloStoredIndexEvent.id;
     this.storeId = articoloStoredIndexEvent.storeId;
-
-    AggregateLifecycle.apply(
-        new ArticoloStoredIndexEvent(
-            articoloStoredIndexEvent.id, articoloStoredIndexEvent.storeId));
   }
 
   public String getId() {

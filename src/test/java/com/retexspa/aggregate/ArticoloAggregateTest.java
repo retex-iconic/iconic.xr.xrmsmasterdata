@@ -27,7 +27,7 @@ public class ArticoloAggregateTest {
         ArticoloDTO articoloDTO = new LoadArticolo().loadArticolo();
 		String id = UUID.randomUUID().toString();
 		fixture.given().when(new ArticoloCreateCommand(id, articoloDTO))
-        .expectSuccessfulHandlerExecution()
-        .expectEvents(new ArticoloCreatedEvent(id, articoloDTO));			
+        	.expectSuccessfulHandlerExecution()
+        	.expectEvents(new ArticoloCreatedEvent(id, articoloDTO));			
 	}    
 }

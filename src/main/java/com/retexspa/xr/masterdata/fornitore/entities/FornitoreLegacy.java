@@ -2,18 +2,10 @@ package com.retexspa.xr.masterdata.fornitore.entities;
 
 import java.math.BigDecimal;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "fornitori")
+// TABLE --> fornitori (fornit)
 public class FornitoreLegacy {
 
-   @Column(name = "parent")
-   private String parent;
-
-   @Id
    @Column(name = "forcod", length = 4)
    private String forcod;
 
