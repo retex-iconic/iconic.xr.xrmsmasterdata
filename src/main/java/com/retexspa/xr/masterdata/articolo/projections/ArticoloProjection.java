@@ -1,6 +1,5 @@
 package com.retexspa.xr.masterdata.articolo.projections;
 
-import com.retexspa.xr.masterdata.articolo.commands.ArticoloAddFornitoreCommand;
 import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
@@ -42,11 +41,6 @@ public class ArticoloProjection {
     entity.setMaster(event.getData().getMaster());
     entity.setProduttore(event.getData().getProduttore());
     entity.setReparto(event.getData().getReparto());
-  }
-
-  @EventHandler
-  public void on(ArticoloAddFornitoreCommand event) {
-    //articoloRepository.save(new ArticoloQueryEntity(event.getId(), event.getFornitoreId()));
   }
 
   @ResetHandler

@@ -1,10 +1,9 @@
 package com.retexspa.xr.masterdata.articolo.controllers;
 
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloAddFornitoreDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.services.commands.ArticoloCommandService;
-import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
+import com.retexspa.xr.masterdata.articolo.services.queries.ArticoloQueryService;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import io.swagger.annotations.Api;
 import java.util.List;
@@ -26,10 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArticoloCommandsController {
 
   private final ArticoloCommandService articoloCommandService;
+  private final ArticoloQueryService articoloQueryService;
 
   // This method creates a new Articolo instance and saves it to the database
-  public ArticoloCommandsController(ArticoloCommandService articoloCommandService) {
+  public ArticoloCommandsController(ArticoloCommandService articoloCommandService, ArticoloQueryService articoloQueryService) {
     this.articoloCommandService = articoloCommandService;
+    this.articoloQueryService = articoloQueryService;
   }
 
   // This code is used to create a new article. It is used in the context of a POST request to the
@@ -46,14 +47,14 @@ public class ArticoloCommandsController {
 
   @GetMapping("/{articoloId}/events")
   public List<Object> getArticoloEvents(@PathVariable(value = "articoloId") String articoloId) {
-    List<Object> res = articoloCommandService.listEventsForArticolo(articoloId);
+    List<Object> res = articoloQueryService.listEventsForArticolo(articoloId);
     return res;
   }
 
   @GetMapping("/{articoloId}")
   public ArticoloAggregate getArticoloAggregate(
       @PathVariable(value = "articoloId") String articoloId) {
-    ArticoloAggregate res = articoloCommandService.getArticoloAggregate(articoloId);
+    ArticoloAggregate res = articoloQueryService.getArticoloAggregate(articoloId);
     return res;
   }
 
@@ -64,28 +65,11 @@ public class ArticoloCommandsController {
     return res;
   }
 
-  @PutMapping("/fornitorePrincipale/{articoloId}")
-  public CompletableFuture<String> addedFornitore(
-      @PathVariable(value = "articoloId") String articoloId,
-      @RequestBody ArticoloAddFornitoreDTO articoloAddFornitoreDTO) {
-    CompletableFuture<String> res =
-        articoloCommandService.addedFornitore(articoloId, articoloAddFornitoreDTO);
-    return res;
-  }
-
   @GetMapping("/negozioIndex-{articoloId}/{storeId}")
   public NegozioAggregate storeIndex(
       @PathVariable(value = "articoloId") String articoloId,
       @PathVariable(value = "storeId") String storeId) {
-    NegozioAggregate res = articoloCommandService.storeIndex(articoloId, storeId);
-    return res;
-  }
-
-  @GetMapping("/fornitoreIndex-{articoloId}/{fornitoreId}")
-  public FornitoreAggregate fornitoreIndex(
-      @PathVariable(value = "articoloId") String articoloId,
-      @PathVariable(value = "fornitoreId") String fornitoreId) {
-    FornitoreAggregate res = articoloCommandService.fornitoreIndex(articoloId, fornitoreId);
+    NegozioAggregate res = articoloQueryService.storeIndex(articoloId, storeId);
     return res;
   }
 }

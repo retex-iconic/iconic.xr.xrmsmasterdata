@@ -2,11 +2,9 @@ package com.retexspa.xr.masterdata.fornitore.aggregates;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.retexspa.xr.masterdata.fornitore.commands.FornitoreAddArticoloCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreCreateCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreUpdateCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
-import com.retexspa.xr.masterdata.fornitore.events.FornitoreAddedArticoloEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreCreatedEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreUpdatedEvent;
 import java.io.IOException;
@@ -55,23 +53,6 @@ public class FornitoreAggregate {
     this.data = objectReader.readValue(jsonInString, FornitoreDTO.class);
     // BeanUtils.copyProperties(fornitoreUpdatedEvent.data, this.data);
   }
-
-  @CommandHandler
-  protected void on(FornitoreAddArticoloCommand fornitoreAddArticoloCommand) {
-    AggregateLifecycle.apply(
-        new FornitoreAddedArticoloEvent(
-            fornitoreAddArticoloCommand.id, fornitoreAddArticoloCommand.articoloId));
-  }
-
-  // @EventSourcingHandler
-  // protected void on(FornitoreAddedArticoloEvent fornitoreAddArticoloEvent) {
-  //   if (!(this.articoloIds.contains(fornitoreAddArticoloEvent.articoloId)))
-  //     this.articoloIds.add(fornitoreAddArticoloEvent.articoloId);
-
-  //   AggregateLifecycle.apply(
-  //       new FornitoreAddedArticoloEvent(
-  //           fornitoreAddArticoloEvent.id, fornitoreAddArticoloEvent.articoloId));
-  // }
 
   public String getId() {
     return this.id;

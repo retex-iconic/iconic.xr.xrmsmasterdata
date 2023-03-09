@@ -23,17 +23,41 @@ public class FornitoreQueryEntity {
 
   // @OneToMany(cascade = CascadeType.ALL)
   // @JoinColumn(name = "parent")
+  @Column(name = "codiceFornitore")
+  private String codiceFornitore;
+
+  @Column(name = "numeroFornitore")
+  private String numeroFornitore;
+
+  @Column(name = "nomeFornitore")
+  private String nomeFornitore;
+
+  @Column(name = "indirizzoFornitore")
+  private String indirizzoFornitore;
+
+  @Column(name = "cittàFornitore")
+  private String cittàFornitore;
+
+  @Column(name = "capFornitore")
+  private String capFornitore;
+
+  @Column(name = "PIVAFornitore")
+  private String PIVAFornitore;
+
   @Column(name = "master")
   private String master;
-
-  @Column(name = "fornom", length = 30)
-  private String fornom;
 
   public FornitoreQueryEntity() {}
 
   public FornitoreQueryEntity(String fornitoreId, FornitoreDTO fornitoreDTO) {
     this.id = fornitoreId;
-    this.fornom = fornitoreDTO.getName();
+    this.codiceFornitore = fornitoreDTO.getCodiceFornitore();
+    this.numeroFornitore = fornitoreDTO.getNumeroFornitore();
+    this.nomeFornitore = fornitoreDTO.getNomeFornitore();
+    this.indirizzoFornitore = fornitoreDTO.getIndirizzo();
+    this.cittàFornitore = fornitoreDTO.getCittà();
+    this.capFornitore = fornitoreDTO.getCap();
+    this.PIVAFornitore = fornitoreDTO.getPIVA();
     this.master = fornitoreDTO.getMaster();
   }
 
@@ -45,19 +69,67 @@ public class FornitoreQueryEntity {
     this.id = id;
   }
 
+  public String getCodiceFornitore() {
+    return this.codiceFornitore;
+  }
+
+  public void setCodiceFornitore(String codiceFornitore) {
+    this.codiceFornitore = codiceFornitore;
+  }
+
+  public String getNumeroFornitore() {
+    return this.numeroFornitore;
+  }
+
+  public void setNumeroFornitore(String numeroFornitore) {
+    this.numeroFornitore = numeroFornitore;
+  }
+
+  public String getNomeFornitore() {
+    return this.nomeFornitore;
+  }
+
+  public void setNomeFornitore(String nomeFornitore) {
+    this.nomeFornitore = nomeFornitore;
+  }
+
+  public String getIndirizzoFornitore() {
+    return this.indirizzoFornitore;
+  }
+
+  public void setIndirizzoFornitore(String indirizzoFornitore) {
+    this.indirizzoFornitore = indirizzoFornitore;
+  }
+
+  public String getCittàFornitore() {
+    return this.cittàFornitore;
+  }
+
+  public void setCittàFornitore(String cittàFornitore) {
+    this.cittàFornitore = cittàFornitore;
+  }
+
+  public String getCapFornitore() {
+    return this.capFornitore;
+  }
+
+  public void setCapFornitore(String capFornitore) {
+    this.capFornitore = capFornitore;
+  }
+
+  public String getPIVAFornitore() {
+    return this.PIVAFornitore;
+  }
+
+  public void setPIVAFornitore(String PIVAFornitore) {
+    this.PIVAFornitore = PIVAFornitore;
+  }
+
   public String getMaster() {
     return this.master;
   }
 
   public void setMaster(String master) {
     this.master = master;
-  }
-
-  public String getFornom() {
-    return this.fornom;
-  }
-
-  public void setFornom(String fornom) {
-    this.fornom = fornom;
   }
 }

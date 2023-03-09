@@ -1,10 +1,8 @@
 package com.retexspa.xr.masterdata.fornitore.controllers;
 
 import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
-import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreAddArticoloDTO;
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.services.commands.FornitoreCommandService;
-import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
@@ -47,31 +45,6 @@ public class FornitoreCommandsController {
   public FornitoreAggregate getFornitoreAggregate(
       @PathVariable(value = "fornitoreId") String fornitoreId) {
     FornitoreAggregate res = fornitoreCommandService.getFornitoreAggregate(fornitoreId);
-    return res;
-  }
-
-  @GetMapping("/negozioIndex-{fornitoreId}/{storeId}")
-  public NegozioAggregate storeIndex(
-      @PathVariable(value = "fornitoreId") String fornitoreId,
-      @PathVariable(value = "storeId") String storeId) {
-    NegozioAggregate res = fornitoreCommandService.storeIndex(fornitoreId, storeId);
-    return res;
-  }
-
-  @GetMapping("/articoloIndex-{fornitoreId}/{articoloId}")
-  public NegozioAggregate articoloIndex(
-      @PathVariable(value = "fornitoreId") String fornitoreId,
-      @PathVariable(value = "articoloId") String articoloId) {
-    NegozioAggregate res = fornitoreCommandService.storeIndex(fornitoreId, articoloId);
-    return res;
-  }
-
-  @PutMapping("/articoloFornitorePrincipale/{fornitoreId}")
-  public CompletableFuture<String> addedArticolo(
-      @PathParam(value = "fornitoreId") String fornitoreId,
-      @RequestBody FornitoreAddArticoloDTO fornitoreAddArticoloDTO) {
-    CompletableFuture<String> res =
-        fornitoreCommandService.addedArticolo(fornitoreId, fornitoreAddArticoloDTO);
     return res;
   }
 

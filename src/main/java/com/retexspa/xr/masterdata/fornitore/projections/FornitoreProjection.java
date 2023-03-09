@@ -1,7 +1,6 @@
 package com.retexspa.xr.masterdata.fornitore.projections;
 
 import com.retexspa.xr.masterdata.fornitore.entities.FornitoreQueryEntity;
-import com.retexspa.xr.masterdata.fornitore.events.FornitoreAddedArticoloEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreCreatedEvent;
 import com.retexspa.xr.masterdata.fornitore.events.FornitoreUpdatedEvent;
 import com.retexspa.xr.masterdata.fornitore.repositories.FornitoreRepository;
@@ -13,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@ProcessingGroup("fornit")
+@ProcessingGroup("fornitori")
 public class FornitoreProjection {
 
   @Autowired private EntityManager entityManager;
@@ -33,13 +32,14 @@ public class FornitoreProjection {
   @EventHandler
   public void on(FornitoreUpdatedEvent event) {
     FornitoreQueryEntity entity = entityManager.find(FornitoreQueryEntity.class, event.getId());
-    entity.setFornom(event.getData().getName());
+    entity.setCodiceFornitore(event.getData().getCodiceFornitore());
+    entity.setNumeroFornitore(event.getData().getNumeroFornitore());
+    entity.setNomeFornitore(event.getData().getNomeFornitore());
+    entity.setIndirizzoFornitore(event.getData().getIndirizzo());
+    entity.setCittàFornitore(event.getData().getCittà());
+    entity.setCapFornitore(event.getData().getCap());
+    entity.setPIVAFornitore(event.getData().getPIVA());
     entity.setMaster(event.getData().getMaster());
-  }
-
-  @EventHandler
-  public void on(FornitoreAddedArticoloEvent event) {
-    //
   }
 
   @ResetHandler

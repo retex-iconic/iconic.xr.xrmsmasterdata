@@ -1,8 +1,0 @@
-package com.retexspa.xr.masterdata.articolo.services.queries;
-
-import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
-
-public class ArticoloQueryService {
-    // substitute aggregate con query entity
-    public Iterable<ArticoloAggregate> ListOfAggregatesArticoli();
-}
