@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
     value = "Fornitore Commands",
     description = "Fornitore Commands Related Endpoints",
     tags = "Fornitore Commands")
-public class FornitoreCommandsController {
+public class FornitoreController {
 
   private final FornitoreCommandService fornitoreCommandService;
   private final FornitoreQueryService fornitoreQueryService;
 
-  public FornitoreCommandsController(FornitoreCommandService fornitoreCommandService, FornitoreQueryService fornitoreQueryService) {
+  public FornitoreController(FornitoreCommandService fornitoreCommandService, FornitoreQueryService fornitoreQueryService) {
     this.fornitoreCommandService = fornitoreCommandService;
     this.fornitoreQueryService = fornitoreQueryService;
   }

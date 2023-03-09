@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
     value = "Articolo Commands",
     description = "Articolo Commands Related Endpoints",
     tags = "Articolo Commands")
-public class ArticoloCommandsController {
+public class ArticoloController {
 
   private final ArticoloCommandService articoloCommandService;
   private final ArticoloQueryService articoloQueryService;
 
   // This method creates a new Articolo instance and saves it to the database
-  public ArticoloCommandsController(ArticoloCommandService articoloCommandService, ArticoloQueryService articoloQueryService) {
+  public ArticoloController(ArticoloCommandService articoloCommandService, ArticoloQueryService articoloQueryService) {
     this.articoloCommandService = articoloCommandService;
     this.articoloQueryService = articoloQueryService;
   }

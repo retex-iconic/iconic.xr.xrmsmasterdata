@@ -25,12 +25,12 @@ import org.springframework.web.bind.annotation.RestController;
     value = "Negozio Commands",
     description = "Negozio Commands Related Endpoints",
     tags = "Negozio Commands")
-public class NegozioCommandsController {
+public class NegozioController {
 
   private final NegozioCommandService negozioCommandService;
   private final NegozioQueryService negozioQueryService;
 
-  public NegozioCommandsController(NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
+  public NegozioController(NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
     this.negozioCommandService = negozioCommandService;
     this.negozioQueryService = negozioQueryService;
   }
