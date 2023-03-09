@@ -28,7 +28,7 @@ public class LoadFornitore {
         FornitoreLegacy fornitoreLegacy;
         
         try {
-            fornitoreLegacy = objectMapper.readValue(new File("src/test/resources/"/*+ add test json for fornitore*/), FornitoreLegacy.class);
+            fornitoreLegacy = objectMapper.readValue(new File("src/test/resources/fornitore/ZARO.json"), FornitoreLegacy.class);
             fornitoreDTO = FornitoreMapper.MAPPER.legacyToDTO(fornitoreLegacy);
         } catch (StreamReadException e) {
             // TODO Auto-generated catch block

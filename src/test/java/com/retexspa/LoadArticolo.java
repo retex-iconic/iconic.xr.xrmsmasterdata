@@ -24,7 +24,7 @@ public class LoadArticolo {
         ArticoloLegacy articoloLegacy;
         
         try {
-            articoloLegacy = objectMapper.readValue(new File("src/test/resources/013188.json"), ArticoloLegacy.class);
+            articoloLegacy = objectMapper.readValue(new File("src/test/resources/articoli/013188.json"), ArticoloLegacy.class);
             articoloDTO = ArticoloMapper.MAPPER.legacyToDTO(articoloLegacy);
         } catch (StreamReadException e) {
             // TODO Auto-generated catch block
