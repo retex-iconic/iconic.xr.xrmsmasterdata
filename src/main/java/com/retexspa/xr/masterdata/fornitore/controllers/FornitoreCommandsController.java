@@ -3,6 +3,8 @@ package com.retexspa.xr.masterdata.fornitore.controllers;
 import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.services.commands.FornitoreCommandService;
+import com.retexspa.xr.masterdata.fornitore.services.queries.FornitoreQueryService;
+
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
@@ -24,9 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class FornitoreCommandsController {
 
   private final FornitoreCommandService fornitoreCommandService;
+  private final FornitoreQueryService fornitoreQueryService;
 
-  public FornitoreCommandsController(FornitoreCommandService fornitoreCommandService) {
+  public FornitoreCommandsController(FornitoreCommandService fornitoreCommandService, FornitoreQueryService fornitoreQueryService) {
     this.fornitoreCommandService = fornitoreCommandService;
+    this.fornitoreQueryService = fornitoreQueryService;
   }
 
   @PostMapping
@@ -37,14 +41,14 @@ public class FornitoreCommandsController {
 
   @GetMapping("/{fornitoreId}/events")
   public List<Object> getFornitoreEvents(@PathParam(value = "fornitoreId") String fornitoreId) {
-    List<Object> res = fornitoreCommandService.listEventsForFornitore(fornitoreId);
+    List<Object> res = fornitoreQueryService.listEventsForFornitore(fornitoreId);
     return res;
   }
 
   @GetMapping("/{fornitoreId}")
   public FornitoreAggregate getFornitoreAggregate(
       @PathVariable(value = "fornitoreId") String fornitoreId) {
-    FornitoreAggregate res = fornitoreCommandService.getFornitoreAggregate(fornitoreId);
+    FornitoreAggregate res = fornitoreQueryService.getFornitoreAggregate(fornitoreId);
     return res;
   }
 

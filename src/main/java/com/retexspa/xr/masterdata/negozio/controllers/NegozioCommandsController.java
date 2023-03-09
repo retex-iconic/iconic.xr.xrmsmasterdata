@@ -5,6 +5,8 @@ import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.services.commands.NegozioCommandService;
+import com.retexspa.xr.masterdata.negozio.services.queries.NegozioQueryService;
+
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
@@ -26,9 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class NegozioCommandsController {
 
   private final NegozioCommandService negozioCommandService;
+  private final NegozioQueryService negozioQueryService;
 
-  public NegozioCommandsController(NegozioCommandService negozioCommandService) {
+  public NegozioCommandsController(NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
     this.negozioCommandService = negozioCommandService;
+    this.negozioQueryService = negozioQueryService;
   }
 
   @PostMapping
@@ -39,13 +43,13 @@ public class NegozioCommandsController {
 
   @GetMapping("/{negozioId}/events")
   public List<Object> getNegozioEvents(@PathParam(value = "negozioId") String negozioId) {
-    List<Object> res = negozioCommandService.listEventsForNegozio(negozioId);
+    List<Object> res = negozioQueryService.listEventsForNegozio(negozioId);
     return res;
   }
 
   @GetMapping("/{negozioId}")
   public NegozioAggregate getNegozioAggregate(@PathParam(value = "negozioId") String negozioId) {
-    NegozioAggregate res = negozioCommandService.getNegozioAggregate(negozioId);
+    NegozioAggregate res = negozioQueryService.getNegozioAggregate(negozioId);
     return res;
   }
 
@@ -62,7 +66,7 @@ public class NegozioCommandsController {
   public ArticoloAggregate articoloIndex(
       @PathVariable(value = "negozioId") String negozioId,
       @PathVariable(value = "articoloId") String articoloId) {
-    ArticoloAggregate res = negozioCommandService.articoloIndex(negozioId, articoloId);
+    ArticoloAggregate res = negozioQueryService.articoloIndex(negozioId, articoloId);
     return res;
   }
 
@@ -70,7 +74,7 @@ public class NegozioCommandsController {
   public FornitoreAggregate fornitoreIndex(
       @PathVariable(value = "negozioId") String negozioId,
       @PathVariable(value = "fornitoreId") String fornitoreId) {
-    FornitoreAggregate res = negozioCommandService.fornitoreIndex(negozioId, fornitoreId);
+    FornitoreAggregate res = negozioQueryService.fornitoreIndex(negozioId, fornitoreId);
     return res;
   }
 }
