@@ -5,12 +5,15 @@ import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.stream.Collectors;
 import java.util.List;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 
+@Service
 public class NegozioQueryServiceImpl implements NegozioQueryService {
 
     private final EventStore eventStore;

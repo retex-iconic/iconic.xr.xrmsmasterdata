@@ -11,13 +11,13 @@ public interface FornitoreMapper {
 
   FornitoreMapper MAPPER = Mappers.getMapper(FornitoreMapper.class);
 
-  @Mapping(target = "forcod", source = "codiceFornitore")
-  @Mapping(target = "fornum", source = "numeroFornitore")
-  @Mapping(target = "fornom", source = "nomeFornitore")
-  @Mapping(target = "forind", source = "indirizzo")
-  @Mapping(target = "forcit", source = "città")
-  @Mapping(target = "forcap", source = "cap")
-  @Mapping(target = "forpiva", source = "piva")
+  @Mapping(source = "forcod", target = "codiceFornitore")
+  @Mapping(source = "fornum", target = "numeroFornitore")
+  @Mapping(source = "fornom", target = "nomeFornitore")
+  @Mapping(source = "forind", target = "indirizzo")
+  @Mapping(source = "forcit", target = "città")
+  @Mapping(source = "forcap", target = "cap")
+  @Mapping(source = "forpiva", target = "piva")
 
   FornitoreDTO legacyToDTO(FornitoreLegacy legacy);
 }

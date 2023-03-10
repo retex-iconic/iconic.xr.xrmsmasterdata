@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.websocket.server.PathParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class NegozioController {
 
   private final NegozioCommandService negozioCommandService;
+
+  @Autowired
   private final NegozioQueryService negozioQueryService;
 
   public NegozioController(NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {

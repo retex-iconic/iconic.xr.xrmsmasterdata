@@ -6,9 +6,12 @@ import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.stream.Collectors;
 import java.util.List;
 
+@Service
 public class FornitoreQueryServiceImpl implements FornitoreQueryService {
 
     private final EventStore eventStore;

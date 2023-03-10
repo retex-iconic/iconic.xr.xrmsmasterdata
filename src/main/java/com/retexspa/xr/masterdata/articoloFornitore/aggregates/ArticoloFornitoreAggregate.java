@@ -20,8 +20,6 @@ import org.axonframework.spring.stereotype.Aggregate;
 public class ArticoloFornitoreAggregate {
 
   @AggregateIdentifier private String id;
-  
-  @AggregateIdentifier private String articoloFornitoreId;
 
   private ArticoloFornitoreDTO data;
 
@@ -77,14 +75,6 @@ public class ArticoloFornitoreAggregate {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public String getArticoloFornitoreId() {
-    return this.articoloFornitoreId;
-  }
-
-  public void setArticoloFornitoreId(String articoloFornitoreId) {
-    this.articoloFornitoreId = articoloFornitoreId;
   }
 
   public ArticoloFornitoreDTO getData() {

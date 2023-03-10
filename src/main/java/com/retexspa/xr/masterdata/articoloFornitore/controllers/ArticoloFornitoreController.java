@@ -9,6 +9,8 @@ import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +29,7 @@ public class ArticoloFornitoreController {
 
   private final ArticoloFornitoreCommandService articoloFornitoreCommandService;
   
+  @Autowired
   private final ArticoloFornitoreQueryService articoloFornitoreQueryService;
 
   public ArticoloFornitoreController(ArticoloFornitoreCommandService articoloFornitoreCommandService, ArticoloFornitoreQueryService articoloFornitoreQueryService) {
