@@ -2,6 +2,7 @@ package com.retexspa.xr.masterdata.articolo.projections;
 
 import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloStoredIndexEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
 import com.retexspa.xr.masterdata.articolo.repositories.ArticoloRepository;
 import java.io.IOException;
@@ -41,6 +42,11 @@ public class ArticoloProjection {
     entity.setMaster(event.getData().getMaster());
     entity.setProduttore(event.getData().getProduttore());
     entity.setReparto(event.getData().getReparto());
+  }
+
+  @EventHandler
+  public void on(ArticoloStoredIndexEvent event) throws IOException {
+    articoloRepository.findAllById(event.getData().getStoreIds());
   }
 
   @ResetHandler
