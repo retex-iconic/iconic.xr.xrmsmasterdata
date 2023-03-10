@@ -35,8 +35,8 @@ public class FornitoreQueryEntity {
   @Column(name = "indirizzoFornitore")
   private String indirizzoFornitore;
 
-  @Column(name = "cittàFornitore")
-  private String cittàFornitore;
+  @Column(name = "cittaFornitore")
+  private String cittaFornitore;
 
   @Column(name = "capFornitore")
   private String capFornitore;
@@ -55,9 +55,9 @@ public class FornitoreQueryEntity {
     this.numeroFornitore = fornitoreDTO.getNumeroFornitore();
     this.nomeFornitore = fornitoreDTO.getNomeFornitore();
     this.indirizzoFornitore = fornitoreDTO.getIndirizzo();
-    this.cittàFornitore = fornitoreDTO.getCittà();
+    this.cittaFornitore = fornitoreDTO.getCitta();
     this.capFornitore = fornitoreDTO.getCap();
-    this.PIVAFornitore = fornitoreDTO.getPIVA();
+    this.PIVAFornitore = fornitoreDTO.getPiva();
     this.master = fornitoreDTO.getMaster();
   }
 
@@ -101,12 +101,12 @@ public class FornitoreQueryEntity {
     this.indirizzoFornitore = indirizzoFornitore;
   }
 
-  public String getCittàFornitore() {
-    return this.cittàFornitore;
+  public String getCittaFornitore() {
+    return this.cittaFornitore;
   }
 
-  public void setCittàFornitore(String cittàFornitore) {
-    this.cittàFornitore = cittàFornitore;
+  public void setCittaFornitore(String cittaFornitore) {
+    this.cittaFornitore = cittaFornitore;
   }
 
   public String getCapFornitore() {

@@ -14,5 +14,5 @@ public interface NegozioMapper {
   @Mapping(source = "codfisc", target = "codiceFiscale")
   @Mapping(source = "regfisc", target = "regimeFiscale")
 
-  NegozioDTO legacyToDto(NegozioLegacy negozioLegacy);
+  NegozioDTO legacyToDTO(NegozioLegacy negozioLegacy);
 }

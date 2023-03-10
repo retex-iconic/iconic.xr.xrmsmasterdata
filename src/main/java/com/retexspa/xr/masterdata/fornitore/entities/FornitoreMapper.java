@@ -15,7 +15,7 @@ public interface FornitoreMapper {
   @Mapping(source = "fornum", target = "numeroFornitore")
   @Mapping(source = "fornom", target = "nomeFornitore")
   @Mapping(source = "forind", target = "indirizzo")
-  @Mapping(source = "forcit", target = "città")
+  @Mapping(source = "forcit", target = "citta")
   @Mapping(source = "forcap", target = "cap")
   @Mapping(source = "forpiva", target = "piva")
 

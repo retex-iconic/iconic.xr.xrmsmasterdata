@@ -10,13 +10,14 @@ public class FornitoreDTO {
 
   private String indirizzo;
 
-  private String città;
+  private String citta;
 
   private String cap;
 
   private String piva;
 
   private String master;
+
 
   public String getCodiceFornitore() {
     return this.codiceFornitore;
@@ -50,12 +51,12 @@ public class FornitoreDTO {
     this.indirizzo = indirizzo;
   }
 
-  public String getCittà() {
-    return this.città;
+  public String getCitta() {
+    return this.citta;
   }
 
-  public void setCittà(String città) {
-    this.città = città;
+  public void setCitta(String citta) {
+    this.citta = citta;
   }
 
   public String getCap() {
@@ -66,11 +67,11 @@ public class FornitoreDTO {
     this.cap = cap;
   }
 
-  public String getPIVA() {
+  public String getPiva() {
     return this.piva;
   }
 
-  public void setPIVA(String piva) {
+  public void setPiva(String piva) {
     this.piva = piva;
   }
 
