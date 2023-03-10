@@ -20,7 +20,7 @@ public class ArticoloStoreIndexDTO {
     this.storeIds = new ArrayList<String>();
   }
 
-  public String getIdFromArticoloStore(String articoloId) {
+  public static String getIdFromArticoloStore(String articoloId) {
     return UUID.nameUUIDFromBytes(("/ArticoloStoreIndex/"+articoloId).getBytes()).toString();
   }
 
