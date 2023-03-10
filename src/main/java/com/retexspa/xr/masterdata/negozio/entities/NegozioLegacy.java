@@ -3,7 +3,7 @@ package com.retexspa.xr.masterdata.negozio.entities;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 
-// TABLE --> negozi (infoist)
+// Table --> "negozi" ("INFOINST")
 public class NegozioLegacy {
 
    @Column(name = "magazzino", length = 2)
@@ -167,6 +167,15 @@ public class NegozioLegacy {
 
    @Column(name = "lastnot", length = 14)
    private String lastnot;
+
+   @Column(name = "dataoraupd", length = 14)
+   private String dataoraupd;
+
+   @Column(name = "canale", length = 16)
+   private String canale;
+
+   @Column(name = "insegna", length = 16)
+   private String insegna;
 
    public String getMagazzino() {
       return this.magazzino;
@@ -598,6 +607,30 @@ public class NegozioLegacy {
 
    public void setLastnot(String lastnot) {
       this.lastnot = lastnot;
+   }
+
+   public String getDataoraupd() {
+      return this.dataoraupd;
+   }
+
+   public void setDataoraupd(String dataoraupd) {
+      this.dataoraupd = dataoraupd;
+   }
+
+   public String getCanale() {
+      return this.canale;
+   }
+
+   public void setCanale(String canale) {
+      this.canale = canale;
+   }
+
+   public String getInsegna() {
+      return this.insegna;
+   }
+
+   public void setInsegna(String insegna) {
+      this.insegna = insegna;
    }
 
 }

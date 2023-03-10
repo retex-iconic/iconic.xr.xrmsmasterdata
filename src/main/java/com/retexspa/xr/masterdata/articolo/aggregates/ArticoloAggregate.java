@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloUpdateCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloStoreIndexDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloStoredIndexEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
 import java.io.IOException;
 import org.axonframework.commandhandling.CommandHandler;
@@ -20,6 +22,7 @@ public class ArticoloAggregate {
   @AggregateIdentifier private String id;
 
   private ArticoloDTO data;
+  private ArticoloStoreIndexDTO dataStoreIndex;
 
   public ArticoloAggregate() {}
 
@@ -33,6 +36,14 @@ public class ArticoloAggregate {
   protected void on(ArticoloCreatedEvent articoloCreatedEvent) {
     this.id = articoloCreatedEvent.id;
     this.data = articoloCreatedEvent.data;
+
+    AggregateLifecycle.apply(new ArticoloStoredIndexEvent(this.id, dataStoreIndex));
+  }
+
+  @EventSourcingHandler
+  protected void on(ArticoloStoredIndexEvent articoloStoredIndexEvent) {
+    this.id = articoloStoredIndexEvent.id;
+    this.dataStoreIndex = articoloStoredIndexEvent.data;
   }
 
   @CommandHandler

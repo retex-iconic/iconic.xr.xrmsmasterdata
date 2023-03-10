@@ -3,7 +3,7 @@ package com.retexspa.xr.masterdata.fornitore.entities;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 
-// TABLE --> fornitori (fornit)
+// Table --> "fornitori" ("FORNIT")
 public class FornitoreLegacy {
 
    @Column(name = "forcod", length = 4)

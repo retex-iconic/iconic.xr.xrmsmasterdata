@@ -44,11 +44,6 @@ public class ArticoloProjection {
     entity.setReparto(event.getData().getReparto());
   }
 
-  @EventHandler
-  public void on(ArticoloStoredIndexEvent event) throws IOException {
-    articoloRepository.findAllById(event.getData().getStoreIds());
-  }
-
   @ResetHandler
   public void reset() {
     articoloRepository.deleteAll();
