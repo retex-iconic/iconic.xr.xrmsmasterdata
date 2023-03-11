@@ -1,12 +1,9 @@
 package com.retexspa.xr.masterdata.negozio.controllers;
 
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
-import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
-import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.services.commands.NegozioCommandService;
 import com.retexspa.xr.masterdata.negozio.services.queries.NegozioQueryService;
-
 import java.util.concurrent.CompletableFuture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @RequestMapping(value = "/commands/w/negozio")
@@ -40,7 +36,6 @@ public class NegozioEventStoreCommandController {
     return res;
   }
 
-
   @PutMapping("/{negozioId}")
   public CompletableFuture<Object> updateNegozi(
       @PathVariable(value = "negozioId") String negozioId,
@@ -57,5 +52,4 @@ public class NegozioEventStoreCommandController {
     ArticoloAggregate res = negozioQueryService.articoloIndex(negozioId, articoloId);
     return res;
   }
-
 }

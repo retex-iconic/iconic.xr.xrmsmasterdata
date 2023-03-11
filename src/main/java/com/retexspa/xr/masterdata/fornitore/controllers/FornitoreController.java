@@ -5,7 +5,6 @@ import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.services.commands.FornitoreCommandService;
 import com.retexspa.xr.masterdata.fornitore.services.queries.FornitoreQueryService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.websocket.server.PathParam;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
