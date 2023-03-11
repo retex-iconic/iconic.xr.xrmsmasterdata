@@ -8,7 +8,6 @@ import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,11 +27,11 @@ public class ArticoloController {
 
   private final ArticoloCommandService articoloCommandService;
 
-  @Autowired
-  private final ArticoloQueryService articoloQueryService;
+  @Autowired private final ArticoloQueryService articoloQueryService;
 
   // This method creates a new Articolo instance and saves it to the database
-  public ArticoloController(ArticoloCommandService articoloCommandService, ArticoloQueryService articoloQueryService) {
+  public ArticoloController(
+      ArticoloCommandService articoloCommandService, ArticoloQueryService articoloQueryService) {
     this.articoloCommandService = articoloCommandService;
     this.articoloQueryService = articoloQueryService;
   }

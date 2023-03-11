@@ -1,5 +1,3 @@
 package com.retexspa;
 
-public class LoadArticoloFornitore {
-    
-}
+public class LoadArticoloFornitore {}

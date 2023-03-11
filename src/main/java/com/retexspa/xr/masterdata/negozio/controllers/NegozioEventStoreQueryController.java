@@ -42,8 +42,8 @@ public class NegozioEventStoreQueryController {
   }
 
   @io.swagger.v3.oas.annotations.tags.Tag(
-    name = "Negozio EventStore Query",
-    description = "Negozio Commands Related Endpoints")
+      name = "Negozio EventStore Query",
+      description = "Negozio Commands Related Endpoints")
   @GetMapping("/{negozioId}/events")
   public List<Object> getNegozioEvents(@PathParam(value = "negozioId") String negozioId) {
     List<Object> res = negozioQueryService.listEventsForNegozio(negozioId);

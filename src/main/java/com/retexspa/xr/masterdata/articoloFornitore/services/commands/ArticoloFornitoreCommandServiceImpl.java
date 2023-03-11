@@ -18,18 +18,20 @@ public class ArticoloFornitoreCommandServiceImpl implements ArticoloFornitoreCom
   }
 
   @Override
-  public CompletableFuture<Object> createArticoloFornitore(ArticoloFornitoreDTO articoloFornitoreDTO) {
+  public CompletableFuture<Object> createArticoloFornitore(
+      ArticoloFornitoreDTO articoloFornitoreDTO) {
     CompletableFuture<Object> result =
-        commandGateway.send(new ArticoloFornitoreCreateCommand(UUID.randomUUID().toString(), articoloFornitoreDTO));
+        commandGateway.send(
+            new ArticoloFornitoreCreateCommand(UUID.randomUUID().toString(), articoloFornitoreDTO));
     return result;
   }
 
   @Override
-  public CompletableFuture<Object> updateArticoloFornitore(String articoloFornitoreId, ArticoloFornitoreDTO articoloFornitoreDTO) {
+  public CompletableFuture<Object> updateArticoloFornitore(
+      String articoloFornitoreId, ArticoloFornitoreDTO articoloFornitoreDTO) {
     CompletableFuture<Object> result =
-        commandGateway.send(new ArticoloFornitoreUpdateCommand(articoloFornitoreId, articoloFornitoreDTO));
+        commandGateway.send(
+            new ArticoloFornitoreUpdateCommand(articoloFornitoreId, articoloFornitoreDTO));
     return result;
   }
 }
-
-

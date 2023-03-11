@@ -7,9 +7,7 @@ import com.retexspa.xr.masterdata.negozio.commands.NegozioUpdateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.events.NegozioCreatedEvent;
 import com.retexspa.xr.masterdata.negozio.events.NegozioUpdatedEvent;
-
 import java.io.IOException;
-
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -49,7 +47,7 @@ public class NegozioAggregate {
     if (this.id == null) {
       this.id = negozioUpdatedEvent.id;
     }
-    
+
     ObjectMapper objectMapper = new ObjectMapper();
     ObjectReader objectReader = objectMapper.readerForUpdating(this.data);
     String jsonInString = objectMapper.writeValueAsString(negozioUpdatedEvent.data);

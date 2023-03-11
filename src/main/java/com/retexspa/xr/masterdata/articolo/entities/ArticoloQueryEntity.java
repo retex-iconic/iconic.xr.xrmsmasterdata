@@ -134,5 +134,4 @@ public class ArticoloQueryEntity {
   public void setMaster(String master) {
     this.master = master;
   }
-
 }

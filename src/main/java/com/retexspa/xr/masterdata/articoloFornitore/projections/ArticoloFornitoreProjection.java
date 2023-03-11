@@ -21,19 +21,22 @@ public class ArticoloFornitoreProjection {
 
   @Autowired private ArticoloFornitoreRepository articoloFornitoreRepository;
 
-  public ArticoloFornitoreProjection(EntityManager entityManager, ArticoloFornitoreRepository articoloFornitoreRepository) {
+  public ArticoloFornitoreProjection(
+      EntityManager entityManager, ArticoloFornitoreRepository articoloFornitoreRepository) {
     this.entityManager = entityManager;
     this.articoloFornitoreRepository = articoloFornitoreRepository;
   }
 
   @EventHandler
   public void on(ArticoloFornitoreCreatedEvent event) throws IOException {
-    articoloFornitoreRepository.save(new ArticoloFornitoreQueryEntity(event.getId(), event.getData()));
+    articoloFornitoreRepository.save(
+        new ArticoloFornitoreQueryEntity(event.getId(), event.getData()));
   }
 
   @EventHandler
   public void on(ArticoloFornitoreUpdatedEvent event) throws IOException {
-    ArticoloFornitoreQueryEntity entity = entityManager.find(ArticoloFornitoreQueryEntity.class, event.getId());
+    ArticoloFornitoreQueryEntity entity =
+        entityManager.find(ArticoloFornitoreQueryEntity.class, event.getId());
     entity.setFornitore(event.getData().getFornitore());
     entity.setArticolo(event.getData().getArticolo());
     entity.setCostoCartone(event.getData().getCostoCartone());
@@ -45,7 +48,8 @@ public class ArticoloFornitoreProjection {
 
   @EventHandler
   public void on(ArticoloFornitoreIndexEvent event) throws IOException {
-    ArticoloFornitoreQueryEntity entity = entityManager.find(ArticoloFornitoreQueryEntity.class, event.getId());
+    ArticoloFornitoreQueryEntity entity =
+        entityManager.find(ArticoloFornitoreQueryEntity.class, event.getId());
     entity.setId(event.getId());
   }
 

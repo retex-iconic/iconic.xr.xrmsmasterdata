@@ -22,7 +22,7 @@ public class ArticoloDTO {
 
   private String reparto;
 
-  // define properties here from ArticoloMapper target name 
+  // define properties here from ArticoloMapper target name
 
   private String layoutESL;
 

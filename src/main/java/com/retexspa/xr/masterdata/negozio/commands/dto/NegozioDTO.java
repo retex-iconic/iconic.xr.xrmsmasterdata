@@ -30,7 +30,7 @@ public class NegozioDTO {
 
   private String codiceDestinatarioSDI;
 
-  private String sedeLegaleIndirizzo;  
+  private String sedeLegaleIndirizzo;
 
   private String sedeLegaleNumeroCivico;
 
@@ -81,8 +81,6 @@ public class NegozioDTO {
   private String insegna;
 
   private String ivaVentilata;
-
-
 
   public String getRagioneSociale() {
     return this.ragioneSociale;
@@ -402,5 +400,5 @@ public class NegozioDTO {
 
   public void setIvaVentilata(String ivaVentilata) {
     this.ivaVentilata = ivaVentilata;
-  }  
+  }
 }

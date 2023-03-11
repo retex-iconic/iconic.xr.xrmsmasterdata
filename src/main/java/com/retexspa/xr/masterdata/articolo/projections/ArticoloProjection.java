@@ -2,7 +2,6 @@ package com.retexspa.xr.masterdata.articolo.projections;
 
 import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
-import com.retexspa.xr.masterdata.articolo.events.ArticoloStoredIndexEvent;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloUpdatedEvent;
 import com.retexspa.xr.masterdata.articolo.repositories.ArticoloRepository;
 import java.io.IOException;

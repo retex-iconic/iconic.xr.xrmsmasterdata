@@ -28,7 +28,8 @@ public class ArticoloFornitoreAggregate {
   @CommandHandler
   public ArticoloFornitoreAggregate(ArticoloFornitoreCreateCommand articoloFornitoreCreateCommand) {
     AggregateLifecycle.apply(
-        new ArticoloFornitoreCreatedEvent(articoloFornitoreCreateCommand.id, articoloFornitoreCreateCommand.data));
+        new ArticoloFornitoreCreatedEvent(
+            articoloFornitoreCreateCommand.id, articoloFornitoreCreateCommand.data));
   }
 
   @EventSourcingHandler
@@ -40,11 +41,13 @@ public class ArticoloFornitoreAggregate {
   @CommandHandler
   protected void on(ArticoloFornitoreUpdateCommand articoloFornitoreUpdateCommand) {
     AggregateLifecycle.apply(
-        new ArticoloFornitoreUpdatedEvent(articoloFornitoreUpdateCommand.id, articoloFornitoreUpdateCommand.data));
+        new ArticoloFornitoreUpdatedEvent(
+            articoloFornitoreUpdateCommand.id, articoloFornitoreUpdateCommand.data));
   }
 
   @EventSourcingHandler
-  protected void on(ArticoloFornitoreUpdatedEvent articoloFornitoreUpdatedEvent) throws IOException {
+  protected void on(ArticoloFornitoreUpdatedEvent articoloFornitoreUpdatedEvent)
+      throws IOException {
 
     if (this.id == null) {
       this.id = articoloFornitoreUpdatedEvent.id;
@@ -58,8 +61,7 @@ public class ArticoloFornitoreAggregate {
 
   @CommandHandler
   protected void on(ArticoloFornitoreIndexCommand articoloFornitoreIndexCommand) {
-    AggregateLifecycle.apply(
-      new ArticoloFornitoreIndexEvent(articoloFornitoreIndexCommand.id));
+    AggregateLifecycle.apply(new ArticoloFornitoreIndexEvent(articoloFornitoreIndexCommand.id));
   }
 
   @EventSourcingHandler

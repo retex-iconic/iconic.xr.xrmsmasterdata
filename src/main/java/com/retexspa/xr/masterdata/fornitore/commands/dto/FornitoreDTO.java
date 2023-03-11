@@ -91,7 +91,4 @@ public class FornitoreDTO {
   public void setMagazzino(String magazzino) {
     this.magazzino = magazzino;
   }
-
-
-
 }

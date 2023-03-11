@@ -1,9 +1,10 @@
 package com.retexspa.mapstruct;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import com.retexspa.LoadNegozio;
+
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
+import com.retexspa.LoadNegozio;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import java.io.IOException;
 import org.junit.jupiter.api.Test;

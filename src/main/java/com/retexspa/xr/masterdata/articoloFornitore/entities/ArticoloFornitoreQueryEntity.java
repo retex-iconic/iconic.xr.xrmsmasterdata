@@ -46,7 +46,8 @@ public class ArticoloFornitoreQueryEntity {
   // constructors
   public ArticoloFornitoreQueryEntity() {}
 
-  public ArticoloFornitoreQueryEntity(String articoloFornitoreId, ArticoloFornitoreDTO articoloFornitoreDTO) throws IOException {
+  public ArticoloFornitoreQueryEntity(
+      String articoloFornitoreId, ArticoloFornitoreDTO articoloFornitoreDTO) throws IOException {
     // ObjectMapper objectMapper = new ObjectMapper();
     // ObjectReader objectReader = objectMapper.readerForUpdating(this);
     // String jsonInString = objectMapper.writeValueAsString(articoloFornitoreDTO);

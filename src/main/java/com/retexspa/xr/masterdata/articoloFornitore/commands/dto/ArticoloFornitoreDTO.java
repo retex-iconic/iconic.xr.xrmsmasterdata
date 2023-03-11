@@ -1,9 +1,8 @@
 package com.retexspa.xr.masterdata.articoloFornitore.commands.dto;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.math.BigDecimal;
 
 @JsonInclude(Include.NON_NULL)
 public class ArticoloFornitoreDTO {

@@ -13,30 +13,36 @@ import org.springframework.context.annotation.Configuration;
 public class AxonConfig {
 
   @Bean
-  EventSourcingRepository<ArticoloAggregate> articoliAggregateEventSourcingRepository(EventStore eventStore) {
+  EventSourcingRepository<ArticoloAggregate> articoliAggregateEventSourcingRepository(
+      EventStore eventStore) {
     EventSourcingRepository<ArticoloAggregate> repository =
         EventSourcingRepository.builder(ArticoloAggregate.class).eventStore(eventStore).build();
     return repository;
   }
 
   @Bean
-  EventSourcingRepository<ArticoloFornitoreAggregate> articoliFornitoriAggregateEventSourcingRepository(EventStore eventStore) {
+  EventSourcingRepository<ArticoloFornitoreAggregate>
+      articoliFornitoriAggregateEventSourcingRepository(EventStore eventStore) {
     EventSourcingRepository<ArticoloFornitoreAggregate> repository =
-    EventSourcingRepository.builder(ArticoloFornitoreAggregate.class).eventStore(eventStore).build();
+        EventSourcingRepository.builder(ArticoloFornitoreAggregate.class)
+            .eventStore(eventStore)
+            .build();
     return repository;
   }
 
   @Bean
-  EventSourcingRepository<FornitoreAggregate> fornitoriAggregateEventSourcingRepository(EventStore eventStore) {
+  EventSourcingRepository<FornitoreAggregate> fornitoriAggregateEventSourcingRepository(
+      EventStore eventStore) {
     EventSourcingRepository<FornitoreAggregate> repository =
-    EventSourcingRepository.builder(FornitoreAggregate.class).eventStore(eventStore).build();
+        EventSourcingRepository.builder(FornitoreAggregate.class).eventStore(eventStore).build();
     return repository;
   }
 
   @Bean
-  EventSourcingRepository<NegozioAggregate> negoziAggregateEventSourcingRepository(EventStore eventStore) {
+  EventSourcingRepository<NegozioAggregate> negoziAggregateEventSourcingRepository(
+      EventStore eventStore) {
     EventSourcingRepository<NegozioAggregate> repository =
-    EventSourcingRepository.builder(NegozioAggregate.class).eventStore(eventStore).build();
+        EventSourcingRepository.builder(NegozioAggregate.class).eventStore(eventStore).build();
     return repository;
   }
 }

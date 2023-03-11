@@ -3,13 +3,11 @@ package com.retexspa.xr.masterdata.articolo.commands.dto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 public class ArticoloStoreIndexDTO {
 
-  @TargetAggregateIdentifier
-  private String id;
+  @TargetAggregateIdentifier private String id;
 
   private String articoloId;
   private List<String> storeIds;
@@ -21,7 +19,7 @@ public class ArticoloStoreIndexDTO {
   }
 
   public static String getIdFromArticoloStore(String articoloId) {
-    return UUID.nameUUIDFromBytes(("/ArticoloStoreIndex/"+articoloId).getBytes()).toString();
+    return UUID.nameUUIDFromBytes(("/ArticoloStoreIndex/" + articoloId).getBytes()).toString();
   }
 
   public String getId() {

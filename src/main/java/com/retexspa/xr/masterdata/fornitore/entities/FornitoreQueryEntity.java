@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "fornitori")
 public class FornitoreQueryEntity {
 
-  //TODO correct this to be equivalent to the FornitoreDTO class!
+  // TODO correct this to be equivalent to the FornitoreDTO class!
 
   @Id
   // @ManyToOne
