@@ -11,7 +11,7 @@ public interface NegozioMapper {
 
    NegozioMapper MAPPER = Mappers.getMapper(NegozioMapper.class);
 
-   @Mapping(target = "magazzinoTLPosWin", source = "magazzino")
+   @Mapping(target = "magazzino", source = "magazzino")
    @Mapping(target = "differenzialePartitaIVA", source = "magsede")
    @Mapping(target = "nazionePartitaIVA", source = "idpaese")
    @Mapping(target = "partitaIVA", source = "idcodice")
