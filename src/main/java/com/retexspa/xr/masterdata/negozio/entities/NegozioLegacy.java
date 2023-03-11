@@ -177,6 +177,11 @@ public class NegozioLegacy {
    @Column(name = "insegna", length = 16)
    private String insegna;
 
+   @Column(name = "ivavent", length = 16)
+   private String ivavent;
+
+
+
    public String getMagazzino() {
       return this.magazzino;
    }
@@ -632,5 +637,11 @@ public class NegozioLegacy {
    public void setInsegna(String insegna) {
       this.insegna = insegna;
    }
+   public String getIvavent() {
+      return this.ivavent;
+   }
 
+   public void setIvavent(String ivavent) {
+      this.ivavent = ivavent;
+   }
 }
