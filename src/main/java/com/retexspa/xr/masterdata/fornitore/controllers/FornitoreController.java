@@ -5,7 +5,7 @@ import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
 import com.retexspa.xr.masterdata.fornitore.services.commands.FornitoreCommandService;
 import com.retexspa.xr.masterdata.fornitore.services.queries.FornitoreQueryService;
 import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.websocket.server.PathParam;
