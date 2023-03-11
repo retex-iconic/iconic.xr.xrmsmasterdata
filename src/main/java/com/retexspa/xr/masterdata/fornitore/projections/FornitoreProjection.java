@@ -32,7 +32,7 @@ public class FornitoreProjection {
   @EventHandler
   public void on(FornitoreUpdatedEvent event) {
     FornitoreQueryEntity entity = entityManager.find(FornitoreQueryEntity.class, event.getId());
-    entity.setCodiceFornitore(event.getData().getCodiceFornitore());
+    entity.setCodiceFornitore(event.getData().getCodice());
     entity.setNumeroFornitore(event.getData().getNumeroFornitore());
     entity.setNomeFornitore(event.getData().getNomeFornitore());
     entity.setIndirizzoFornitore(event.getData().getIndirizzo());
