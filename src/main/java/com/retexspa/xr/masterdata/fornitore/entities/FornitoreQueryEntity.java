@@ -23,8 +23,8 @@ public class FornitoreQueryEntity {
 
   // @OneToMany(cascade = CascadeType.ALL)
   // @JoinColumn(name = "parent")
-  @Column(name = "codiceFornitore")
-  private String codiceFornitore;
+  @Column(name = "codice")
+  private String codice;
 
   @Column(name = "numeroFornitore")
   private String numeroFornitore;
@@ -51,7 +51,7 @@ public class FornitoreQueryEntity {
 
   public FornitoreQueryEntity(String fornitoreId, FornitoreDTO fornitoreDTO) {
     this.id = fornitoreId;
-    this.codiceFornitore = fornitoreDTO.getCodiceFornitore();
+    this.codice = fornitoreDTO.getCodice();
     this.numeroFornitore = fornitoreDTO.getNumeroFornitore();
     this.nomeFornitore = fornitoreDTO.getNomeFornitore();
     this.indirizzoFornitore = fornitoreDTO.getIndirizzo();
@@ -70,11 +70,11 @@ public class FornitoreQueryEntity {
   }
 
   public String getCodiceFornitore() {
-    return this.codiceFornitore;
+    return this.codice;
   }
 
-  public void setCodiceFornitore(String codiceFornitore) {
-    this.codiceFornitore = codiceFornitore;
+  public void setCodiceFornitore(String codice) {
+    this.codice = codice;
   }
 
   public String getNumeroFornitore() {
