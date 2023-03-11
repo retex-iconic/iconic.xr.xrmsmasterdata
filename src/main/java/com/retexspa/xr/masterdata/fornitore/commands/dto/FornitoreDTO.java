@@ -2,7 +2,7 @@ package com.retexspa.xr.masterdata.fornitore.commands.dto;
 
 public class FornitoreDTO {
 
-  private String codiceFornitore;
+  private String codice;
 
   private String numeroFornitore;
 
@@ -18,13 +18,14 @@ public class FornitoreDTO {
 
   private String master;
 
+  private String magazzino;
 
-  public String getCodiceFornitore() {
-    return this.codiceFornitore;
+  public String getCodice() {
+    return this.codice;
   }
 
-  public void setCodiceFornitore(String codiceFornitore) {
-    this.codiceFornitore = codiceFornitore;
+  public void setCodice(String codice) {
+    this.codice = codice;
   }
 
   public String getNumeroFornitore() {
@@ -82,4 +83,15 @@ public class FornitoreDTO {
   public void setMaster(String master) {
     this.master = master;
   }
+
+  public String getMagazzino() {
+    return this.magazzino;
+  }
+
+  public void setMagazzino(String magazzino) {
+    this.magazzino = magazzino;
+  }
+
+
+
 }
