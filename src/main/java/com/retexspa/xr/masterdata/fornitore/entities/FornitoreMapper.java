@@ -12,19 +12,25 @@ public interface FornitoreMapper {
    FornitoreMapper MAPPER = Mappers.getMapper( FornitoreMapper.class );
 
    @Mapping(target = "codice", source = "forcod")
-   @Mapping(target = "codiceEsterno", source = "fornum")
-   @Mapping(target = "ragioneSociale", source = "fornom")
+   
+//* */ @Mapping(target = "codiceEsterno", source = "fornum")
+//* */ @Mapping(target = "ragioneSociale", source = "fornom")
+   
    @Mapping(target = "indirizzo", source = "forind")
    @Mapping(target = "citta", source = "forcit")
    @Mapping(target = "cap", source = "forcap")
-   @Mapping(target = "partitaIva", source = "forpiva")
-   @Mapping(target = "codiceFiscale", source = "forcf")
-   @Mapping(target = "telefono", source = "fortel")
+   @Mapping(target = "piva", source = "forpiva")
+
+//* */ @Mapping(target = "codiceFiscale", source = "forcf")
+//* */ @Mapping(target = "telefono", source = "fortel")
+
 // @Mapping(source = "giorcons", ignore = true")
 // @Mapping(source = "costoper", ignore = true")
 // @Mapping(source = "varfor", ignore = true")
 // @Mapping(source = "autom", ignore = true")
-   @Mapping(target = "rank", source = "primario")
+
+//* */ @Mapping(target = "rank", source = "primario")
+
 // @Mapping(source = "cedifile", ignore = true")
 // @Mapping(source = "anagra", ignore = true")
 // @Mapping(source = "fattura", ignore = true")
@@ -32,7 +38,9 @@ public interface FornitoreMapper {
 // @Mapping(source = "prezzicedi", ignore = true")
 // @Mapping(source = "gesrifat", ignore = true")
 // @Mapping(source = "export", ignore = true")
-   @Mapping(target = "tipocod", source = "tipocod")
+
+//* */ @Mapping(target = "tipocod", source = "tipocod")
+
 // @Mapping(source = "fattdif", ignore = true")
 // @Mapping(source = "offerte", ignore = true")
 // @Mapping(source = "offfid", ignore = true")
@@ -40,7 +48,9 @@ public interface FornitoreMapper {
 // @Mapping(source = "rifattu", ignore = true")
 // @Mapping(source = "flagdocum", ignore = true")
 // @Mapping(source = "maskcodart", ignore = true")
-   @Mapping(target = "email", source = "email")
+
+//* */ @Mapping(target = "email", source = "email")
+
 // @Mapping(source = "datatype", ignore = true")
 // @Mapping(source = "datafunc", ignore = true")
 // @Mapping(source = "backclr", ignore = true")
@@ -48,9 +58,13 @@ public interface FornitoreMapper {
 // @Mapping(source = "catrif", ignore = true")
 // @Mapping(source = "fattddt", ignore = true")
 // @Mapping(source = "flagfile", ignore = true")
-   @Mapping(target = "codiceEsterno2", source = "forcedi")
+   
+//* */ @Mapping(target = "codiceEsterno2", source = "forcedi")
+
 // @Mapping(source = "monofase", ignore = true")
-   @Mapping(target = "codiceContabilita", source = "codcontab")
+
+//* */ @Mapping(target = "codiceContabilita", source = "codcontab")
+
 // @Mapping(source = "fattven", ignore = true")
 // @Mapping(source = "ordcolli", ignore = true")
 // @Mapping(source = "doccolli", ignore = true")
@@ -74,7 +88,9 @@ public interface FornitoreMapper {
 // @Mapping(source = "classe", ignore = true")
 // @Mapping(source = "eticod", ignore = true")
 // @Mapping(source = "etibar", ignore = true")
-   @Mapping(target = "codicePrecedenteBackOffice", source = "forbo")
+   
+//* */ @Mapping(target = "codicePrecedenteBackOffice", source = "forbo")
+
 // @Mapping(source = "tlcentrale", ignore = true")
 // @Mapping(source = "dataoraupd", ignore = true")
 
