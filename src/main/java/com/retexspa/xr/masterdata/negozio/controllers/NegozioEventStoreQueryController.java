@@ -6,13 +6,10 @@ import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.services.commands.NegozioCommandService;
 import com.retexspa.xr.masterdata.negozio.services.queries.NegozioQueryService;
-
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,18 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/negozio")
-@Api(
-    value = "Negozio Commands",
-    description = "Negozio Commands Related Endpoints",
-    tags = "Negozio Commands")
-public class NegozioController {
+@io.swagger.v3.oas.annotations.tags.Tag(
+    name = "Negozio Commands",
+    description = "Negozio Commands Related Endpoints")
+public class NegozioEventStoreQueryController {
 
   private final NegozioCommandService negozioCommandService;
 
-  @Autowired
-  private final NegozioQueryService negozioQueryService;
+  @Autowired private final NegozioQueryService negozioQueryService;
 
-  public NegozioController(NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
+  public NegozioEventStoreQueryController(
+      NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
     this.negozioCommandService = negozioCommandService;
     this.negozioQueryService = negozioQueryService;
   }
@@ -45,6 +41,9 @@ public class NegozioController {
     return res;
   }
 
+  @io.swagger.v3.oas.annotations.tags.Tag(
+    name = "Negozio EventStore Query",
+    description = "Negozio Commands Related Endpoints")
   @GetMapping("/{negozioId}/events")
   public List<Object> getNegozioEvents(@PathParam(value = "negozioId") String negozioId) {
     List<Object> res = negozioQueryService.listEventsForNegozio(negozioId);
