@@ -22,6 +22,28 @@ public class ArticoloDTO {
 
   private String reparto;
 
+  // define properties here from ArticoloMapper target name 
+
+  private String layoutESL;
+
+  private String gruppo;
+
+  public String getLayoutESL() {
+    return this.layoutESL;
+  }
+
+  public void setLayoutESL(String layoutESL) {
+    this.layoutESL = layoutESL;
+  }
+
+  public String getGruppo() {
+    return this.gruppo;
+  }
+
+  public void setGruppo(String gruppo) {
+    this.gruppo = gruppo;
+  }
+
   public String getReparto() {
     return this.reparto;
   }
