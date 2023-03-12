@@ -13,12 +13,12 @@ public class ArticoloStoreIndexDTO {
   private List<String> storeIds;
 
   public ArticoloStoreIndexDTO(String articoloId) {
-    this.id = getIdFromArticoloStore(articoloId);
+    this.id = getIdFromArticolo(articoloId);
     this.articoloId = articoloId;
     this.storeIds = new ArrayList<String>();
   }
 
-  public static String getIdFromArticoloStore(String articoloId) {
+  public static String getIdFromArticolo(String articoloId) {
     return UUID.nameUUIDFromBytes(("/ArticoloStoreIndex/" + articoloId).getBytes()).toString();
   }
 

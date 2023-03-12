@@ -3,9 +3,11 @@ package com.retexspa.aggregate;
 import com.retexspa.LoadArticolo;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
+import com.retexspa.xr.masterdata.articolo.commands.ArticoloStoreIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloStoreIndexDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloStoredIndexEvent;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
@@ -15,6 +17,9 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+// uuid index = 0d6c3219-82ee-3d2a-bc48-e5de675e8d92
+// articolo id = 4f2ef142-c882-484e-84a3-7bbb3dfc0e6a
 
 public class ArticoloAggregateTest {
   private FixtureConfiguration<?> fixture;
@@ -27,19 +32,42 @@ public class ArticoloAggregateTest {
   }
 
   @Test
+  void generateId () {
+    String articolo_id = "4f2ef142-c882-484e-84a3-7bbb3dfc0e6a";
+    String articolo_index_id = "0d6c3219-82ee-3d2a-bc48-e5de675e8d92";
+    String id = ArticoloStoreIndexDTO.getIdFromArticolo(articolo_id) ;
+    assert id.equals(articolo_index_id);
+  }
+
+  @Test
   void createArticolo() {
 
     ArticoloDTO articoloDTO = new LoadArticolo().loadArticolo();
     String id = UUID.randomUUID().toString();
+    ArticoloStoreIndexDTO articoloStoreIndexDTO = new ArticoloStoreIndexDTO(id);
+    fixture
+        .given(new ArticoloCreatedEvent(id, articoloDTO))
+        .when(new ArticoloCreateCommand(id, articoloDTO))
+        .expectSuccessfulHandlerExecution()
+        .expectEvents(new ArticoloStoredIndexEvent(id, articoloStoreIndexDTO));
+  }
+
+  @Test
+  void addArticoloStoreIndex() {
+    String id = UUID.randomUUID().toString();    
+    ArticoloDTO articoloDTO = new ArticoloDTO();
     fixture
         .given()
         .when(new ArticoloCreateCommand(id, articoloDTO))
         .expectSuccessfulHandlerExecution()
         .expectEvents(new ArticoloCreatedEvent(id, articoloDTO));
+
+
+
     NegozioDTO negozioDTO = new NegozioDTO();
-    negozioDTO.setRagioneSociale("S.I.F. SRL");
-    negozioDTO.setCodiceFiscale("");
-    negozioDTO.setRegimeFiscale("RF01");
+    negozioDTO.setRagioneSociale("ragioneSociale");
+    negozioDTO.setCodiceFiscale("codiceFiscale");
+    negozioDTO.setRegimeFiscale("regimeFiscale");
     negozioDTO.setMaster(null);
     String id_negozio = UUID.randomUUID().toString();
     fixture_negozio
@@ -48,9 +76,13 @@ public class ArticoloAggregateTest {
         .expectSuccessfulHandlerExecution()
         .expectEvents(new NegozioCreatedEvent(id_negozio, negozioDTO));
 
+
     ArticoloStoreIndexDTO articoloStoreIndexDTO = new ArticoloStoreIndexDTO(id);
 
-    // assertThat(negozioDTO.getRagioneSociale()).isEqualTo("S.I.F. SRL");
+    fixture.given( )
+        .when(new ArticoloStoreIndexCommand(id_negozio, articoloStoreIndexDTO))
+        .expectSuccessfulHandlerExecution()
+        .expectEvents(new ArticoloStoreIndexCommand(id_negozio, articoloStoreIndexDTO));
 
   }
 }
