@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioUpdateCommand;
+import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioArticoloIndexDTO;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
 import com.retexspa.xr.masterdata.negozio.events.NegozioArticoloIndexEvent;
 import com.retexspa.xr.masterdata.negozio.events.NegozioCreatedEvent;
@@ -22,12 +23,14 @@ public class NegozioAggregate {
 
   private NegozioDTO data;
 
+  private NegozioArticoloIndexDTO dataArticoloIndex;
+
   public NegozioAggregate() {}
 
   @CommandHandler
   public NegozioAggregate(NegozioCreateCommand negozioCreateCommand) {
     AggregateLifecycle.apply(
-        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.data)); 
+        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.data));
   }
 
   @EventSourcingHandler
@@ -35,7 +38,7 @@ public class NegozioAggregate {
     this.id = negozioCreatedEvent.id;
     this.data = negozioCreatedEvent.data;
     
-
+    AggregateLifecycle.apply(new NegozioArticoloIndexEvent(this.id, dataArticoloIndex));
   }
 
   @CommandHandler

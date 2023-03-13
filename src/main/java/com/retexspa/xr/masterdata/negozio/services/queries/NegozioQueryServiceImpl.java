@@ -6,7 +6,7 @@ import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.axonframework.eventsourcing.EventSourcingRepository;
-import org.axonframework.eventsourcing.eventstore.EventStorageEngine;
+//import org.axonframework.eventsourcing.eventstore.EventStorageEngine;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;
 import org.axonframework.messaging.unitofwork.UnitOfWork;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class NegozioQueryServiceImpl implements NegozioQueryService {
 
   private final EventStore eventStore;
-  private final EventStorageEngine eventStorageEngine;
+  //private final EventStorageEngine eventStorageEngine;
   private UnitOfWork<?> unitOfWork;
 
   @Autowired
@@ -30,10 +30,10 @@ public class NegozioQueryServiceImpl implements NegozioQueryService {
   private EventSourcingRepository<FornitoreAggregate> fornitoreAggregateEventSourcingRepository;
 
   public NegozioQueryServiceImpl(
-      EventStorageEngine eventStorageEngine,
+      //EventStorageEngine eventStorageEngine,
       EventStore eventStore,
       EventSourcingRepository<NegozioAggregate> negozioAggregateEventSourcingRepository) {
-    this.eventStorageEngine = eventStorageEngine;
+    //this.eventStorageEngine = eventStorageEngine;
     this.eventStore = eventStore;
     
     this.negozioAggregateEventSourcingRepository = negozioAggregateEventSourcingRepository;

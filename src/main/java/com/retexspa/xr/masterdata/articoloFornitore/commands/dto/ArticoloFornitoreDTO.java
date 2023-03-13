@@ -3,9 +3,16 @@ package com.retexspa.xr.masterdata.articoloFornitore.commands.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @JsonInclude(Include.NON_NULL)
 public class ArticoloFornitoreDTO {
+
+  @TargetAggregateIdentifier private String id;
 
   private String fornitore;
 
@@ -20,6 +27,20 @@ public class ArticoloFornitoreDTO {
   private String note;
 
   private String master;
+
+  private String articoloFornitoreId;
+
+  private List<String> articoloFornitoreIds;
+
+  public ArticoloFornitoreDTO(String articoloFornitoreId) {
+    this.id = getIdFromArticolo(articoloFornitoreId);
+    this.articoloFornitoreId = articoloFornitoreId;
+    this.articoloFornitoreIds = new ArrayList<String>();
+  }
+
+  private String getIdFromArticolo(String articoloId) {
+    return UUID.nameUUIDFromBytes(("/ArticoloFornitoreIndex/" + articoloId).getBytes()).toString();
+  }
 
   public String getFornitore() {
     return this.fornitore;
@@ -75,5 +96,29 @@ public class ArticoloFornitoreDTO {
 
   public void setMaster(String master) {
     this.master = master;
+  }
+
+  public String getId() {
+    return this.id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getArticoloFornitoreId() {
+    return this.articoloFornitoreId;
+  }
+
+  public void setArticoloFornitoreId(String articoloFornitoreId) {
+    this.articoloFornitoreId = articoloFornitoreId;
+  }
+
+  public List<String> getArticoloFornitoreIds() {
+    return this.articoloFornitoreIds;
+  }
+
+  public void setArticoloFornitoreIds(List<String> articoloFornitoreIds) {
+    this.articoloFornitoreIds = articoloFornitoreIds;
   }
 }

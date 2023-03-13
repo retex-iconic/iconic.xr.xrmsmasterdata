@@ -22,6 +22,7 @@ public class ArticoloAggregate {
   @AggregateIdentifier private String id;
 
   private ArticoloDTO data;
+  
   private ArticoloNegozioIndexDTO dataStoreIndex;
 
   public ArticoloAggregate() {}
@@ -38,12 +39,6 @@ public class ArticoloAggregate {
     this.data = articoloCreatedEvent.data;
 
     AggregateLifecycle.apply(new ArticoloNegozioIndexEvent(this.id, dataStoreIndex));
-  }
-
-  @EventSourcingHandler
-  protected void on(ArticoloNegozioIndexEvent articoloNegoziodIndexEvent) {
-    this.id = articoloNegoziodIndexEvent.id;
-    this.dataStoreIndex = articoloNegoziodIndexEvent.data;
   }
 
   @CommandHandler

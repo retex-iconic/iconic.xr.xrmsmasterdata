@@ -10,8 +10,6 @@ public class ArticoloNegozioIndexEvent extends BaseEvent<String> {
   public ArticoloNegozioIndexEvent(String id, ArticoloNegozioIndexDTO data) {
     super(id);
     this.data = data;
-
-    // TODO Auto-generated constructor stub
   }
 
   public String getId() {

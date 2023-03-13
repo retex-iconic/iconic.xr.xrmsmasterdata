@@ -2,6 +2,8 @@ package com.retexspa.xr.masterdata.fornitore.aggregates;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.retexspa.xr.masterdata.articoloFornitore.commands.dto.ArticoloFornitoreDTO;
+import com.retexspa.xr.masterdata.articoloFornitore.events.ArticoloFornitoreIndexEvent;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreCreateCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.FornitoreUpdateCommand;
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;

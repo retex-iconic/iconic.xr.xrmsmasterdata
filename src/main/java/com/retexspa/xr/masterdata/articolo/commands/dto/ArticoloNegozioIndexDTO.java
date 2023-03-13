@@ -10,14 +10,12 @@ public class ArticoloNegozioIndexDTO {
   @TargetAggregateIdentifier private String id;
 
   private String articoloId;
-  private List<String> nogizioIds;
-
-
+  private List<String> negozioIds;
 
   public ArticoloNegozioIndexDTO(String articoloId) {
     this.id = getIdFromArticolo(articoloId);
     this.articoloId = articoloId;
-    this.nogizioIds = new ArrayList<String>();
+    this.negozioIds = new ArrayList<String>();
   }
 
   public static String getIdFromArticolo(String articoloId) {
@@ -40,12 +38,12 @@ public class ArticoloNegozioIndexDTO {
     this.articoloId = articoloId;
   }
 
-  public List<String> getNogizioIds() {
-    return this.nogizioIds;
+  public List<String> getNegozioIds() {
+    return this.negozioIds;
   }
 
-  public void setNogizioIds(List<String> nogizioIds) {
-    this.nogizioIds = nogizioIds;
+  public void setNegozioIds(List<String> negozioIds) {
+    this.negozioIds = negozioIds;
   }
 
 }

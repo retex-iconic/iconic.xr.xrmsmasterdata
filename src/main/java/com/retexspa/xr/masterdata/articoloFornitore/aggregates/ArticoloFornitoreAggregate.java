@@ -3,7 +3,6 @@ package com.retexspa.xr.masterdata.articoloFornitore.aggregates;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.articoloFornitore.commands.ArticoloFornitoreCreateCommand;
-import com.retexspa.xr.masterdata.articoloFornitore.commands.ArticoloFornitoreIndexCommand;
 import com.retexspa.xr.masterdata.articoloFornitore.commands.ArticoloFornitoreUpdateCommand;
 import com.retexspa.xr.masterdata.articoloFornitore.commands.dto.ArticoloFornitoreDTO;
 import com.retexspa.xr.masterdata.articoloFornitore.events.ArticoloFornitoreCreatedEvent;
@@ -30,6 +29,8 @@ public class ArticoloFornitoreAggregate {
     AggregateLifecycle.apply(
         new ArticoloFornitoreCreatedEvent(
             articoloFornitoreCreateCommand.id, articoloFornitoreCreateCommand.data));
+
+    AggregateLifecycle.apply(new ArticoloFornitoreIndexEvent(this.id, data));
   }
 
   @EventSourcingHandler
@@ -57,18 +58,6 @@ public class ArticoloFornitoreAggregate {
     String jsonInString = objectMapper.writeValueAsString(articoloFornitoreUpdatedEvent.data);
     this.data = objectReader.readValue(jsonInString, ArticoloFornitoreDTO.class);
     // BeanUtils.copyProperties(articoloUpdatedEvent.data, this.data);
-  }
-
-  @CommandHandler
-  protected void on(ArticoloFornitoreIndexCommand articoloFornitoreIndexCommand) {
-    AggregateLifecycle.apply(new ArticoloFornitoreIndexEvent(articoloFornitoreIndexCommand.id));
-  }
-
-  @EventSourcingHandler
-  protected void on(ArticoloFornitoreIndexEvent articoloFornitoreIndexEvent) throws IOException {
-    if (this.id != articoloFornitoreIndexEvent.id || this.id == null) {
-      this.id = articoloFornitoreIndexEvent.id;
-    }
   }
 
   public String getId() {

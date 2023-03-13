@@ -2,7 +2,6 @@ package com.retexspa.xr.masterdata.negozio.controllers;
 
 import com.retexspa.xr.masterdata.fornitore.aggregates.FornitoreAggregate;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
-import com.retexspa.xr.masterdata.negozio.services.commands.NegozioCommandService;
 import com.retexspa.xr.masterdata.negozio.services.queries.NegozioQueryService;
 import java.util.List;
 import javax.websocket.server.PathParam;
@@ -19,13 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
     description = "Negozio EventStore Queries Related Endpoints")
 public class NegozioEventStoreQueryController {
 
-  private final NegozioCommandService negozioCommandService;
-
   @Autowired private final NegozioQueryService negozioQueryService;
 
-  public NegozioEventStoreQueryController(
-      NegozioCommandService negozioCommandService, NegozioQueryService negozioQueryService) {
-    this.negozioCommandService = negozioCommandService;
+  public NegozioEventStoreQueryController(NegozioQueryService negozioQueryService) {
     this.negozioQueryService = negozioQueryService;
   }
 

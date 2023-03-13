@@ -1,6 +1,7 @@
 package com.retexspa.xr.masterdata.negozio.aggregates;
 
 import com.retexspa.xr.masterdata.negozio.commands.NegozioArticoloIndexCommand;
+import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioArticoloIndexDTO;
 import com.retexspa.xr.masterdata.negozio.events.NegozioArticoloIndexEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -13,7 +14,7 @@ public class NegozioArticoloIndexAggregate {
 
   @AggregateIdentifier private String id;
 
-  private String articoloId;
+  private NegozioArticoloIndexDTO data;
 
   public NegozioArticoloIndexAggregate() {}
 
@@ -21,13 +22,13 @@ public class NegozioArticoloIndexAggregate {
   protected NegozioArticoloIndexAggregate(NegozioArticoloIndexCommand negozioArticoloIndexCommand) {
     AggregateLifecycle.apply(
         new NegozioArticoloIndexEvent(
-            negozioArticoloIndexCommand.id, null));
+            negozioArticoloIndexCommand.id, negozioArticoloIndexCommand.data));
   }
 
   @EventSourcingHandler
   protected void on(NegozioArticoloIndexEvent storedArticoloIndexEvent) {
     this.id = storedArticoloIndexEvent.id;
-    this.articoloId = storedArticoloIndexEvent.articoloId;
+    this.data = storedArticoloIndexEvent.data;
   }
 
   public String getId() {
@@ -38,11 +39,11 @@ public class NegozioArticoloIndexAggregate {
     this.id = id;
   }
 
-  public String getArticoloId() {
-    return this.articoloId;
+  public NegozioArticoloIndexDTO getData() {
+    return this.data;
   }
 
-  public void setArticoloId(String articoloId) {
-    this.articoloId = articoloId;
+  public void setData(NegozioArticoloIndexDTO data) {
+    this.data = data;
   }
 }
