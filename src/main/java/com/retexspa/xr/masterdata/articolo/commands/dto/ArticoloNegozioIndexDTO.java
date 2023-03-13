@@ -12,6 +12,8 @@ public class ArticoloNegozioIndexDTO {
   private String articoloId;
   private List<String> nogizioIds;
 
+
+
   public ArticoloNegozioIndexDTO(String articoloId) {
     this.id = getIdFromArticolo(articoloId);
     this.articoloId = articoloId;
@@ -38,11 +40,12 @@ public class ArticoloNegozioIndexDTO {
     this.articoloId = articoloId;
   }
 
-  public List<String> getStoreIds() {
+  public List<String> getNogizioIds() {
     return this.nogizioIds;
   }
 
-  public void setStoreIds(List<String> nogizioIds) {
+  public void setNogizioIds(List<String> nogizioIds) {
     this.nogizioIds = nogizioIds;
   }
+
 }

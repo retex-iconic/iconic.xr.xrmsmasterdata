@@ -19,15 +19,15 @@ public class ArticoloNegozioIndexAggregate {
   public ArticoloNegozioIndexAggregate() {}
 
   @CommandHandler
-  public ArticoloNegozioIndexAggregate(ArticoloNegozioIndexCommand articoloStoreIndexCommand) {
+  public ArticoloNegozioIndexAggregate(ArticoloNegozioIndexCommand articoloNegozioIndexCommand) {
     AggregateLifecycle.apply(
-        new ArticoloNegozioIndexEvent(articoloStoreIndexCommand.id, articoloStoreIndexCommand.data));
+        new ArticoloNegozioIndexEvent(articoloNegozioIndexCommand.id, articoloNegozioIndexCommand.data));
   }
 
   @EventSourcingHandler
-  protected void on(ArticoloNegozioIndexEvent articoloStoredIndexEvent) {
-    this.id = articoloStoredIndexEvent.id;
-    this.data = articoloStoredIndexEvent.data;
+  protected void on(ArticoloNegozioIndexEvent articoloNegoziodIndexEvent) {
+    this.id = articoloNegoziodIndexEvent.id;
+    this.data = articoloNegoziodIndexEvent.data;
   }
 
   public String getId() {

@@ -41,9 +41,9 @@ public class ArticoloAggregate {
   }
 
   @EventSourcingHandler
-  protected void on(ArticoloNegozioIndexEvent articoloStoredIndexEvent) {
-    this.id = articoloStoredIndexEvent.id;
-    this.dataStoreIndex = articoloStoredIndexEvent.data;
+  protected void on(ArticoloNegozioIndexEvent articoloNegoziodIndexEvent) {
+    this.id = articoloNegoziodIndexEvent.id;
+    this.dataStoreIndex = articoloNegoziodIndexEvent.data;
   }
 
   @CommandHandler
