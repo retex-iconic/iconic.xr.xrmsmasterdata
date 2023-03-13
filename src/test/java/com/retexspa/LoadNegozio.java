@@ -2,6 +2,7 @@ package com.retexspa;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
@@ -20,6 +21,7 @@ public class LoadNegozio {
     String s = currentRelativePath.toAbsolutePath().toString();
     System.out.println("Current absolute path is: " + s);
     ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     objectMapper.registerModule(new JavaTimeModule());
     NegozioLegacy negozioLegacy;
 

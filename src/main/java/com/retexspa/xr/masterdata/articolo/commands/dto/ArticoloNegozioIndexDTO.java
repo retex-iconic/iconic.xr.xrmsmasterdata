@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.UUID;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class ArticoloStoreIndexDTO {
+public class ArticoloNegozioIndexDTO {
 
   @TargetAggregateIdentifier private String id;
 
   private String articoloId;
-  private List<String> storeIds;
+  private List<String> nogizioIds;
 
-  public ArticoloStoreIndexDTO(String articoloId) {
+  public ArticoloNegozioIndexDTO(String articoloId) {
     this.id = getIdFromArticolo(articoloId);
     this.articoloId = articoloId;
-    this.storeIds = new ArrayList<String>();
+    this.nogizioIds = new ArrayList<String>();
   }
 
   public static String getIdFromArticolo(String articoloId) {
-    return UUID.nameUUIDFromBytes(("/ArticoloStoreIndex/" + articoloId).getBytes()).toString();
+    return UUID.nameUUIDFromBytes(("/ArticoloNegozioIndex/" + articoloId).getBytes()).toString();
   }
 
   public String getId() {
@@ -39,10 +39,10 @@ public class ArticoloStoreIndexDTO {
   }
 
   public List<String> getStoreIds() {
-    return this.storeIds;
+    return this.nogizioIds;
   }
 
-  public void setStoreIds(List<String> storeIds) {
-    this.storeIds = storeIds;
+  public void setStoreIds(List<String> nogizioIds) {
+    this.nogizioIds = nogizioIds;
   }
 }

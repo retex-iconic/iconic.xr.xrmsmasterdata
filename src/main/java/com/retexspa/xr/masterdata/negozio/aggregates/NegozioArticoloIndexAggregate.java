@@ -1,7 +1,7 @@
 package com.retexspa.xr.masterdata.negozio.aggregates;
 
-import com.retexspa.xr.masterdata.negozio.commands.StoreArticoloIndexCommand;
-import com.retexspa.xr.masterdata.negozio.events.StoredArticoloIndexEvent;
+import com.retexspa.xr.masterdata.negozio.commands.NegozioArticoloIndexCommand;
+import com.retexspa.xr.masterdata.negozio.events.NegozioArticoloIndexEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -18,14 +18,14 @@ public class NegozioArticoloIndexAggregate {
   public NegozioArticoloIndexAggregate() {}
 
   @CommandHandler
-  protected void ArticoloAggregate(StoreArticoloIndexCommand storeArticoloIndexCommand) {
+  protected NegozioArticoloIndexAggregate(NegozioArticoloIndexCommand negozioArticoloIndexCommand) {
     AggregateLifecycle.apply(
-        new StoredArticoloIndexEvent(
-            storeArticoloIndexCommand.id, storeArticoloIndexCommand.articoloId));
+        new NegozioArticoloIndexEvent(
+            negozioArticoloIndexCommand.id, null));
   }
 
   @EventSourcingHandler
-  protected void on(StoredArticoloIndexEvent storedArticoloIndexEvent) {
+  protected void on(NegozioArticoloIndexEvent storedArticoloIndexEvent) {
     this.id = storedArticoloIndexEvent.id;
     this.articoloId = storedArticoloIndexEvent.articoloId;
   }

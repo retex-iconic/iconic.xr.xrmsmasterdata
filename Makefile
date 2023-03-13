@@ -8,3 +8,7 @@ kafka-run:
 	cd src/main/docker && docker compose -f docker-compose-axonserver-se.yml up -d
 axon-run:
 	cd src/main/docker && docker compose -f docker-compose-axonserver-se.yml up -d
+
+run-one:
+
+	npx @eventcatalog/create-eventcatalog@latest xrms-masterdata

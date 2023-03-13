@@ -3,11 +3,11 @@ package com.retexspa.aggregate;
 import com.retexspa.LoadArticolo;
 import com.retexspa.xr.masterdata.articolo.aggregates.ArticoloAggregate;
 import com.retexspa.xr.masterdata.articolo.commands.ArticoloCreateCommand;
-import com.retexspa.xr.masterdata.articolo.commands.ArticoloStoreIndexCommand;
+import com.retexspa.xr.masterdata.articolo.commands.ArticoloNegozioIndexCommand;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
-import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloStoreIndexDTO;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloNegozioIndexDTO;
 import com.retexspa.xr.masterdata.articolo.events.ArticoloCreatedEvent;
-import com.retexspa.xr.masterdata.articolo.events.ArticoloStoredIndexEvent;
+import com.retexspa.xr.masterdata.articolo.events.ArticoloNegozioIndexEvent;
 import com.retexspa.xr.masterdata.negozio.aggregates.NegozioAggregate;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
@@ -35,7 +35,7 @@ public class ArticoloAggregateTest {
   void generateId () {
     String articolo_id = "4f2ef142-c882-484e-84a3-7bbb3dfc0e6a";
     String articolo_index_id = "0d6c3219-82ee-3d2a-bc48-e5de675e8d92";
-    String id = ArticoloStoreIndexDTO.getIdFromArticolo(articolo_id) ;
+    String id = ArticoloNegozioIndexDTO.getIdFromArticolo(articolo_id) ;
     assert id.equals(articolo_index_id);
   }
 
@@ -44,16 +44,16 @@ public class ArticoloAggregateTest {
 
     ArticoloDTO articoloDTO = new LoadArticolo().loadArticolo();
     String id = UUID.randomUUID().toString();
-    ArticoloStoreIndexDTO articoloStoreIndexDTO = new ArticoloStoreIndexDTO(id);
+    ArticoloNegozioIndexDTO articoloStoreIndexDTO = new ArticoloNegozioIndexDTO(id);
     fixture
         .given(new ArticoloCreatedEvent(id, articoloDTO))
         .when(new ArticoloCreateCommand(id, articoloDTO))
         .expectSuccessfulHandlerExecution()
-        .expectEvents(new ArticoloStoredIndexEvent(id, articoloStoreIndexDTO));
+        .expectEvents(new ArticoloNegozioIndexEvent(id, articoloStoreIndexDTO));
   }
 
   @Test
-  void addArticoloStoreIndex() {
+  void addArticoloNegozioIndex() {
     String id = UUID.randomUUID().toString();    
     ArticoloDTO articoloDTO = new ArticoloDTO();
     fixture
@@ -77,12 +77,12 @@ public class ArticoloAggregateTest {
         .expectEvents(new NegozioCreatedEvent(id_negozio, negozioDTO));
 
 
-    ArticoloStoreIndexDTO articoloStoreIndexDTO = new ArticoloStoreIndexDTO(id);
+    ArticoloNegozioIndexDTO articoloStoreIndexDTO = new ArticoloNegozioIndexDTO(id);
 
     fixture.given( )
-        .when(new ArticoloStoreIndexCommand(id_negozio, articoloStoreIndexDTO))
+        .when(new ArticoloNegozioIndexCommand(id_negozio, articoloStoreIndexDTO))
         .expectSuccessfulHandlerExecution()
-        .expectEvents(new ArticoloStoreIndexCommand(id_negozio, articoloStoreIndexDTO));
+        .expectEvents(new ArticoloNegozioIndexCommand(id_negozio, articoloStoreIndexDTO));
 
   }
 }

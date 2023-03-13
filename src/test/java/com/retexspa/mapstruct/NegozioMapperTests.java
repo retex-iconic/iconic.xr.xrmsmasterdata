@@ -15,7 +15,7 @@ public class NegozioMapperTests {
   public void testMapDtoToEntity() throws StreamReadException, DatabindException, IOException {
     NegozioDTO negozioDTO = new LoadNegozio().loadNegozio();
 
-    assertThat(negozioDTO.getRagioneSociale()).isEqualTo("S.I.F. SRL");
+    assertThat(negozioDTO.getRagioneSociale()).isEqualTo("S.I.F. SRL Svil. Industriale F.lli Ibba");
     assertThat(negozioDTO.getCodiceFiscale()).isEqualTo("");
     assertThat(negozioDTO.getRegimeFiscale()).isEqualTo("RF01");
     assertThat(negozioDTO.getMaster()).isEqualTo(null);

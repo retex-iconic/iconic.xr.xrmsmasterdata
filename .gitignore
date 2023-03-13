@@ -5,6 +5,8 @@ target/
 !**/src/test/**/target/
 sandbox/
 docs/
+eventcatalog/
+xrms-masterdata/
 ### STS ###
 .apt_generated
 .classpath

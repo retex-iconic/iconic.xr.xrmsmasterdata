@@ -36,4 +36,6 @@ public class NegozioCommandServiceImpl implements NegozioCommandService {
         commandGateway.send(new NegozioUpdateCommand(negozioId, negozioDTO));
     return result;
   }
+
+  
 }

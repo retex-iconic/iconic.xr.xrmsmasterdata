@@ -16,7 +16,7 @@ public interface NegozioMapper {
   @Mapping(target = "partitaIVA", source = "idcodice")
   // @Mapping(source = "idcedente", ignore = true")
   // @Mapping(source = "idpv", ignore = true")
-  @Mapping(target = "ragioneSociale", expression = "java(legacy.getRagSoc() + legacy.getRagSoc2())")
+  @Mapping(target = "ragioneSociale", expression = "java(legacy.getRagsoc()+ ' ' + legacy.getRagsoc2())")
   // @Mapping(source = "ragsoc2", ignore = true")
   @Mapping(target = "codiceFiscale", source = "codfisc")
   @Mapping(target = "regimeFiscale", source = "regfisc")

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioCreateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.NegozioUpdateCommand;
 import com.retexspa.xr.masterdata.negozio.commands.dto.NegozioDTO;
+import com.retexspa.xr.masterdata.negozio.events.NegozioArticoloIndexEvent;
 import com.retexspa.xr.masterdata.negozio.events.NegozioCreatedEvent;
 import com.retexspa.xr.masterdata.negozio.events.NegozioUpdatedEvent;
 import java.io.IOException;
@@ -26,13 +27,15 @@ public class NegozioAggregate {
   @CommandHandler
   public NegozioAggregate(NegozioCreateCommand negozioCreateCommand) {
     AggregateLifecycle.apply(
-        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.data));
+        new NegozioCreatedEvent(negozioCreateCommand.id, negozioCreateCommand.data)); 
   }
 
   @EventSourcingHandler
   public void on(NegozioCreatedEvent negozioCreatedEvent) {
     this.id = negozioCreatedEvent.id;
     this.data = negozioCreatedEvent.data;
+    
+
   }
 
   @CommandHandler
