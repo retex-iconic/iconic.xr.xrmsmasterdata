@@ -20,6 +20,7 @@ public class NegozioQueryEntity {
   // @JoinColumn(name = "id", referencedColumnName = "parent")
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  // @OneToMany --> sia per articoli che per fornitori
   private String id;
 
   // @OneToMany(cascade = CascadeType.ALL)

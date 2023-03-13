@@ -20,9 +20,11 @@ public class ArticoloFornitoreQueryEntity {
   private String id;
 
   @Column(name = "fornitore")
+  // @ManyToOne --> fornitori
   private String fornitore;
 
   @Column(name = "articolo")
+  // @ManyToOne --> articoli
   private String articolo;
 
   @Column(name = "costoCartone")

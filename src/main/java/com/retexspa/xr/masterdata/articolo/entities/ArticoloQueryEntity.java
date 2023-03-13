@@ -16,6 +16,8 @@ public class ArticoloQueryEntity {
   @Id
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
+  // @OneToMany --> sia per articoliFornitori, che eventualmente per negozio (per negozio dobbiamo definire un parametro per relazionarli)
+  // altrimenti in assortimenti depositiamo il legame tra negozio e articolo (quindi forse una terza tabella?)
   private String id;
 
   @Column(name = "descrizione")
