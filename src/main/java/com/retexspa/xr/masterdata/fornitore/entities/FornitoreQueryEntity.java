@@ -1,10 +1,18 @@
 package com.retexspa.xr.masterdata.fornitore.entities;
 
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,20 +20,18 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "fornitori")
 public class FornitoreQueryEntity {
 
-  // TODO correct this to be equivalent to the FornitoreDTO class!
-
   @Id
-  // @ManyToOne
-  // @JoinColumn(name = "id", referencedColumnName = "parent")
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
-  // @OneToMany --> articoli
-  // @ManyToOne --> negozio
+  // one to many --> articoli
+  // many to one --> negozio
   private String id;
 
-  // @OneToMany(cascade = CascadeType.ALL)
-  // @JoinColumn(name = "parent")
-  @Column(name = "codice")
+  @OneToMany(cascade = CascadeType.ALL)
+  private List<String> articoloIds;
+
+  @ManyToOne
+  @JoinColumn(name = "codice")
   private String codice;
 
   @Column(name = "numeroFornitore")
@@ -56,11 +62,12 @@ public class FornitoreQueryEntity {
     this.codice = fornitoreDTO.getCodice();
     this.numeroFornitore = fornitoreDTO.getNumeroFornitore();
     this.nomeFornitore = fornitoreDTO.getNomeFornitore();
-    this.indirizzoFornitore = fornitoreDTO.getIndirizzo();
-    this.cittaFornitore = fornitoreDTO.getCitta();
-    this.capFornitore = fornitoreDTO.getCap();
-    this.PIVAFornitore = fornitoreDTO.getPiva();
+    this.indirizzoFornitore = fornitoreDTO.getIndirizzoFornitore();
+    this.cittaFornitore = fornitoreDTO.getCittaFornitore();
+    this.capFornitore = fornitoreDTO.getCapFornitore();
+    this.PIVAFornitore = fornitoreDTO.getPIVAFornitore();
     this.master = fornitoreDTO.getMaster();
+    this.articoloIds = new ArrayList<>();
   }
 
   public String getId() {
@@ -69,6 +76,22 @@ public class FornitoreQueryEntity {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public List<String> getArticoloIds() {
+    return this.articoloIds;
+  }
+
+  public void setArticoloIds(List<String> articoloIds) {
+    this.articoloIds = articoloIds;
+  }
+
+  public String getCodice() {
+    return this.codice;
+  }
+
+  public void setCodice(String codice) {
+    this.codice = codice;
   }
 
   public String getCodiceFornitore() {

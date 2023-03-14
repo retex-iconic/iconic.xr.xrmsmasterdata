@@ -8,13 +8,13 @@ public class FornitoreDTO {
 
   private String nomeFornitore;
 
-  private String indirizzo;
+  private String indirizzoFornitore;
 
-  private String citta;
+  private String cittaFornitore;
 
-  private String cap;
+  private String capFornitore;
 
-  private String piva;
+  private String PIVAFornitore;
 
   private String master;
 
@@ -44,36 +44,36 @@ public class FornitoreDTO {
     this.nomeFornitore = nomeFornitore;
   }
 
-  public String getIndirizzo() {
-    return this.indirizzo;
+  public String getIndirizzoFornitore() {
+    return this.indirizzoFornitore;
   }
 
-  public void setIndirizzo(String indirizzo) {
-    this.indirizzo = indirizzo;
+  public void setIndirizzoFornitore(String indirizzoFornitore) {
+    this.indirizzoFornitore = indirizzoFornitore;
   }
 
-  public String getCitta() {
-    return this.citta;
+  public String getCittaFornitore() {
+    return this.cittaFornitore;
   }
 
-  public void setCitta(String citta) {
-    this.citta = citta;
+  public void setCittaFornitore(String cittaFornitore) {
+    this.cittaFornitore = cittaFornitore;
   }
 
-  public String getCap() {
-    return this.cap;
+  public String getCapFornitore() {
+    return this.capFornitore;
   }
 
-  public void setCap(String cap) {
-    this.cap = cap;
+  public void setCapFornitore(String capFornitore) {
+    this.capFornitore = capFornitore;
   }
 
-  public String getPiva() {
-    return this.piva;
+  public String getPIVAFornitore() {
+    return this.PIVAFornitore;
   }
 
-  public void setPiva(String piva) {
-    this.piva = piva;
+  public void setPIVAFornitore(String PIVAFornitore) {
+    this.PIVAFornitore = PIVAFornitore;
   }
 
   public String getMaster() {

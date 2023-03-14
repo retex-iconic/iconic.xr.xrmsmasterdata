@@ -35,10 +35,10 @@ public class FornitoreProjection {
     entity.setCodiceFornitore(event.getData().getCodice());
     entity.setNumeroFornitore(event.getData().getNumeroFornitore());
     entity.setNomeFornitore(event.getData().getNomeFornitore());
-    entity.setIndirizzoFornitore(event.getData().getIndirizzo());
-    entity.setCittaFornitore(event.getData().getCitta());
-    entity.setCapFornitore(event.getData().getCap());
-    entity.setPIVAFornitore(event.getData().getPiva());
+    entity.setIndirizzoFornitore(event.getData().getIndirizzoFornitore());
+    entity.setCittaFornitore(event.getData().getCittaFornitore());
+    entity.setCapFornitore(event.getData().getCapFornitore());
+    entity.setPIVAFornitore(event.getData().getPIVAFornitore());
     entity.setMaster(event.getData().getMaster());
   }
 

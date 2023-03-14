@@ -1,11 +1,20 @@
 package com.retexspa.xr.masterdata.articolo.entities;
 
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
+import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloNegozioIndexDTO;
+import com.retexspa.xr.masterdata.articoloFornitore.commands.dto.ArticoloFornitoreDTO;
+
 import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -16,9 +25,14 @@ public class ArticoloQueryEntity {
   @Id
   @GeneratedValue(generator = "system-uuid")
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
-  // @OneToMany --> sia per articoliFornitori, che eventualmente per negozio (per negozio dobbiamo definire un parametro per relazionarli)
   // altrimenti in assortimenti depositiamo il legame tra negozio e articolo (quindi forse una terza tabella?)
   private String id;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  private List<String> articoloFornitoreIds;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  private List<String> negozioIds;
 
   @Column(name = "descrizione")
   private String descrizione;
@@ -29,7 +43,8 @@ public class ArticoloQueryEntity {
   @Column(name = "produttore")
   private String produttore;
 
-  @Column(name = "codice1")
+  @ManyToOne
+  @JoinColumn(name = "codice1")
   private String codice1;
 
   @Column(name = "codice2")
@@ -52,7 +67,9 @@ public class ArticoloQueryEntity {
     // ObjectReader objectReader = objectMapper.readerForUpdating(this);
     // String jsonInString = objectMapper.writeValueAsString(articoloDTO);
     // Object t = objectReader.readValue(jsonInString, ArticoloQueryEntity.class);
-
+    ArticoloNegozioIndexDTO articoloNegozioIndexDTO = new ArticoloNegozioIndexDTO(articoloId);
+    ArticoloFornitoreDTO articoloFornitoreDTO = new ArticoloFornitoreDTO(articoloId);
+    
     this.id = articoloId;
     this.codice1 = articoloDTO.getCodice();
     this.descrizione = articoloDTO.getDescrizione();
@@ -62,6 +79,8 @@ public class ArticoloQueryEntity {
     this.master = articoloDTO.getMaster();
     this.produttore = articoloDTO.getProduttore();
     this.reparto = articoloDTO.getReparto();
+    this.negozioIds = articoloNegozioIndexDTO.getNegozioIds();
+    this.articoloFornitoreIds = articoloFornitoreDTO.getArticoloFornitoreIds();
   }
 
   // getters and setters
@@ -71,6 +90,22 @@ public class ArticoloQueryEntity {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public List<String> getArticoloFornitoreIds() {
+    return this.articoloFornitoreIds;
+  }
+
+  public void setArticoloFornitoreIds(List<String> articoloFornitoreIds) {
+    this.articoloFornitoreIds = articoloFornitoreIds;
+  }
+
+  public List<String> getNegozioIds() {
+    return this.negozioIds;
+  }
+
+  public void setNegozioIds(List<String> negozioIds) {
+    this.negozioIds = negozioIds;
   }
 
   public String getDescrizione() {
