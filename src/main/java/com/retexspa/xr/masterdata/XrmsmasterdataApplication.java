@@ -13,6 +13,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 
  //TODO relate the tables correctly
+
+ //TODO understand how to improve a delete for the models (disattivazione)
 @SpringBootApplication
 @EnableJpaRepositories
 @io.swagger.v3.oas.annotations.OpenAPIDefinition(
