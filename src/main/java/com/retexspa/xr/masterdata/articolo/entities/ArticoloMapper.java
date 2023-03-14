@@ -29,20 +29,20 @@ public interface ArticoloMapper {
   // @Mapping(source = "datins", ignore = true")
   // @Mapping(source = "iva", ignore = true")
 
-  // * */ @Mapping(target = "descrizione", source = "descriz")
-  // * */ @Mapping(target = "descrizioneBreve", source = "desbrev")
-  // * */ @Mapping(target = "unitaDiMisura", source = "misura")
-  // * */ @Mapping(target = "quantita", source = "quantita")
-  // * */ @Mapping(target = "scortaMinima", source = "scorta")
+  @Mapping(target = "descrizione", source = "descriz")
+  @Mapping(target = "descrizioneBreve", source = "desbrev")
+  @Mapping(target = "unitaDiMisura", source = "misura")
+  @Mapping(target = "quantita", source = "quantita")
+  @Mapping(target = "scortaMinima", source = "scorta")
 
   // @Mapping(source = "giaciniz", ignore = true")
   // @Mapping(source = "valiniz", ignore = true")
   // @Mapping(source = "ricarico", ignore = true")
   // @Mapping(source = "ricaric2", ignore = true")
 
-  // * */ @Mapping(target = "deposito", source = "deposito")
-  // * */ @Mapping(target = "scaffale", source = "scaffale")
-  // * */ @Mapping(target = "superficieEspositiva", source = "supespo")
+  @Mapping(target = "deposito", source = "deposito")
+  @Mapping(target = "scaffale", source = "scaffale")
+  @Mapping(target = "superficieEspositiva", source = "supespo")
 
   // @Mapping(source = "offspec", ignore = true")
   // @Mapping(source = "datinof", ignore = true")
@@ -69,7 +69,7 @@ public interface ArticoloMapper {
   // @Mapping(source = "quascart", ignore = true")
   // @Mapping(source = "valscart", ignore = true")
 
-  // * */ @Mapping(target = "quantitaImpegnata", source = "quaimpeg")
+  @Mapping(target = "quantitaImpegnata", source = "quaimpeg")
 
   // @Mapping(source = "giacmed", ignore = true")
   // @Mapping(source = "varprv", ignore = true")
@@ -81,8 +81,8 @@ public interface ArticoloMapper {
   // @Mapping(source = "datvar", ignore = true")
   // @Mapping(source = "datcons", ignore = true")
 
-  // * */ @Mapping(target = "scortaMassima", source = "scortamax")
-  // * */ @Mapping(target = "layoutEtichetta", source = "etilay")
+  @Mapping(target = "scortaMassima", source = "scortamax")
+  @Mapping(target = "layoutEtichetta", source = "etilay")
 
   // @Mapping(source = "dateti", ignore = true")
   // @Mapping(source = "prcons", ignore = true")
@@ -100,15 +100,15 @@ public interface ArticoloMapper {
   // @Mapping(source = "prdel", ignore = true")
   // @Mapping(source = "descedi", ignore = true")
 
-  // * */ @Mapping(target = "tipoProdotto", source = "tipoart")
+  @Mapping(target = "tipoProdotto", source = "tipoart")
 
   // @Mapping(source = "fidpromo", ignore = true")
 
-  // * */ @Mapping(target = "numeroEtichette", source = "numeti")
+  @Mapping(target = "numeroEtichette", source = "numeti")
 
   // @Mapping(source = "apeso", ignore = true")
 
-  // * */ @Mapping(target = "tipoScaricoVenduto", source = "tiposcar")
+  @Mapping(target = "tipoScaricoVenduto", source = "tiposcar")
 
   // @Mapping(source = "preuro", ignore = true")
   // @Mapping(source = "datmod", ignore = true")
@@ -126,16 +126,16 @@ public interface ArticoloMapper {
   // @Mapping(source = "prord", ignore = true")
   // @Mapping(source = "medvendgg", ignore = true")
 
-  // * */ @Mapping(target = "fornitorePrimario", source = "fornpri")
-  // * */ @Mapping(target = "fornitoreEtichetta", source = "forneti")
+  @Mapping(target = "fornitorePrimario", source = "fornpri")
+  @Mapping(target = "fornitoreEtichetta", source = "forneti")
 
   // @Mapping(source = "flgecom", ignore = true")
   // @Mapping(source = "giacwarn", ignore = true")
   // @Mapping(source = "giacelim", ignore = true")
 
-  // * */ @Mapping(target = "posizionamento", source = "codposiz")
-  // * */ @Mapping(target = "stagionalita", source = "codstag")
-  // * */ @Mapping(target = "tipoProdotto2", source = "codtipo2")
+  @Mapping(target = "posizionamento", source = "codposiz")
+  @Mapping(target = "stagionalita", source = "codstag")
+  @Mapping(target = "tipoProdotto2", source = "codtipo2")
 
   // @Mapping(source = "subtotsc", ignore = true")
   // @Mapping(source = "subtotpt", ignore = true")
@@ -147,13 +147,13 @@ public interface ArticoloMapper {
   // @Mapping(source = "przblk", ignore = true")
   // @Mapping(source = "przimp", ignore = true")
 
-  // * */ @Mapping(target = "svalorizzazione", source = "codsva")
-  // * */ @Mapping(target = "cluster", source = "cluster")
-  // * */ @Mapping(target = "assortimentoPuntoVendita", source = "asspv")
+  @Mapping(target = "svalorizzazione", source = "codsva")
+  @Mapping(target = "cluster", source = "cluster")
+  @Mapping(target = "assortimentoPuntoVendita", source = "asspv")
 
   // @Mapping(source = "idsendecr", ignore = true")
 
-  // * */ @Mapping(target = "layoutESL", source = "esllay")
+  @Mapping(target = "layoutESL", source = "esllay")
 
   // @Mapping(source = "esllpro", ignore = true")
   // @Mapping(source = "dataoraupd", ignore = true")
