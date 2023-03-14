@@ -1,10 +1,14 @@
 package com.retexspa.xr.masterdata.articoloFornitore.entities;
 
+import com.retexspa.xr.masterdata.articolo.entities.ArticoloQueryEntity;
 import com.retexspa.xr.masterdata.articoloFornitore.commands.dto.ArticoloFornitoreDTO;
+import com.retexspa.xr.masterdata.fornitore.entities.FornitoreQueryEntity;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,12 +25,12 @@ public class ArticoloFornitoreQueryEntity {
   @GenericGenerator(name = "system-uuid", strategy = "uuid")
   private String id;
 
-  @ManyToOne
-  @JoinColumn(name = "fornitore")
+  @ManyToOne(fetch = FetchType.EAGER, targetEntity = FornitoreQueryEntity.class)
+  @JoinColumn(name = "fornitore", nullable = false)
   private String fornitore;
 
-  @ManyToOne
-  @JoinColumn(name = "articolo")
+  @ManyToOne(fetch = FetchType.EAGER, targetEntity = ArticoloQueryEntity.class)
+  @JoinColumn(name = "articolo", nullable = false)
   private String articolo;
 
   @Column(name = "costoCartone")

@@ -1,6 +1,7 @@
 package com.retexspa.xr.masterdata.fornitore.entities;
 
 import com.retexspa.xr.masterdata.fornitore.commands.dto.FornitoreDTO;
+import com.retexspa.xr.masterdata.negozio.entities.NegozioQueryEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,10 +29,10 @@ public class FornitoreQueryEntity {
   // many to one --> negozio
   private String id;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy="articoloIds")
   private List<String> articoloIds;
 
-  @ManyToOne
+  @ManyToOne(targetEntity = NegozioQueryEntity.class)
   @JoinColumn(name = "codice")
   private String codice;
 

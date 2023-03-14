@@ -3,6 +3,7 @@ package com.retexspa.xr.masterdata.articolo.entities;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloDTO;
 import com.retexspa.xr.masterdata.articolo.commands.dto.ArticoloNegozioIndexDTO;
 import com.retexspa.xr.masterdata.articoloFornitore.commands.dto.ArticoloFornitoreDTO;
+import com.retexspa.xr.masterdata.negozio.entities.NegozioQueryEntity;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,10 +30,10 @@ public class ArticoloQueryEntity {
   // altrimenti in assortimenti depositiamo il legame tra negozio e articolo (quindi forse una terza tabella?)
   private String id;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy="articoloFornitoreIds")
   private List<String> articoloFornitoreIds;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy="negozioIds")
   private List<String> negozioIds;
 
   @Column(name = "descrizione")
@@ -43,8 +45,8 @@ public class ArticoloQueryEntity {
   @Column(name = "produttore")
   private String produttore;
 
-  @ManyToOne
-  @JoinColumn(name = "codice1")
+  @ManyToOne(fetch = FetchType.EAGER, targetEntity = NegozioQueryEntity.class)
+  @JoinColumn(name = "codice1", nullable = false)
   private String codice1;
 
   @Column(name = "codice2")
